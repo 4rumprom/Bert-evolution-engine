@@ -1,0 +1,5 @@
+numpy
+scipy
+# Optional, for speed and GPU support:
+#   CPU:  pip install jax
+#   GPU:  pip install "jax[cuda12]"   (match CUDA to your driver)
