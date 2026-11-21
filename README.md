@@ -216,11 +216,14 @@ training window stored in the bundle, and resolves the frozen
 address an older 622-ticker panel ordering). A smoke run on the real
 bundle completes end to end.
 
-Two honest limits. First, the bundle is a binary file: it lives with
-the export locally, but the automated GitHub snapshot push used for
-this project carries text only, so the bundle itself does not ride
-that push; moving it through GitHub would take a release asset or a
-direct git push. Second, episode sampling on real data is
+Two honest limits. First, the bundle is a binary file and the
+automated snapshot push used for this project carries text only, so
+in this repository the bundle travels encoded: fifteen base64 text
+parts under `bundle/`, plus `restore_bundle.py` at the root. After
+cloning, run `python3 restore_bundle.py` once; it rebuilds
+`stock_data_bundle.npz` in place and verifies its SHA-256 before
+writing, so a corrupted or incomplete download fails loudly instead
+of silently. Second, episode sampling on real data is
 validity-aware, under the same rule the genetic program's environment
 uses: an episode is drawable only when every ticker in its basket has
 a finite price on every day of the window plus its final mark day.
