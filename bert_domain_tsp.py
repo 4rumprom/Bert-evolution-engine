@@ -94,6 +94,10 @@ def decode_pointer(backend, layout, couple, G, Y):
 class TSPDomain:
     name = "tsp"
     input_dim = 2
+    # silencing exact-zero tolerance: the validation score
+    # is tour-based, so a silenced unit that changes nothing
+    # reads a drop of exactly 0.0
+    silence_zero_tol = 0.0
 
     def __init__(self, cfg: be.EngineConfig, backend):
         self.cfg = cfg
@@ -159,6 +163,15 @@ class TSPDomain:
             layout, np.asarray(genome)[None, :], self.X_val)
         gaps = lens[0] / self.optima - 1.0
         return -float(gaps.mean())
+
+    def validation_scores(self, layout, G):
+        """Batched per-genome validation scores (-mean gap),
+        for the silencing table: one batched call over the
+        champion plus its silenced copies."""
+        lens, _ = self.evaluate_lengths(
+            layout, np.asarray(G, dtype=float), self.X_val)
+        gaps = lens / self.optima - 1.0
+        return -gaps.mean(axis=1)
 
     def validation_detail(self, layout, genome):
         lens, _ = self.evaluate_lengths(

@@ -1,0 +1,18 @@
+{
+ "signal": "attribution (centered, tau 0.5)",
+ "branch_sizes": [
+  16,
+  10,
+  10
+ ],
+ "clustered_group_drops_pct_of_gap": [
+  258.4,
+  240.8,
+  237.2
+ ],
+ "clustered_total": 736.4,
+ "random_total_reference_from_silencing_control": 829.4,
+ "clustered_coherence": 0.463,
+ "random_coherence_mean": -0.01,
+ "random_coherence_max": 0.05
+}

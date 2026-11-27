@@ -1,0 +1,229 @@
+{
+ "champion_neutral_slots": [
+  "c0.b0.ffn.u1",
+  "c0.b0.ffn.u2",
+  "c0.b0.ffn.u3",
+  "c0.b0.ffn.u5",
+  "c0.b0.ffn.u6"
+ ],
+ "donors": {
+  "10": {
+   "gap_pct": 20.34,
+   "cloud_limit_pct": 30.69,
+   "counts": {
+    "contributing": 7,
+    "neutral": 2,
+    "harmful": 0
+   },
+   "units": [
+    {
+     "name": "c0.b0.ffn.u0",
+     "rel_drop_pct": 131.41,
+     "cloud_cat": "contributing"
+    },
+    {
+     "name": "c0.b0.ffn.u1",
+     "rel_drop_pct": 29.23,
+     "cloud_cat": "neutral"
+    },
+    {
+     "name": "c0.b0.ffn.u2",
+     "rel_drop_pct": 102.47,
+     "cloud_cat": "contributing"
+    },
+    {
+     "name": "c0.b0.ffn.u3",
+     "rel_drop_pct": 100.42,
+     "cloud_cat": "contributing"
+    },
+    {
+     "name": "c0.b0.ffn.u4",
+     "rel_drop_pct": 93.93,
+     "cloud_cat": "contributing"
+    },
+    {
+     "name": "c0.b0.ffn.u5",
+     "rel_drop_pct": 3.66,
+     "cloud_cat": "neutral"
+    },
+    {
+     "name": "c0.b0.ffn.u6",
+     "rel_drop_pct": 125.67,
+     "cloud_cat": "contributing"
+    },
+    {
+     "name": "c0.b0.ffn.u7",
+     "rel_drop_pct": 101.51,
+     "cloud_cat": "contributing"
+    },
+    {
+     "name": "c0.b0.head.h0",
+     "rel_drop_pct": 90.07,
+     "cloud_cat": "contributing"
+    }
+   ],
+   "contributing": [
+    [
+     "c0.b0.ffn.u0",
+     131.4
+    ],
+    [
+     "c0.b0.ffn.u2",
+     102.5
+    ],
+    [
+     "c0.b0.ffn.u3",
+     100.4
+    ],
+    [
+     "c0.b0.ffn.u4",
+     93.9
+    ],
+    [
+     "c0.b0.ffn.u6",
+     125.7
+    ],
+    [
+     "c0.b0.ffn.u7",
+     101.5
+    ],
+    [
+     "c0.b0.head.h0",
+     90.1
+    ]
+   ]
+  },
+  "9": {
+   "gap_pct": 19.44,
+   "cloud_limit_pct": 44.22,
+   "counts": {
+    "contributing": 2,
+    "neutral": 7,
+    "harmful": 0
+   },
+   "units": [
+    {
+     "name": "c0.b0.ffn.u0",
+     "rel_drop_pct": 16.41,
+     "cloud_cat": "neutral"
+    },
+    {
+     "name": "c0.b0.ffn.u1",
+     "rel_drop_pct": -2.0,
+     "cloud_cat": "neutral"
+    },
+    {
+     "name": "c0.b0.ffn.u2",
+     "rel_drop_pct": 13.73,
+     "cloud_cat": "neutral"
+    },
+    {
+     "name": "c0.b0.ffn.u3",
+     "rel_drop_pct": 0.46,
+     "cloud_cat": "neutral"
+    },
+    {
+     "name": "c0.b0.ffn.u4",
+     "rel_drop_pct": 57.84,
+     "cloud_cat": "contributing"
+    },
+    {
+     "name": "c0.b0.ffn.u5",
+     "rel_drop_pct": 31.91,
+     "cloud_cat": "neutral"
+    },
+    {
+     "name": "c0.b0.ffn.u6",
+     "rel_drop_pct": 17.0,
+     "cloud_cat": "neutral"
+    },
+    {
+     "name": "c0.b0.ffn.u7",
+     "rel_drop_pct": 91.83,
+     "cloud_cat": "contributing"
+    },
+    {
+     "name": "c0.b0.head.h0",
+     "rel_drop_pct": 22.23,
+     "cloud_cat": "neutral"
+    }
+   ],
+   "contributing": [
+    [
+     "c0.b0.ffn.u4",
+     57.8
+    ],
+    [
+     "c0.b0.ffn.u7",
+     91.8
+    ]
+   ]
+  },
+  "4": {
+   "gap_pct": 22.26,
+   "cloud_limit_pct": 77.87,
+   "counts": {
+    "contributing": 2,
+    "neutral": 7,
+    "harmful": 0
+   },
+   "units": [
+    {
+     "name": "c0.b0.ffn.u0",
+     "rel_drop_pct": 41.72,
+     "cloud_cat": "neutral"
+    },
+    {
+     "name": "c0.b0.ffn.u1",
+     "rel_drop_pct": 26.87,
+     "cloud_cat": "neutral"
+    },
+    {
+     "name": "c0.b0.ffn.u2",
+     "rel_drop_pct": 0.61,
+     "cloud_cat": "neutral"
+    },
+    {
+     "name": "c0.b0.ffn.u3",
+     "rel_drop_pct": 52.46,
+     "cloud_cat": "neutral"
+    },
+    {
+     "name": "c0.b0.ffn.u4",
+     "rel_drop_pct": 2.28,
+     "cloud_cat": "neutral"
+    },
+    {
+     "name": "c0.b0.ffn.u5",
+     "rel_drop_pct": 86.17,
+     "cloud_cat": "contributing"
+    },
+    {
+     "name": "c0.b0.ffn.u6",
+     "rel_drop_pct": 0.25,
+     "cloud_cat": "neutral"
+    },
+    {
+     "name": "c0.b0.ffn.u7",
+     "rel_drop_pct": -3.61,
+     "cloud_cat": "neutral"
+    },
+    {
+     "name": "c0.b0.head.h0",
+     "rel_drop_pct": 98.9,
+     "cloud_cat": "contributing"
+    }
+   ],
+   "contributing": [
+    [
+     "c0.b0.ffn.u5",
+     86.2
+    ],
+    [
+     "c0.b0.head.h0",
+     98.9
+    ]
+   ]
+  }
+ }
+}

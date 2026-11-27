@@ -1,0 +1,1991 @@
+{
+ "design": "sponsor direction, 2026-11-25 22:06 EST: grab the 3rd champion and stitch it into the evolved Frankenstein 4 \u2014 Frankenstein squared \u2014 by the Frankenstein 4 rule",
+ "parents": {
+  "sideA_evolved_frankenstein4": {
+   "source": "engine_runs/frankenstein4_evolution/frankenstein_4_evolved_champion.npz",
+   "validation_gap_pct": 6.8959,
+   "shape": {
+    "stream_width": 4,
+    "blocks": 2,
+    "ffn_hidden": [
+     6,
+     6
+    ]
+   },
+   "path": {
+    "n_weight_synapses_total": 248,
+    "n_passing_weight_synapses": 95,
+    "n_path_weight_synapses": 62,
+    "path_weight_synapses": [
+     {
+      "entry": "embed.W_in",
+      "i": 0,
+      "j": 0,
+      "share": 0.6313,
+      "std": 0.2082724624713535
+     },
+     {
+      "entry": "embed.W_in",
+      "i": 0,
+      "j": 1,
+      "share": 0.8843,
+      "std": 0.2678953407658931
+     },
+     {
+      "entry": "embed.W_in",
+      "i": 0,
+      "j": 2,
+      "share": 0.6173,
+      "std": 0.3360097301117436
+     },
+     {
+      "entry": "embed.W_in",
+      "i": 0,
+      "j": 3,
+      "share": 0.7566,
+      "std": 0.2633092786778413
+     },
+     {
+      "entry": "embed.W_in",
+      "i": 1,
+      "j": 0,
+      "share": 0.3687,
+      "std": 0.12164019137083408
+     },
+     {
+      "entry": "embed.W_in",
+      "i": 1,
+      "j": 2,
+      "share": 0.3827,
+      "std": 0.20830142535640594
+     },
+     {
+      "entry": "b0.W_q",
+      "i": 0,
+      "j": 0,
+      "share": 0.4364,
+      "std": 0.03599986125300967
+     },
+     {
+      "entry": "b0.W_q",
+      "i": 0,
+      "j": 2,
+      "share": 0.5781,
+      "std": 0.16548755523903538
+     },
+     {
+      "entry": "b0.W_q",
+      "i": 2,
+      "j": 0,
+      "share": 0.4369,
+      "std": 0.036038424649650784
+     },
+     {
+      "entry": "b0.W_q",
+      "i": 2,
+      "j": 2,
+      "share": 0.3938,
+      "std": 0.11273745183967439
+     },
+     {
+      "entry": "b0.W_k",
+      "i": 0,
+      "j": 0,
+      "share": 0.7082,
+      "std": 0.11689969001098548
+     },
+     {
+      "entry": "b0.W_k",
+      "i": 0,
+      "j": 2,
+      "share": 0.6467,
+      "std": 0.11187216217554931
+     },
+     {
+      "entry": "b0.W_v",
+      "i": 0,
+      "j": 2,
+      "share": 0.6189,
+      "std": 0.1718648188574523
+     },
+     {
+      "entry": "b0.W_v",
+      "i": 2,
+      "j": 0,
+      "share": 0.5471,
+      "std": 0.04068998766424684
+     },
+     {
+      "entry": "b0.W_o",
+      "i": 0,
+      "j": 1,
+      "share": 0.0525,
+      "std": 0.01614091287321182
+     },
+     {
+      "entry": "b0.W_o",
+      "i": 2,
+      "j": 0,
+      "share": 0.1205,
+      "std": 0.03458049371873236
+     },
+     {
+      "entry": "b0.W_o",
+      "i": 2,
+      "j": 1,
+      "share": 0.0507,
+      "std": 0.01559812619856609
+     },
+     {
+      "entry": "b0.W_o",
+      "i": 2,
+      "j": 2,
+      "share": 0.1357,
+      "std": 0.06257752731234796
+     },
+     {
+      "entry": "b0.W_o",
+      "i": 2,
+      "j": 3,
+      "share": 0.2081,
+      "std": 0.07504574550350705
+     },
+     {
+      "entry": "b0.W_1",
+      "i": 0,
+      "j": 3,
+      "share": 0.2351,
+      "std": 0.0313691043653081
+     },
+     {
+      "entry": "b0.W_1",
+      "i": 1,
+      "j": 3,
+      "share": 0.2231,
+      "std": 0.02977165129481762
+     },
+     {
+      "entry": "b0.W_1",
+      "i": 2,
+      "j": 1,
+      "share": 0.9365,
+      "std": 0.20446474692575933
+     },
+     {
+      "entry": "b0.W_1",
+      "i": 2,
+      "j": 3,
+      "share": 0.4203,
+      "std": 0.056090853287038986
+     },
+     {
+      "entry": "b0.W_1",
+      "i": 2,
+      "j": 4,
+      "share": 0.6919,
+      "std": 0.0711084288697057
+     },
+     {
+      "entry": "b0.W_1",
+      "i": 2,
+      "j": 5,
+      "share": 0.7239,
+      "std": 0.10518348026183062
+     },
+     {
+      "entry": "b0.W_2",
+      "i": 1,
+      "j": 2,
+      "share": 0.0516,
+      "std": 0.02660359261943005
+     },
+     {
+      "entry": "b0.W_2",
+      "i": 1,
+      "j": 3,
+      "share": 0.1473,
+      "std": 0.06089538129892011
+     },
+     {
+      "entry": "b0.W_2",
+      "i": 3,
+      "j": 0,
+      "share": 0.1656,
+      "std": 0.06321137826864431
+     },
+     {
+      "entry": "b0.W_2",
+      "i": 3,
+      "j": 2,
+      "share": 0.0722,
+      "std": 0.03721273119769642
+     },
+     {
+      "entry": "b0.W_2",
+      "i": 4,
+      "j": 2,
+      "share": 0.0486,
+      "std": 0.02505744443213002
+     },
+     {
+      "entry": "b0.W_2",
+      "i": 5,
+      "j": 2,
+      "share": 0.0531,
+      "std": 0.027371061559642536
+     },
+     {
+      "entry": "b1.W_q",
+      "i": 0,
+      "j": 1,
+      "share": 0.2731,
+      "std": 0.02437805094612341
+     },
+     {
+      "entry": "b1.W_q",
+      "i": 0,
+      "j": 2,
+      "share": 0.7907,
+      "std": 0.21031825950165928
+     },
+     {
+      "entry": "b1.W_q",
+      "i": 2,
+      "j": 1,
+      "share": 0.2411,
+      "std": 0.02151815452283666
+     },
+     {
+      "entry": "b1.W_q",
+      "i": 3,
+      "j": 1,
+      "share": 0.47,
+      "std": 0.04195475783623523
+     },
+     {
+      "entry": "b1.W_k",
+      "i": 0,
+      "j": 1,
+      "share": 0.4337,
+      "std": 0.21461181783633443
+     },
+     {
+      "entry": "b1.W_k",
+      "i": 0,
+      "j": 2,
+      "share": 0.2583,
+      "std": 0.04230821075010803
+     },
+     {
+      "entry": "b1.W_k",
+      "i": 2,
+      "j": 1,
+      "share": 0.5584,
+      "std": 0.27632233582484067
+     },
+     {
+      "entry": "b1.W_k",
+      "i": 2,
+      "j": 2,
+      "share": 0.4506,
+      "std": 0.0738071216559503
+     },
+     {
+      "entry": "b1.W_k",
+      "i": 3,
+      "j": 2,
+      "share": 0.248,
+      "std": 0.040623446220077374
+     },
+     {
+      "entry": "b1.W_v",
+      "i": 0,
+      "j": 2,
+      "share": 0.6012,
+      "std": 0.15804738900063245
+     },
+     {
+      "entry": "b1.W_v",
+      "i": 2,
+      "j": 1,
+      "share": 0.6783,
+      "std": 0.11871036238047021
+     },
+     {
+      "entry": "b1.W_o",
+      "i": 1,
+      "j": 0,
+      "share": 0.0343,
+      "std": 0.010023259043415325
+     },
+     {
+      "entry": "b1.W_o",
+      "i": 1,
+      "j": 3,
+      "share": 0.0337,
+      "std": 0.010790003077181235
+     },
+     {
+      "entry": "b1.W_o",
+      "i": 2,
+      "j": 0,
+      "share": 0.0227,
+      "std": 0.006633729363846863
+     },
+     {
+      "entry": "b1.W_o",
+      "i": 2,
+      "j": 2,
+      "share": 0.0287,
+      "std": 0.012552124053684832
+     },
+     {
+      "entry": "b1.W_1",
+      "i": 2,
+      "j": 0,
+      "share": 0.6108,
+      "std": 0.110969131625035
+     },
+     {
+      "entry": "b1.W_1",
+      "i": 2,
+      "j": 2,
+      "share": 0.7824,
+      "std": 0.24482556834241903
+     },
+     {
+      "entry": "b1.W_1",
+      "i": 2,
+      "j": 3,
+      "share": 0.5029,
+      "std": 0.09362525356379828
+     },
+     {
+      "entry": "b1.W_1",
+      "i": 2,
+      "j": 5,
+      "share": 0.5754,
+      "std": 0.12903580163211723
+     },
+     {
+      "entry": "b1.W_2",
+      "i": 0,
+      "j": 3,
+      "share": 0.2061,
+      "std": 0.09348160732059324
+     },
+     {
+      "entry": "b1.W_2",
+      "i": 2,
+      "j": 0,
+      "share": 0.1901,
+      "std": 0.09482093067540355
+     },
+     {
+      "entry": "b1.W_2",
+      "i": 3,
+      "j": 2,
+      "share": 0.0458,
+      "std": 0.02352650604434524
+     },
+     {
+      "entry": "b1.W_2",
+      "i": 5,
+      "j": 0,
+      "share": 0.1759,
+      "std": 0.08771857651832997
+     },
+     {
+      "entry": "b1.W_2",
+      "i": 5,
+      "j": 2,
+      "share": 0.0812,
+      "std": 0.04176352665649712
+     },
+     {
+      "entry": "head.W_qd",
+      "i": 0,
+      "j": 1,
+      "share": 0.3087,
+      "std": 0.17494817416287012
+     },
+     {
+      "entry": "head.W_qd",
+      "i": 0,
+      "j": 3,
+      "share": 0.3352,
+      "std": 0.24502921983600964
+     },
+     {
+      "entry": "head.W_qd",
+      "i": 2,
+      "j": 0,
+      "share": 0.5548,
+      "std": 0.30254324324598425
+     },
+     {
+      "entry": "head.W_qd",
+      "i": 2,
+      "j": 1,
+      "share": 0.379,
+      "std": 0.21476284662220965
+     },
+     {
+      "entry": "head.W_qd",
+      "i": 2,
+      "j": 2,
+      "share": 0.638,
+      "std": 0.4280642818364508
+     },
+     {
+      "entry": "head.W_qd",
+      "i": 2,
+      "j": 3,
+      "share": 0.4273,
+      "std": 0.31241188068832987
+     },
+     {
+      "entry": "head.W_qd",
+      "i": 3,
+      "j": 1,
+      "share": 0.265,
+      "std": 0.15015302021648602
+     }
+    ],
+    "ffn_units_on_path_by_block": {
+     "b0": [
+      1,
+      3,
+      4,
+      5
+     ],
+     "b1": [
+      0,
+      2,
+      3,
+      5
+     ]
+    }
+   }
+  },
+  "sideB_species10": {
+   "identification": "the species-10 entry of the fresh50_v2 run checkpoint's recorded species best genomes (checkpoint.npz best_genomes, the source the earlier stitch and skeleton scripts used), confirmed by measurement on the fixed validation set: gap 20.3364% (the 20.34% champion); the run's other species measure 15.1315% (8), 19.4412% (9), 22.2554% (4)",
+   "validation_gap_pct": 20.3364,
+   "shape": {
+    "stream_width": 2,
+    "blocks": 1,
+    "ffn_hidden": [
+     8
+    ]
+   },
+   "path": {
+    "n_weight_synapses_total": 56,
+    "n_passing_weight_synapses": 29,
+    "n_path_weight_synapses": 12,
+    "path_weight_synapses": [
+     {
+      "entry": "embed.W_in",
+      "i": 1,
+      "j": 0,
+      "share": 0.789,
+      "std": 0.14837547217881666
+     },
+     {
+      "entry": "embed.W_in",
+      "i": 1,
+      "j": 1,
+      "share": 0.8299,
+      "std": 0.171734123048768
+     },
+     {
+      "entry": "b0.W_q",
+      "i": 1,
+      "j": 0,
+      "share": 0.8876,
+      "std": 1.394630014633643e-05
+     },
+     {
+      "entry": "b0.W_k",
+      "i": 0,
+      "j": 0,
+      "share": 0.5877,
+      "std": 2.199597840734434e-06
+     },
+     {
+      "entry": "b0.W_k",
+      "i": 1,
+      "j": 0,
+      "share": 0.4123,
+      "std": 1.5432856963220471e-06
+     },
+     {
+      "entry": "b0.W_v",
+      "i": 0,
+      "j": 0,
+      "share": 0.3632,
+      "std": 8.206682615180461e-06
+     },
+     {
+      "entry": "b0.W_v",
+      "i": 1,
+      "j": 0,
+      "share": 0.6368,
+      "std": 1.4389968288879584e-05
+     },
+     {
+      "entry": "b0.W_o",
+      "i": 0,
+      "j": 0,
+      "share": 0.0,
+      "std": 3.726402215004664e-06
+     },
+     {
+      "entry": "b0.W_1",
+      "i": 0,
+      "j": 2,
+      "share": 0.9394,
+      "std": 4.030536202220898e-07
+     },
+     {
+      "entry": "b0.W_2",
+      "i": 2,
+      "j": 0,
+      "share": 0.0,
+      "std": 1.7741902857359317e-07
+     },
+     {
+      "entry": "head.W_qd",
+      "i": 0,
+      "j": 0,
+      "share": 0.6881,
+      "std": 0.12255241234660774
+     },
+     {
+      "entry": "head.W_qd",
+      "i": 0,
+      "j": 1,
+      "share": 0.8425,
+      "std": 0.3474068648426614
+     }
+    ],
+    "ffn_units_on_path_by_block": {
+     "b0": [
+      2
+     ]
+    }
+   }
+  }
+ },
+ "path_rule": "corrected rule (sponsor, 2026-11-25 10:04 EST): flow = presynaptic activation times weight over the fixed 200-problem validation set; a weight synapse passes iff its flow std is at least half the largest flow std among the weight synapses feeding the same node; the main path is the passing synapses on a connected entry-to-exit route (routes may step through the residual and attention/logit conduits, which are structural connectors, not competitors). The generalised machinery was validated against stitch #2: run on species 8 and 9 it reproduces the recorded path sets exactly (13 and 26 synapses).",
+ "attn_scale": {
+  "value": 0.7071067811865475,
+  "why": "the engine's initial-arch scale at d=2 (arch.attn_scale of be.initial_arch(cfg, 2)). Species 10's native arch is d=2, and the Frankenstein 4 champion's evolution forward pass used this same value for every block's attention and for the decoder logits; the squared network keeps it so every copied weight retains the scale it was built/evolved under. It is used for all three blocks' attention and the decoder logits, as in every earlier build."
+ },
+ "joining_ffn_width_reading": "the joining block's FFN width = the sum of the two sides' FFN path widths, each side's width counted in the block that feeds the joining block on that side (side A: its block 2, 4 units; side B: its block 1, 1 units) = 5, which equals the squared block-2 FFN width \u2014 the same relation as stitches #2/#4, where the joining FFN width equalled the preceding block's FFN width.",
+ "construction_check": {
+  "path_entries_bit_exact": true,
+  "path_entries_checked": 65,
+  "decoder_sideA_block_bit_exact": true,
+  "decoder_sideB_block_bit_exact": true,
+  "decoder_b_qd_bit_exact": true,
+  "decoder_v_start_bit_exact": true,
+  "decoder_cross_max_abs": 0.06130832271897343,
+  "decoder_cross_std": 0.027925770154236005,
+  "gene_accounting": {
+   "total": 855,
+   "stitching": 653,
+   "backbone": 202
+  },
+  "ambiguous_entries": []
+ },
+ "stitching_mask": {
+  "definition": "backbone = every entry copied exact from a source champion (path synapses, territory vectors, the two decoder blocks, b_qd, v_start); stitching = every drawn entry (filler, the whole joining block, the decoder cross blocks). Each entry was classified when placed or drawn, so no entry's origin is ambiguous.",
+  "gene_order": [
+   "embed.W_in",
+   "embed.b_in",
+   "b0.lnA_gain",
+   "b0.lnA_bias",
+   "b0.lnF_gain",
+   "b0.lnF_bias",
+   "b0.W_q",
+   "b0.W_k",
+   "b0.W_v",
+   "b0.W_o",
+   "b0.b_q",
+   "b0.b_k",
+   "b0.b_v",
+   "b0.b_o",
+   "b0.b_2",
+   "b0.W_1",
+   "b0.W_2",
+   "b0.b_1",
+   "b1.lnA_gain",
+   "b1.lnA_bias",
+   "b1.lnF_gain",
+   "b1.lnF_bias",
+   "b1.W_q",
+   "b1.W_k",
+   "b1.W_v",
+   "b1.W_o",
+   "b1.b_q",
+   "b1.b_k",
+   "b1.b_v",
+   "b1.b_o",
+   "b1.b_2",
+   "b1.W_1",
+   "b1.W_2",
+   "b1.b_1",
+   "b2.lnA_gain",
+   "b2.lnA_bias",
+   "b2.lnF_gain",
+   "b2.lnF_bias",
+   "b2.W_q",
+   "b2.W_k",
+   "b2.W_v",
+   "b2.W_o",
+   "b2.b_q",
+   "b2.b_k",
+   "b2.b_v",
+   "b2.b_o",
+   "b2.b_2",
+   "b2.W_1",
+   "b2.W_2",
+   "b2.b_1",
+   "head.W_qd",
+   "head.v_start",
+   "head.b_qd"
+  ],
+  "total": 855,
+  "backbone": 202,
+  "stitching": 653,
+  "per_array": {
+   "embed.W_in": {
+    "shape": [
+     2,
+     6
+    ],
+    "total": 12,
+    "stitching": 4,
+    "backbone": 8
+   },
+   "embed.b_in": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 0,
+    "backbone": 6
+   },
+   "b0.lnA_gain": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 0,
+    "backbone": 6
+   },
+   "b0.lnA_bias": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 0,
+    "backbone": 6
+   },
+   "b0.lnF_gain": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 0,
+    "backbone": 6
+   },
+   "b0.lnF_bias": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 0,
+    "backbone": 6
+   },
+   "b0.W_q": {
+    "shape": [
+     6,
+     6
+    ],
+    "total": 36,
+    "stitching": 31,
+    "backbone": 5
+   },
+   "b0.W_k": {
+    "shape": [
+     6,
+     6
+    ],
+    "total": 36,
+    "stitching": 32,
+    "backbone": 4
+   },
+   "b0.W_v": {
+    "shape": [
+     6,
+     6
+    ],
+    "total": 36,
+    "stitching": 32,
+    "backbone": 4
+   },
+   "b0.W_o": {
+    "shape": [
+     6,
+     6
+    ],
+    "total": 36,
+    "stitching": 30,
+    "backbone": 6
+   },
+   "b0.b_q": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 0,
+    "backbone": 6
+   },
+   "b0.b_k": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 0,
+    "backbone": 6
+   },
+   "b0.b_v": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 0,
+    "backbone": 6
+   },
+   "b0.b_o": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 0,
+    "backbone": 6
+   },
+   "b0.b_2": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 0,
+    "backbone": 6
+   },
+   "b0.W_1": {
+    "shape": [
+     6,
+     5
+    ],
+    "total": 30,
+    "stitching": 23,
+    "backbone": 7
+   },
+   "b0.W_2": {
+    "shape": [
+     5,
+     6
+    ],
+    "total": 30,
+    "stitching": 23,
+    "backbone": 7
+   },
+   "b0.b_1": {
+    "shape": [
+     5
+    ],
+    "total": 5,
+    "stitching": 0,
+    "backbone": 5
+   },
+   "b1.lnA_gain": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 2,
+    "backbone": 4
+   },
+   "b1.lnA_bias": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 2,
+    "backbone": 4
+   },
+   "b1.lnF_gain": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 2,
+    "backbone": 4
+   },
+   "b1.lnF_bias": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 2,
+    "backbone": 4
+   },
+   "b1.W_q": {
+    "shape": [
+     6,
+     6
+    ],
+    "total": 36,
+    "stitching": 32,
+    "backbone": 4
+   },
+   "b1.W_k": {
+    "shape": [
+     6,
+     6
+    ],
+    "total": 36,
+    "stitching": 31,
+    "backbone": 5
+   },
+   "b1.W_v": {
+    "shape": [
+     6,
+     6
+    ],
+    "total": 36,
+    "stitching": 34,
+    "backbone": 2
+   },
+   "b1.W_o": {
+    "shape": [
+     6,
+     6
+    ],
+    "total": 36,
+    "stitching": 32,
+    "backbone": 4
+   },
+   "b1.b_q": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 2,
+    "backbone": 4
+   },
+   "b1.b_k": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 2,
+    "backbone": 4
+   },
+   "b1.b_v": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 2,
+    "backbone": 4
+   },
+   "b1.b_o": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 2,
+    "backbone": 4
+   },
+   "b1.b_2": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 2,
+    "backbone": 4
+   },
+   "b1.W_1": {
+    "shape": [
+     6,
+     5
+    ],
+    "total": 30,
+    "stitching": 26,
+    "backbone": 4
+   },
+   "b1.W_2": {
+    "shape": [
+     5,
+     6
+    ],
+    "total": 30,
+    "stitching": 25,
+    "backbone": 5
+   },
+   "b1.b_1": {
+    "shape": [
+     5
+    ],
+    "total": 5,
+    "stitching": 1,
+    "backbone": 4
+   },
+   "b2.lnA_gain": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 6,
+    "backbone": 0
+   },
+   "b2.lnA_bias": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 6,
+    "backbone": 0
+   },
+   "b2.lnF_gain": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 6,
+    "backbone": 0
+   },
+   "b2.lnF_bias": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 6,
+    "backbone": 0
+   },
+   "b2.W_q": {
+    "shape": [
+     6,
+     6
+    ],
+    "total": 36,
+    "stitching": 36,
+    "backbone": 0
+   },
+   "b2.W_k": {
+    "shape": [
+     6,
+     6
+    ],
+    "total": 36,
+    "stitching": 36,
+    "backbone": 0
+   },
+   "b2.W_v": {
+    "shape": [
+     6,
+     6
+    ],
+    "total": 36,
+    "stitching": 36,
+    "backbone": 0
+   },
+   "b2.W_o": {
+    "shape": [
+     6,
+     6
+    ],
+    "total": 36,
+    "stitching": 36,
+    "backbone": 0
+   },
+   "b2.b_q": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 6,
+    "backbone": 0
+   },
+   "b2.b_k": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 6,
+    "backbone": 0
+   },
+   "b2.b_v": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 6,
+    "backbone": 0
+   },
+   "b2.b_o": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 6,
+    "backbone": 0
+   },
+   "b2.b_2": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 6,
+    "backbone": 0
+   },
+   "b2.W_1": {
+    "shape": [
+     6,
+     5
+    ],
+    "total": 30,
+    "stitching": 30,
+    "backbone": 0
+   },
+   "b2.W_2": {
+    "shape": [
+     5,
+     6
+    ],
+    "total": 30,
+    "stitching": 30,
+    "backbone": 0
+   },
+   "b2.b_1": {
+    "shape": [
+     5
+    ],
+    "total": 5,
+    "stitching": 5,
+    "backbone": 0
+   },
+   "head.W_qd": {
+    "shape": [
+     6,
+     6
+    ],
+    "total": 36,
+    "stitching": 16,
+    "backbone": 20
+   },
+   "head.v_start": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 0,
+    "backbone": 6
+   },
+   "head.b_qd": {
+    "shape": [
+     6
+    ],
+    "total": 6,
+    "stitching": 0,
+    "backbone": 6
+   }
+  },
+  "flat_mask_stitching": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   0,
+   1,
+   0,
+   1,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   0,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   0,
+   1,
+   1,
+   0,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   0,
+   1,
+   1,
+   0,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   1,
+   0,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "frankenstein_squared": {
+  "shape": {
+   "stream_width": 6,
+   "blocks": 3,
+   "ffn_hidden": {
+    "b0": 5,
+    "b1": 5,
+    "b2_joining": 5
+   },
+   "heads_per_block": 1,
+   "decoders": 1,
+   "total_params": 855
+  },
+  "validation_gap_pct": 22.0724,
+  "validation_gap": 0.2207237979470742,
+  "mean_length": 3.488817952129515,
+  "comparisons_pct": {
+   "sideA_evolved_frankenstein4": 6.8959,
+   "sideB_species10": 20.3364,
+   "frankenstein4_birth": 23.2865,
+   "frankenstein4_evolved": 6.8959
+  },
+  "sigma_fill": 0.03,
+  "fill_seed": 20261130,
+  "engine_fit": "DOES NOT FIT the current ArchSpec (same finding as Frankensteins 1-5): explicit weight set with its own forward pass."
+ }
+}

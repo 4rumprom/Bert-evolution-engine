@@ -1,0 +1,67 @@
+{
+ "subject_gap_pct": 14.03,
+ "all_9_pairs": {
+  "mean_sister_profile_cosine": 0.796,
+  "random_pairing_mean": 0.099,
+  "random_pairing_max_of_2000": 0.68,
+  "sister_drop_correlation": 0.572,
+  "sister_drops_pct_of_gap": [
+   [
+    -0.6,
+    0.6
+   ],
+   [
+    -5.7,
+    -1.1
+   ],
+   [
+    -5.2,
+    5.0
+   ],
+   [
+    -6.1,
+    8.4
+   ],
+   [
+    2.8,
+    3.4
+   ],
+   [
+    0.1,
+    -0.1
+   ],
+   [
+    13.1,
+    150.4
+   ],
+   [
+    0.6,
+    -5.2
+   ],
+   [
+    120.0,
+    99.3
+   ]
+  ]
+ },
+ "free_3_pairs": {
+  "mean_sister_profile_cosine": 0.869,
+  "random_pairing_mean": 0.309,
+  "random_pairing_max_of_2000": 0.869,
+  "sister_drop_correlation": -0.152,
+  "sister_drops_pct_of_gap": [
+   [
+    -0.6,
+    0.6
+   ],
+   [
+    -5.7,
+    -1.1
+   ],
+   [
+    -5.2,
+    5.0
+   ]
+  ]
+ }
+}

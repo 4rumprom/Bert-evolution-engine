@@ -1,0 +1,798 @@
+{
+ "experiment": "branch-level graft test (Roman's branch definition: connected chain, entry to exit)",
+ "date": "2026-11-23",
+ "subject": {
+  "file": "/home/hatch/workspace/bert-engine/prune_graft_widened_2026-11-23_control_champion.npz",
+  "stored_val_score": -0.11846653066217602,
+  "arch_signature": "{\"attn_scale\": 0.7071067811865475, \"couples\": [[1, 2]], \"d\": 4, \"ffn_hidden\": 16, \"input_dim\": 2, \"ln_eps\": 5e-06}",
+  "n_genes": 360
+ },
+ "branch_definition": "spectral clusters (k=3) of units by per-problem silencing-drop profile similarity; proved by group silencing of the whole cluster",
+ "seeds": {
+  "run_seed": 20262400,
+  "draw_seed": 20262401,
+  "graft_seed": 20262404,
+  "val_seed": 20261116
+ },
+ "before": {
+  "champion_score": -0.11846653066217602,
+  "n_units": 18,
+  "exact_zero_positive": 18,
+  "band_counts": {
+   "contributing": 10,
+   "neutral": 8,
+   "harmful": 0
+  },
+  "units": [
+   {
+    "name": "c0.b0.ffn.u0",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 0,
+    "drop": 0.026213078572953075,
+    "se": 0.006069853383095817,
+    "band": 0.012139706766191635,
+    "cat": "contributing",
+    "rel_drop_pct": 22.126990996050484,
+    "cloud_cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u1",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 1,
+    "drop": 0.002023622680634815,
+    "se": 0.004587833682104658,
+    "band": 0.009175667364209316,
+    "cat": "neutral",
+    "rel_drop_pct": 1.7081809261431482,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u2",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 2,
+    "drop": 0.006813284062925251,
+    "se": 0.003478965288967927,
+    "band": 0.006957930577935854,
+    "cat": "neutral",
+    "rel_drop_pct": 5.751231191495165,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u3",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 3,
+    "drop": 0.0025346349610758795,
+    "se": 0.005573429601015606,
+    "band": 0.011146859202031211,
+    "cat": "neutral",
+    "rel_drop_pct": 2.139536750935796,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u4",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 4,
+    "drop": 0.007217657089878926,
+    "se": 0.0037501967280587703,
+    "band": 0.007500393456117541,
+    "cat": "neutral",
+    "rel_drop_pct": 6.092570660705082,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u5",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 5,
+    "drop": 0.017678094719388276,
+    "se": 0.007312645358654146,
+    "band": 0.014625290717308292,
+    "cat": "contributing",
+    "rel_drop_pct": 14.92243811022022,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u6",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 6,
+    "drop": 0.2269371252865879,
+    "se": 0.014846564935012583,
+    "band": 0.029693129870025165,
+    "cat": "contributing",
+    "rel_drop_pct": 191.5622277601182,
+    "cloud_cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u7",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 7,
+    "drop": 0.004496882790571907,
+    "se": 0.004287553523571073,
+    "band": 0.008575107047142146,
+    "cat": "neutral",
+    "rel_drop_pct": 3.7959099210859826,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u8",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 8,
+    "drop": 0.010124086506998475,
+    "se": 0.006259176572509657,
+    "band": 0.012518353145019314,
+    "cat": "neutral",
+    "rel_drop_pct": 8.54594664873637,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u9",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 9,
+    "drop": 0.003919223490101473,
+    "se": 0.0021994106744271315,
+    "band": 0.004398821348854263,
+    "cat": "neutral",
+    "rel_drop_pct": 3.3082959956662275,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u10",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 10,
+    "drop": 0.030368213652855608,
+    "se": 0.006409550273030437,
+    "band": 0.012819100546060874,
+    "cat": "contributing",
+    "rel_drop_pct": 25.634424746897366,
+    "cloud_cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u11",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 11,
+    "drop": 0.009891014551764193,
+    "se": 0.004205356876868587,
+    "band": 0.008410713753737174,
+    "cat": "contributing",
+    "rel_drop_pct": 8.349205886656556,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u12",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 12,
+    "drop": 0.006478378977719315,
+    "se": 0.003231042444540134,
+    "band": 0.006462084889080268,
+    "cat": "contributing",
+    "rel_drop_pct": 5.468531020118521,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u13",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 13,
+    "drop": 0.025013174381081943,
+    "se": 0.0062376981718889465,
+    "band": 0.012475396343777893,
+    "cat": "contributing",
+    "rel_drop_pct": 21.1141275440998,
+    "cloud_cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u14",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 14,
+    "drop": 0.2516446032532952,
+    "se": 0.01524222184997602,
+    "band": 0.03048444369995204,
+    "cat": "contributing",
+    "rel_drop_pct": 212.41831076398714,
+    "cloud_cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u15",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 15,
+    "drop": 0.006397123678050204,
+    "se": 0.005040747119312294,
+    "band": 0.010081494238624589,
+    "cat": "neutral",
+    "rel_drop_pct": 5.399941774519001,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.head.h0",
+    "kind": "head",
+    "couple": 0,
+    "block": 0,
+    "index": 0,
+    "drop": 0.2182540619667959,
+    "se": 0.012060388977338984,
+    "band": 0.024120777954677968,
+    "cat": "contributing",
+    "rel_drop_pct": 184.23267799508542,
+    "cloud_cat": "contributing"
+   },
+   {
+    "name": "c0.b0.head.h1",
+    "kind": "head",
+    "couple": 0,
+    "block": 0,
+    "index": 1,
+    "drop": 0.1808904589619704,
+    "se": 0.01164516089522819,
+    "band": 0.02329032179045638,
+    "cat": "contributing",
+    "rel_drop_pct": 152.69330329070326,
+    "cloud_cat": "contributing"
+   }
+  ],
+  "cloud": {
+   "limit_pct": 18.951929555275086,
+   "sigma_pct": 9.475964777637543,
+   "counts": {
+    "contributing": 7,
+    "neutral": 11,
+    "harmful": 0
+   }
+  }
+ },
+ "subject_branches": [
+  {
+   "branch_id": 0,
+   "units": [
+    "c0.b0.ffn.u0",
+    "c0.b0.ffn.u1",
+    "c0.b0.ffn.u2",
+    "c0.b0.ffn.u3",
+    "c0.b0.ffn.u6",
+    "c0.b0.ffn.u14",
+    "c0.b0.ffn.u15",
+    "c0.b0.head.h0",
+    "c0.b0.head.h1"
+   ],
+   "n_units": 9,
+   "sum_unit_rel_drop_pct": 778.0324014490376,
+   "group_drop_rel_pct": 315.9405078806133,
+   "group_drop_points": 0.3742837586426214
+  },
+  {
+   "branch_id": 1,
+   "units": [
+    "c0.b0.ffn.u5",
+    "c0.b0.ffn.u7",
+    "c0.b0.ffn.u10",
+    "c0.b0.ffn.u12",
+    "c0.b0.ffn.u13"
+   ],
+   "n_units": 5,
+   "sum_unit_rel_drop_pct": 70.9354313424219,
+   "group_drop_rel_pct": 119.99501483234982,
+   "group_drop_points": 0.14215393103944837
+  },
+  {
+   "branch_id": 2,
+   "units": [
+    "c0.b0.ffn.u4",
+    "c0.b0.ffn.u8",
+    "c0.b0.ffn.u9",
+    "c0.b0.ffn.u11"
+   ],
+   "n_units": 4,
+   "sum_unit_rel_drop_pct": 26.296019191764234,
+   "group_drop_rel_pct": 31.06221034662045,
+   "group_drop_points": 0.03679832294462873
+  }
+ ],
+ "freeze_prep": {
+  "basis": "band-contributing units of the subject",
+  "useful_units": [
+   "c0.b0.ffn.u0",
+   "c0.b0.ffn.u5",
+   "c0.b0.ffn.u6",
+   "c0.b0.ffn.u10",
+   "c0.b0.ffn.u11",
+   "c0.b0.ffn.u12",
+   "c0.b0.ffn.u13",
+   "c0.b0.ffn.u14",
+   "c0.b0.head.h0",
+   "c0.b0.head.h1"
+  ],
+  "n_frozen_genes": 232
+ },
+ "donor_pool_reproduction": {
+  "champion_genome_bit_identical": true,
+  "species_ids": [
+   10,
+   2,
+   3,
+   11
+  ]
+ },
+ "donor_branches": [
+  {
+   "branch_id": 2,
+   "units": [
+    "c0.b0.ffn.u2",
+    "c0.b0.ffn.u7",
+    "c0.b0.ffn.u8",
+    "c0.b0.ffn.u9",
+    "c0.b0.ffn.u10",
+    "c0.b0.ffn.u13",
+    "c0.b0.ffn.u15",
+    "c0.b0.head.h0",
+    "c0.b0.head.h1"
+   ],
+   "n_units": 9,
+   "sum_unit_rel_drop_pct": 539.6094631014536,
+   "group_drop_rel_pct": 217.60773359749138,
+   "group_drop_points": 0.32590073912471884,
+   "donor_species_id": 10,
+   "donor_val_score": -0.1497652375386331,
+   "donor_units": [
+    {
+     "name": "c0.b0.ffn.u2",
+     "kind": "ffn",
+     "drop": 0.019507713940940946
+    },
+    {
+     "name": "c0.b0.ffn.u7",
+     "kind": "ffn",
+     "drop": 0.17860636512540204
+    },
+    {
+     "name": "c0.b0.ffn.u8",
+     "kind": "ffn",
+     "drop": 0.041468779157889685
+    },
+    {
+     "name": "c0.b0.ffn.u9",
+     "kind": "ffn",
+     "drop": 0.011979515469595636
+    },
+    {
+     "name": "c0.b0.ffn.u10",
+     "kind": "ffn",
+     "drop": 0.01717942636880615
+    },
+    {
+     "name": "c0.b0.ffn.u13",
+     "kind": "ffn",
+     "drop": 0.07460488376189092
+    },
+    {
+     "name": "c0.b0.ffn.u15",
+     "kind": "ffn",
+     "drop": 0.08730963779289067
+    },
+    {
+     "name": "c0.b0.head.h0",
+     "kind": "head",
+     "drop": 0.23107308142917313
+    },
+    {
+     "name": "c0.b0.head.h1",
+     "kind": "head",
+     "drop": 0.14641799114824558
+    }
+   ]
+  },
+  {
+   "branch_id": 0,
+   "units": [
+    "c0.b0.ffn.u2",
+    "c0.b0.ffn.u10",
+    "c0.b0.ffn.u14",
+    "c0.b0.head.h0",
+    "c0.b0.head.h1"
+   ],
+   "n_units": 5,
+   "sum_unit_rel_drop_pct": 478.3424506781725,
+   "group_drop_rel_pct": 206.26986458142323,
+   "group_drop_points": 0.3467081594625393,
+   "donor_species_id": 11,
+   "donor_val_score": -0.168084737034226,
+   "donor_units": [
+    {
+     "name": "c0.b0.ffn.u2",
+     "kind": "ffn",
+     "drop": 0.06820028052459379
+    },
+    {
+     "name": "c0.b0.ffn.u10",
+     "kind": "ffn",
+     "drop": 0.13951130160502745
+    },
+    {
+     "name": "c0.b0.ffn.u14",
+     "kind": "ffn",
+     "drop": 0.2180353714517792
+    },
+    {
+     "name": "c0.b0.head.h0",
+     "kind": "head",
+     "drop": 0.14058160875621672
+    },
+    {
+     "name": "c0.b0.head.h1",
+     "kind": "head",
+     "drop": 0.23769208800786124
+    }
+   ]
+  },
+  {
+   "branch_id": 0,
+   "units": [
+    "c0.b0.ffn.u4",
+    "c0.b0.ffn.u7",
+    "c0.b0.ffn.u12",
+    "c0.b0.ffn.u15",
+    "c0.b0.head.h0",
+    "c0.b0.head.h1"
+   ],
+   "n_units": 6,
+   "sum_unit_rel_drop_pct": 271.7670609970586,
+   "group_drop_rel_pct": 133.23031752172108,
+   "group_drop_points": 0.26320567999215383,
+   "donor_species_id": 2,
+   "donor_val_score": -0.19755689612406904,
+   "donor_units": [
+    {
+     "name": "c0.b0.ffn.u4",
+     "kind": "ffn",
+     "drop": 0.019869888624936827
+    },
+    {
+     "name": "c0.b0.ffn.u7",
+     "kind": "ffn",
+     "drop": 0.07061385057110978
+    },
+    {
+     "name": "c0.b0.ffn.u12",
+     "kind": "ffn",
+     "drop": 0.0617326723056639
+    },
+    {
+     "name": "c0.b0.ffn.u15",
+     "kind": "ffn",
+     "drop": 0.08068226665164815
+    },
+    {
+     "name": "c0.b0.head.h0",
+     "kind": "head",
+     "drop": 0.24010522527234676
+    },
+    {
+     "name": "c0.b0.head.h1",
+     "kind": "head",
+     "drop": 0.06389066696768894
+    }
+   ]
+  },
+  {
+   "branch_id": 2,
+   "units": [
+    "c0.b0.ffn.u0",
+    "c0.b0.ffn.u1",
+    "c0.b0.ffn.u3",
+    "c0.b0.ffn.u5",
+    "c0.b0.ffn.u6",
+    "c0.b0.ffn.u7",
+    "c0.b0.ffn.u11",
+    "c0.b0.ffn.u15"
+   ],
+   "n_units": 8,
+   "sum_unit_rel_drop_pct": -35.87275737969641,
+   "group_drop_rel_pct": 126.86385361631129,
+   "group_drop_points": 0.21323877474246222,
+   "donor_species_id": 11,
+   "donor_val_score": -0.168084737034226,
+   "donor_units": [
+    {
+     "name": "c0.b0.ffn.u0",
+     "kind": "ffn",
+     "drop": -0.010994212808845744
+    },
+    {
+     "name": "c0.b0.ffn.u1",
+     "kind": "ffn",
+     "drop": -0.014434412951216974
+    },
+    {
+     "name": "c0.b0.ffn.u3",
+     "kind": "ffn",
+     "drop": 0.005433469064162116
+    },
+    {
+     "name": "c0.b0.ffn.u5",
+     "kind": "ffn",
+     "drop": -0.0012459598308252884
+    },
+    {
+     "name": "c0.b0.ffn.u6",
+     "kind": "ffn",
+     "drop": -0.011461451813422563
+    },
+    {
+     "name": "c0.b0.ffn.u7",
+     "kind": "ffn",
+     "drop": 0.013604367552262575
+    },
+    {
+     "name": "c0.b0.ffn.u11",
+     "kind": "ffn",
+     "drop": -0.01956314259821626
+    },
+    {
+     "name": "c0.b0.ffn.u15",
+     "kind": "ffn",
+     "drop": -0.021635286522486474
+    }
+   ]
+  },
+  {
+   "branch_id": 1,
+   "units": [
+    "c0.b0.ffn.u4",
+    "c0.b0.ffn.u5",
+    "c0.b0.ffn.u6",
+    "c0.b0.ffn.u12"
+   ],
+   "n_units": 4,
+   "sum_unit_rel_drop_pct": 92.6500560049605,
+   "group_drop_rel_pct": 121.71832220894753,
+   "group_drop_points": 0.18229173438426907,
+   "donor_species_id": 10,
+   "donor_val_score": -0.1497652375386331,
+   "donor_units": [
+    {
+     "name": "c0.b0.ffn.u4",
+     "kind": "ffn",
+     "drop": 0.0354095731314327
+    },
+    {
+     "name": "c0.b0.ffn.u5",
+     "kind": "ffn",
+     "drop": 0.03200307086516968
+    },
+    {
+     "name": "c0.b0.ffn.u6",
+     "kind": "ffn",
+     "drop": 0.03169825708477797
+    },
+    {
+     "name": "c0.b0.ffn.u12",
+     "kind": "ffn",
+     "drop": 0.03964667537412536
+    }
+   ]
+  },
+  {
+   "branch_id": 1,
+   "units": [
+    "c0.b0.ffn.u4",
+    "c0.b0.ffn.u8",
+    "c0.b0.ffn.u9",
+    "c0.b0.ffn.u12",
+    "c0.b0.ffn.u13"
+   ],
+   "n_units": 5,
+   "sum_unit_rel_drop_pct": 30.702501718856066,
+   "group_drop_rel_pct": 68.88781933977,
+   "group_drop_points": 0.11578990998586508,
+   "donor_species_id": 11,
+   "donor_val_score": -0.168084737034226,
+   "donor_units": [
+    {
+     "name": "c0.b0.ffn.u4",
+     "kind": "ffn",
+     "drop": 0.01791168864807488
+    },
+    {
+     "name": "c0.b0.ffn.u8",
+     "kind": "ffn",
+     "drop": -0.0017051888113981395
+    },
+    {
+     "name": "c0.b0.ffn.u9",
+     "kind": "ffn",
+     "drop": 0.0001387829807261154
+    },
+    {
+     "name": "c0.b0.ffn.u12",
+     "kind": "ffn",
+     "drop": 0.023727689228850796
+    },
+    {
+     "name": "c0.b0.ffn.u13",
+     "kind": "ffn",
+     "drop": 0.01153324723081428
+    }
+   ]
+  },
+  {
+   "branch_id": 1,
+   "units": [
+    "c0.b0.ffn.u5",
+    "c0.b0.ffn.u6",
+    "c0.b0.ffn.u8",
+    "c0.b0.ffn.u9",
+    "c0.b0.ffn.u13",
+    "c0.b0.ffn.u14"
+   ],
+   "n_units": 6,
+   "sum_unit_rel_drop_pct": 29.4348672709648,
+   "group_drop_rel_pct": 48.572906029112445,
+   "group_drop_points": 0.09595912550837535,
+   "donor_species_id": 2,
+   "donor_val_score": -0.19755689612406904,
+   "donor_units": [
+    {
+     "name": "c0.b0.ffn.u5",
+     "kind": "ffn",
+     "drop": 0.014846160214962434
+    },
+    {
+     "name": "c0.b0.ffn.u6",
+     "kind": "ffn",
+     "drop": 0.010413771991735182
+    },
+    {
+     "name": "c0.b0.ffn.u8",
+     "kind": "ffn",
+     "drop": 0.009058020922839777
+    },
+    {
+     "name": "c0.b0.ffn.u9",
+     "kind": "ffn",
+     "drop": 0.007394245770000779
+    },
+    {
+     "name": "c0.b0.ffn.u13",
+     "kind": "ffn",
+     "drop": 0.012975964788776051
+    },
+    {
+     "name": "c0.b0.ffn.u14",
+     "kind": "ffn",
+     "drop": 0.0034624464704433033
+    }
+   ]
+  },
+  {
+   "branch_id": 0,
+   "units": [
+    "c0.b0.ffn.u0",
+    "c0.b0.ffn.u1",
+    "c0.b0.ffn.u3",
+    "c0.b0.ffn.u11",
+    "c0.b0.ffn.u14"
+   ],
+   "n_units": 5,
+   "sum_unit_rel_drop_pct": 8.501679731573923,
+   "group_drop_rel_pct": 36.49477879926334,
+   "group_drop_points": 0.05465649215791546,
+   "donor_species_id": 10,
+   "donor_val_score": -0.1497652375386331,
+   "donor_units": [
+    {
+     "name": "c0.b0.ffn.u0",
+     "kind": "ffn",
+     "drop": -0.0008999888360922415
+    },
+    {
+     "name": "c0.b0.ffn.u1",
+     "kind": "ffn",
+     "drop": -0.003924483359975084
+    },
+    {
+     "name": "c0.b0.ffn.u3",
+     "kind": "ffn",
+     "drop": 0.011131342646273412
+    },
+    {
+     "name": "c0.b0.ffn.u11",
+     "kind": "ffn",
+     "drop": 0.006442239346495043
+    },
+    {
+     "name": "c0.b0.ffn.u14",
+     "kind": "ffn",
+     "drop": -1.6548951935618783e-05
+    }
+   ]
+  },
+  {
+   "branch_id": 2,
+   "units": [
+    "c0.b0.ffn.u0",
+    "c0.b0.ffn.u1",
+    "c0.b0.ffn.u2",
+    "c0.b0.ffn.u3",
+    "c0.b0.ffn.u10",
+    "c0.b0.ffn.u11"
+   ],
+   "n_units": 6,
+   "sum_unit_rel_drop_pct": -34.024255636166956,
+   "group_drop_rel_pct": 33.4998861171689,
+   "group_drop_points": 0.06618133521817679,
+   "donor_species_id": 2,
+   "donor_val_score": -0.19755689612406904,
+   "donor_units": [
+    {
+     "name": "c0.b0.ffn.u0",
+     "kind": "ffn",
+     "drop": -0.009974200113375492
+    },
+    {
+     "name": "c0.b0.ffn.u1",
+     "kind": "ffn",
+     "drop": -0.007961312151741062
+    },
+    {
+     "name": "c0.b0.ffn.u2",
+     "kind": "ffn",
+     "drop": -0.012555388700097897
+    },
+    {
+     "name": "c0.b0.ffn.u3",
+     "kind": "ffn",
+     "drop": -0.016834499596518254
+    },
+    {
+     "name": "c0.b0.ffn.u10",
+     "kind": "ffn",
+     "drop": -0.0026138273760702435
+    },
+    {
+     "name": "c0.b0.ffn.u11",
+     "kind": "ffn",
+     "drop": -0.01727803542632711
+    }
+   ]
+  }
+ ],
+ "graft_inventory": {
+  "n_cleared_slots": 0,
+  "cleared_units": [],
+  "pruned_base_score": -0.11846653066217602,
+  "pruned_base_delta": 0.0,
+  "n_pairs": 0,
+  "pairs": [],
+  "slots_without_graft": []
+ },
+ "verdict": "no graft pairs; arms not run",
+ "wall_seconds": 38.21217155456543
+}

@@ -1,0 +1,97 @@
+{
+ "donor": "species 9",
+ "donor_gap_pct": 19.44,
+ "champion_gap_pct": 15.13,
+ "all_validation_gaps_pct": {
+  "champion": 15.13,
+  "species 8": 15.13,
+  "species 10": 20.34,
+  "species 9": 19.44,
+  "species 4": 22.26
+ },
+ "cloud_limit_pct": 44.22,
+ "counts": {
+  "contributing": 2,
+  "neutral": 7,
+  "harmful": 0
+ },
+ "units": [
+  {
+   "name": "c0.b0.ffn.u0",
+   "rel_drop_pct": 16.41,
+   "cloud_cat": "neutral"
+  },
+  {
+   "name": "c0.b0.ffn.u1",
+   "rel_drop_pct": -2.0,
+   "cloud_cat": "neutral"
+  },
+  {
+   "name": "c0.b0.ffn.u2",
+   "rel_drop_pct": 13.73,
+   "cloud_cat": "neutral"
+  },
+  {
+   "name": "c0.b0.ffn.u3",
+   "rel_drop_pct": 0.46,
+   "cloud_cat": "neutral"
+  },
+  {
+   "name": "c0.b0.ffn.u4",
+   "rel_drop_pct": 57.84,
+   "cloud_cat": "contributing"
+  },
+  {
+   "name": "c0.b0.ffn.u5",
+   "rel_drop_pct": 31.91,
+   "cloud_cat": "neutral"
+  },
+  {
+   "name": "c0.b0.ffn.u6",
+   "rel_drop_pct": 17.0,
+   "cloud_cat": "neutral"
+  },
+  {
+   "name": "c0.b0.ffn.u7",
+   "rel_drop_pct": 91.83,
+   "cloud_cat": "contributing"
+  },
+  {
+   "name": "c0.b0.head.h0",
+   "rel_drop_pct": 22.23,
+   "cloud_cat": "neutral"
+  }
+ ],
+ "merge_inventory": [
+  {
+   "slot": "c0.b0.ffn.u1",
+   "donor_rel_drop_pct": -2.0,
+   "donor_cloud_cat": "neutral",
+   "fits": false
+  },
+  {
+   "slot": "c0.b0.ffn.u2",
+   "donor_rel_drop_pct": 13.73,
+   "donor_cloud_cat": "neutral",
+   "fits": false
+  },
+  {
+   "slot": "c0.b0.ffn.u3",
+   "donor_rel_drop_pct": 0.46,
+   "donor_cloud_cat": "neutral",
+   "fits": false
+  },
+  {
+   "slot": "c0.b0.ffn.u5",
+   "donor_rel_drop_pct": 31.91,
+   "donor_cloud_cat": "neutral",
+   "fits": false
+  },
+  {
+   "slot": "c0.b0.ffn.u6",
+   "donor_rel_drop_pct": 17.0,
+   "donor_cloud_cat": "neutral",
+   "fits": false
+  }
+ ]
+}

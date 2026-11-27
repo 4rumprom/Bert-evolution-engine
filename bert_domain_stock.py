@@ -194,9 +194,81 @@ def load_frozen_episodes(path):
     return out
 
 
+def _execute_day(cash, shares, accrued, prices, levels, unit,
+                 order, record=False):
+    """One decision day's cash-checked execution, vectorised
+    over genomes (M rows), in ranked order. This is the
+    execution step of StockDomain.episode_cagrs, extracted
+    verbatim so the live-run monitor's random ladder and
+    detailed simulation run the SAME execution rules (the
+    env's accounting: an unaffordable buy is ignored and
+    charged ONE overdraft penalty of 6bp on the shortfall;
+    executed changes pay 6bp once; costs beyond cash accrue
+    as a fees-payable balance netted in portfolio value).
+    Mutates cash/shares/accrued in place and returns them
+    plus the filled executions (None unless record=True):
+    a list of (ticker_index, side, shares_delta, value)
+    for buys and sells actually filled -- an unaffordable
+    buy that was ignored is NOT a trade."""
+    M = len(cash)
+    ar = np.arange(M)
+    tol = 1e-7
+    fills = [] if record else None
+    N = prices.shape[0]
+    for k in range(N):
+        i = order[:, k]
+        value_now = cash + shares @ prices - accrued
+        target = levels[ar, i] * unit / 100.0 * value_now
+        cur = shares[ar, i] * prices[i]
+        delta = target - cur
+        buy = delta > tol
+        afford = buy & (cash >= delta)
+        if afford.any():
+            idx = np.where(afford)[0]
+            ii = i[idx]
+            shares[idx, ii] += delta[idx] / prices[ii]
+            cash[idx] -= delta[idx]
+            cost = COST_RATE * delta[idx]
+            pay = np.minimum(cash[idx], cost)
+            cash[idx] -= pay
+            accrued[idx] += cost - pay
+            if record:
+                for r, j in zip(idx, ii):
+                    fills.append((int(j), "buy",
+                                  float(delta[r] / prices[j]),
+                                  float(delta[r])))
+        over = buy & ~afford
+        if over.any():
+            idx = np.where(over)[0]
+            accrued[idx] += COST_RATE * (delta[idx] - cash[idx])
+        sell = delta < -tol
+        if sell.any():
+            idx = np.where(sell)[0]
+            ii = i[idx]
+            proceeds = -delta[idx]
+            shares[idx, ii] -= proceeds / prices[ii]
+            cost = COST_RATE * proceeds
+            cash[idx] += proceeds - cost
+            pay = np.minimum(cash[idx], accrued[idx])
+            cash[idx] -= pay
+            accrued[idx] -= pay
+            if record:
+                for r, j in zip(idx, ii):
+                    fills.append((int(j), "sell",
+                                  float(-proceeds[r] / prices[j]),
+                                  float(proceeds[r])))
+    return cash, shares, accrued, fills
+
+
 class StockDomain:
     name = "stock"
     input_dim = N_FEAT + 1
+    # silencing exact-zero tolerance: the validation score
+    # is a continuous median excess CAGR, so a silenced unit
+    # that changes nothing reads a drop at float noise (~1e-12,
+    # never exactly 0.0); the preservation gate's 1e-9 is the
+    # honest zero for this domain
+    silence_zero_tol = 1e-9
 
     def __init__(self, cfg: be.EngineConfig, backend, panel=None,
                  val_episodes=None):
@@ -408,7 +480,7 @@ class StockDomain:
 
     # ---- episode simulation, batched over genomes ----------------
     def episode_cagrs(self, layout, G, episode, cache=None,
-                      tag="", collect=False):
+                      tag="", collect=False, detailed=False):
         """Run one episode for every genome row. Returns
         (cagrs (M,), buyhold_cagr float); with collect=True
         also the per-day decision trace (levels, ranked
@@ -417,7 +489,22 @@ class StockDomain:
         alloc_v3_env.run_episode / execute_day / buyhold_cagr,
         vectorised over genomes (ticker loop kept, as in the
         env, because execution is cash-checked in ranked
-        order)."""
+        order).
+        With detailed=True (single genome only, M == 1) the
+        third return is a detail dict for the live-run
+        monitor (Addendum 3): the daily portfolio value path
+        [V0, end-of-day values, final mark value], the
+        per-day pre/post values, end-of-day shares, prices
+        (decision days plus the mark day), levels / unit /
+        ranked order per day, the filled executions per day,
+        and turnover / invested share. The detailed recording
+        changes nothing it computes: final CAGRs are
+        bit-identical with or without it. collect and
+        detailed are alternative recording modes."""
+        if collect and detailed:
+            raise ValueError(
+                "episode_cagrs: collect and detailed are "
+                "alternative recording modes")
         panel = self.panel
         basket = episode["basket"]
         start = episode["start"]
@@ -433,8 +520,18 @@ class StockDomain:
         alpha_rank = np.empty(N, dtype=int)
         alpha_rank[np.argsort(episode["tickers"],
                               kind="stable")] = np.arange(N)
-        tol = 1e-7
         trace = []
+        if detailed:
+            if M != 1:
+                raise ValueError(
+                    "episode_cagrs detailed mode needs exactly "
+                    f"one genome (got {M})")
+            det = {"v_pre": [], "v_post": [], "shares_end": [],
+                   "levels": [], "unit": [], "order": [],
+                   "fills": [], "invested_pct": [],
+                   "prices": np.array(
+                       prices_all[:, start:start + days + 1]),
+                   "episode": episode}
         for day in range(days):
             t = start + day
             prices = prices_all[:, t]                  # (N,)
@@ -458,40 +555,23 @@ class StockDomain:
             if collect:
                 trace.append((levels.copy(), order.copy(),
                               unit.copy()))
-            for k in range(N):
-                i = order[:, k]
-                value_now = cash + shares @ prices - accrued
-                target = levels[np.arange(M), i] * unit \
-                    / 100.0 * value_now
-                cur = shares[np.arange(M), i] * prices[i]
-                delta = target - cur
-                buy = delta > tol
-                afford = buy & (cash >= delta)
-                if afford.any():
-                    idx = np.where(afford)[0]
-                    ii = i[idx]
-                    shares[idx, ii] += delta[idx] / prices[ii]
-                    cash[idx] -= delta[idx]
-                    cost = COST_RATE * delta[idx]
-                    pay = np.minimum(cash[idx], cost)
-                    cash[idx] -= pay
-                    accrued[idx] += cost - pay
-                over = buy & ~afford
-                if over.any():
-                    idx = np.where(over)[0]
-                    accrued[idx] += COST_RATE * (delta[idx]
-                                                 - cash[idx])
-                sell = delta < -tol
-                if sell.any():
-                    idx = np.where(sell)[0]
-                    ii = i[idx]
-                    proceeds = -delta[idx]
-                    shares[idx, ii] -= proceeds / prices[ii]
-                    cost = COST_RATE * proceeds
-                    cash[idx] += proceeds - cost
-                    pay = np.minimum(cash[idx], accrued[idx])
-                    cash[idx] -= pay
-                    accrued[idx] -= pay
+            if detailed:
+                det["v_pre"].append(float(v_pre[0]))
+                det["levels"].append(levels[0].copy())
+                det["unit"].append(float(unit[0]))
+                det["order"].append(order[0].copy())
+            cash, shares, accrued, fills = _execute_day(
+                cash, shares, accrued, prices, levels, unit,
+                order, record=detailed)
+            if detailed:
+                v_post = float(cash[0] + shares[0] @ prices
+                               - accrued[0])
+                det["v_post"].append(v_post)
+                det["shares_end"].append(shares[0].copy())
+                det["fills"].append(fills)
+                det["invested_pct"].append(
+                    float(shares[0] @ prices / v_post * 100.0)
+                    if v_post > 0 else 0.0)
             prev_unit = unit
         p_end = prices_all[:, start + days]
         v_final = cash + shares @ p_end - accrued
@@ -502,6 +582,27 @@ class StockDomain:
         mean_ratio = float(np.mean(p_end / p0))
         bh_final = V0 * mean_ratio / (1.0 + COST_RATE)
         bh_cagr = float((bh_final / V0) ** (252.0 / (days + 1)) - 1.0)
+        if detailed:
+            det["v_final"] = float(v_final[0])
+            det["value_path"] = np.concatenate(
+                [[V0], np.array(det["v_post"]),
+                 [float(v_final[0])]])
+            det["v_pre"] = np.array(det["v_pre"])
+            det["v_post"] = np.array(det["v_post"])
+            det["shares_end"] = np.array(det["shares_end"])
+            det["levels"] = np.array(det["levels"])
+            det["unit"] = np.array(det["unit"])
+            det["order"] = np.array(det["order"])
+            det["invested_pct"] = np.array(det["invested_pct"])
+            n_buys = sum(1 for day_f in det["fills"]
+                         for f in day_f if f[1] == "buy")
+            n_sells = sum(1 for day_f in det["fills"]
+                          for f in day_f if f[1] == "sell")
+            det["n_buys"] = n_buys
+            det["n_sells"] = n_sells
+            det["turnover"] = float(sum(
+                f[3] for day_f in det["fills"] for f in day_f))
+            return cagrs, bh_cagr, det
         if collect:
             return cagrs, bh_cagr, trace
         return cagrs, bh_cagr
@@ -544,6 +645,14 @@ class StockDomain:
     def validation_score(self, layout, genome):
         return self.evaluate_single(layout, genome,
                                     self.val_batch())
+
+    def validation_scores(self, layout, G):
+        """Batched per-genome validation scores (median excess
+        CAGR over the frozen validation episodes), for the
+        silencing table: one batched call over the champion
+        plus its silenced copies."""
+        return self.evaluate(layout, np.asarray(G, dtype=float),
+                             self.val_batch())
 
     def validation_detail(self, layout, genome):
         batch = self.val_batch()

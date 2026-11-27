@@ -103,6 +103,13 @@ class EngineConfig:
     mut_p: float = 0.10
     mut_sigma: float = 0.15
     old_rate_factor: float = 0.1
+    # growth-stage mutation rule (sponsor, 2026-11-23):
+    # during a growth stage ONLY the added material evolves;
+    # the pre-existing base is not touched at all, so the
+    # base stays identical to the champion it grew from.
+    # Whole-network mutation belongs to prune-and-graft /
+    # consolidation stages (stages with no growth rule).
+    growth_new_only: bool = True
     draw_sigma: float = 0.5
     tournament: int = 3
     elite: int = 2
@@ -120,6 +127,30 @@ class EngineConfig:
     plateau_window: int = 30
     plateau_threshold: float = 0.005
     max_growth_rounds: int = 8
+    # Frankenstein lifecycle caps (sponsor, frozen 2026-11-27;
+    # see FRANKENSTEIN_METHOD.md): the hard limits the
+    # lifecycle growth sequencer (bert_lifecycle.py, driven
+    # via run_bert_engine.py --lifecycle) stops at. They are
+    # config inputs, never hard-coded in the sequencer.
+    # max_layers counts blocks; max_heads is per block;
+    # max_width is the stream width d, and None means no
+    # width cap (the sponsor has not set one). In the
+    # lifecycle, width grows only by Frankenstein stitching.
+    max_layers: int = 6
+    max_heads: int = 6
+    max_width: int | None = None
+    # silencing / split-widening (plan 2026-11-22)
+    split_noise_lo: float = 0.001
+    split_noise_hi: float = 0.01
+    useless_mut_p: float = 0.50
+    silence_enabled: bool = True
+    # full-population archive + usefulness (Addendum 2)
+    archive_enabled: bool = True
+    archive_cap_bytes_per_stage: int = 16 * 1024 ** 3
+    usefulness_step: float = 0.02
+    # live run monitor (Addendum 3, stock domain)
+    monitor_enabled: bool = True
+    monitor_every_gens: int = 10
     # seeds
     run_seed: int = 20261300
     draw_seed: int = 20261301
@@ -474,14 +505,45 @@ def tour_lengths_batched(X, picks):
 # Operators: mutation classes, breeding, species creation
 # ================================================================
 
-def prob_vector(classes, phase, cfg: EngineConfig):
+def prob_vector(classes, phase, cfg: EngineConfig, marks=None,
+                frozen=None, new_only=False, flat_nominal=False):
     """Per-gene mutation probability by class and phase.
     Phase A: only the newest component (interface) and the
     decoder evolve; base rate 0. Phase B: old genes at
     mut_p * old_rate_factor; draw genes never mutate (they
-    are re-imposed after breeding regardless)."""
+    are re-imposed after breeding regardless).
+    `marks` (optional, plan 2026-11-22 step 3) is a
+    per-gene band-rate vector from the champion's silencing
+    table (0 = unmarked): in phase B a marked gene takes
+    max(class rate, band rate) -- a useless-band gene rises
+    to useless_mut_p so dead capacity is recycled, a
+    protected-band gene keeps the old-gene rate. Draw genes
+    are forced back to 0 after marking, marks or not.
+    `frozen` (optional, sponsor freeze rule 2026-11-23) is
+    a boolean per-gene mask: frozen genes mutate at rate
+    0, applied last, over every other rate.
+    `new_only` (sponsor growth rule 2026-11-23): during a
+    growth stage only the added material evolves, in BOTH
+    phases -- old genes stay at rate 0 and marks (which
+    describe the old champion's genes) do not apply; the
+    base remains identical to the champion it grew from.
+    `flat_nominal` (sponsor rule 2026-11-24): a
+    prune-and-graft stage mutates EVERY unfrozen gene at
+    the nominal rate (cfg.mut_p) throughout the stage --
+    no phase restriction, no reduced old-gene rate, no
+    opening burst (the sponsor weighed a burst and
+    settled on the nominal rate throughout: at 10% of
+    genes per child the nominal rate already moves a
+    large genome plenty). Draw genes never mutate;
+    frozen genes stay 0."""
     p = np.zeros(len(classes))
-    if phase == "A":
+    if flat_nominal:
+        p[:] = cfg.mut_p
+        p[classes == CLS_DRAW] = 0.0
+    elif new_only:
+        p[classes == CLS_IFACE] = cfg.mut_p
+        p[classes == CLS_DECODER] = cfg.mut_p
+    elif phase == "A":
         p[classes == CLS_IFACE] = cfg.mut_p
         p[classes == CLS_DECODER] = cfg.mut_p
     elif phase == "B":
@@ -490,6 +552,12 @@ def prob_vector(classes, phase, cfg: EngineConfig):
         p[classes == CLS_DECODER] = cfg.mut_p
     else:
         raise ValueError(phase)
+    if marks is not None and not new_only and not flat_nominal:
+        if phase == "B":
+            p = np.maximum(p, np.asarray(marks, dtype=float))
+        p[classes == CLS_DRAW] = 0.0
+    if frozen is not None:
+        p[np.asarray(frozen, dtype=bool)] = 0.0
     return p
 
 
@@ -548,14 +616,18 @@ def breed_species(pop, scores, draw_vec, classes, prob_vec,
 def create_species(base_genome, classes, n_species, per_species,
                    draw_rng, run_rng, prob_vec, cfg: EngineConfig,
                    lineage, init_mode="transplant",
-                   next_id=0):
+                   next_id=0, parent_species_id=-1):
     """A fresh species set on a preserved base. Each species
     gets a fresh random draw of the draw-class genes (drawn
     from draw_rng, N(0, draw_sigma)); members are the base
     with that draw imposed, plus one mutation application
     (init_mode='transplant', the growth-program precedent),
     or fully random genomes with the draw imposed
-    (init_mode='random', the stage-0 precedent)."""
+    (init_mode='random', the stage-0 precedent).
+    `parent_species_id` records the founder species this set
+    was regenerated from (-1 for a fresh setup); the archive
+    uses it to trace the champion's lineage back through
+    cataclysms and growth steps."""
     n = len(base_genome)
     draw_mask = classes == CLS_DRAW
     species = []
@@ -576,6 +648,7 @@ def create_species(base_genome, classes, n_species, per_species,
             "id": next_id + s,
             "lineage": lineage if lineage is not None
                        else f"L{next_id + s}",
+            "parent_species_id": int(parent_species_id),
             "draw": draw, "pop": np.array(pop),
             "target": per_species,
             "best": {"score": -np.inf, "genome": None,
@@ -610,7 +683,9 @@ def regenerate_species(founders, classes, total_species,
         sp = create_species(f["genome"], classes, cnt,
                             per_species, draw_rng, run_rng,
                             prob_vec, cfg, lineage=f["lineage"],
-                            init_mode="transplant", next_id=nid)
+                            init_mode="transplant", next_id=nid,
+                            parent_species_id=int(
+                                f["source_species_id"]))
         species.extend(sp)
         nid += cnt
     return species
@@ -956,7 +1031,15 @@ TRANSPLANTS = ("widen", "add_head", "add_block", "stack")
 
 
 def make_transplant(rule, arch, layout_old, genome, head_spec_fn,
-                    cfg: EngineConfig, widen_head):
+                    cfg: EngineConfig, widen_head, variant="A",
+                    split_units=None):
+    if rule == "widen" and variant == "B":
+        if not split_units:
+            raise ValueError(
+                "split_widen (widen variant B) needs split_units")
+        return transplant_split_widen(arch, layout_old, genome,
+                                      head_spec_fn, split_units,
+                                      cfg)
     if rule == "widen":
         return transplant_widen(arch, layout_old, genome,
                                 head_spec_fn, cfg.widen_step,
@@ -971,6 +1054,346 @@ def make_transplant(rule, arch, layout_old, genome, head_spec_fn,
         return transplant_stack(arch, layout_old, genome,
                                 head_spec_fn)
     raise ValueError(rule)
+
+
+# ================================================================
+# Silencing table, mutation marking, split-widening
+# (plan 2026-11-22: champion silencing, split-widening,
+# mutation marking)
+# ================================================================
+
+def silence_units(layout):
+    """Testable units for one-by-one silencing (plan v1), in
+    table order: all feed-forward hidden units first (per
+    block), then whole attention heads (per block), across
+    all couples. Stream coordinates (d) are NOT silenced in
+    v1: a stream coordinate is woven through every matrix
+    and every layernorm, so zeroing it is not one clean
+    edit."""
+    units = []
+    arch = layout.arch
+    for c, (n_blocks, heads) in enumerate(arch.couples):
+        for b in range(n_blocks):
+            for u in range(arch.ffn_hidden):
+                units.append({"kind": "ffn", "couple": c,
+                              "block": b, "index": u,
+                              "name": f"c{c}.b{b}.ffn.u{u}"})
+    for c, (n_blocks, heads) in enumerate(arch.couples):
+        for b in range(n_blocks):
+            for h in range(heads):
+                units.append({"kind": "head", "couple": c,
+                              "block": b, "index": h,
+                              "name": f"c{c}.b{b}.head.h{h}"})
+    return units
+
+
+def _silence_indices(layout, unit):
+    """Gene indices zeroed to silence a unit: its outgoing
+    weights only, so its signal never reaches the rest of
+    the network. FFN unit u: row u of W_2 (the unit's
+    outgoing weights; the plan's 'column' is the
+    transposed reading). Head h: its whole W_o plus b_o
+    (the head's output projection -- a leftover b_o would
+    still inject a constant signal)."""
+    c, b = unit["couple"], unit["block"]
+    p = f"c{c}.b{b}"
+    if unit["kind"] == "ffn":
+        sl = layout.sl(f"{p}.W_2")
+        shape = layout._slices[f"{p}.W_2"][1]
+        return np.arange(sl.start, sl.stop).reshape(shape)[
+            unit["index"], :]
+    hp = f"{p}.h{unit['index']}"
+    parts = []
+    for nm in ("W_o", "b_o"):
+        sl = layout.sl(f"{hp}.{nm}")
+        parts.append(np.arange(sl.start, sl.stop))
+    return np.concatenate(parts)
+
+
+def unit_gene_indices(layout, unit):
+    """ALL genes of a unit: its incoming row, its bias, and
+    its outgoing column. FFN unit u: W_1 column u, b_1[u],
+    W_2 row u. Head h: W_q/b_q/W_k/b_k/W_v/b_v/W_o/b_o."""
+    c, b = unit["couple"], unit["block"]
+    p = f"c{c}.b{b}"
+    if unit["kind"] == "ffn":
+        d = layout.arch.d
+        ffn = layout.arch.ffn_hidden
+        w1 = layout.sl(f"{p}.W_1")
+        w1_idx = np.arange(w1.start, w1.stop).reshape(
+            d, ffn)[:, unit["index"]]
+        b1 = layout.sl(f"{p}.b_1")
+        b1_idx = np.array([b1.start + unit["index"]])
+        w2 = layout.sl(f"{p}.W_2")
+        w2_idx = np.arange(w2.start, w2.stop).reshape(
+            ffn, d)[unit["index"], :]
+        return np.concatenate([w1_idx, b1_idx, w2_idx])
+    hp = f"{p}.h{unit['index']}"
+    parts = []
+    for nm in ("W_q", "b_q", "W_k", "b_k",
+               "W_v", "b_v", "W_o", "b_o"):
+        sl = layout.sl(f"{hp}.{nm}")
+        parts.append(np.arange(sl.start, sl.stop))
+    return np.concatenate(parts)
+
+
+def silence_table(layout, genome, score_fn, zero_tol=0.0):
+    """One-by-one silencing of a champion. score_fn maps a
+    stacked (M, n_params) genome matrix to (M,) validation
+    scores (higher-is-better) through the domain's existing
+    batched evaluate path. One pass of (n_units + 1) copies
+    -- the untouched champion is copy zero of the same
+    batched call. Returns {"champion_score", "units":
+    [{name, kind, couple, block, index, drop}...],
+    "zero_tol"} with drop = champion - silenced, so a
+    bigger number always means more important."""
+    units = silence_units(layout)
+    G = np.tile(np.asarray(genome, dtype=float),
+                (len(units) + 1, 1))
+    for k, u in enumerate(units, start=1):
+        G[k, _silence_indices(layout, u)] = 0.0
+    scores = np.asarray(score_fn(G), dtype=float)
+    champ = float(scores[0])
+    out = []
+    for k, u in enumerate(units):
+        out.append({**u, "drop": float(champ - scores[k + 1])})
+    return {"champion_score": champ, "units": out,
+            "zero_tol": float(zero_tol)}
+
+
+def marks_from_table(layout, table, cfg: EngineConfig,
+                     zero_tol=0.0):
+    """Per-gene mutation band rates from a silencing table.
+    important = the top `widen_step` units with a real
+    positive drop (the split candidates) -> protected at
+    the old-gene rate (mut_p * old_rate_factor); useless =
+    drop at or below the exact-zero tolerance (the unit
+    contributes nothing, or actively hurts) ->
+    useless_mut_p; middle = 0 (unmarked, class rates as
+    today). Returns a float vector aligned with the flat
+    genome. Bands are disjoint by construction (important
+    needs drop > zero_tol, useless needs drop <= zero_tol)."""
+    marks = np.zeros(layout.n_params)
+    units = table["units"]
+    real = [u for u in units if u["drop"] > zero_tol]
+    real.sort(key=lambda u: -u["drop"])
+    prot = cfg.mut_p * cfg.old_rate_factor
+    for u in real[:cfg.widen_step]:
+        marks[unit_gene_indices(layout, u)] = prot
+    for u in units:
+        if u["drop"] <= zero_tol:
+            marks[unit_gene_indices(layout, u)] = \
+                cfg.useless_mut_p
+    return marks
+
+
+def frozen_mask_from_table(layout, table, zero_tol=0.0):
+    """Freeze rule (sponsor, 2026-11-23): a unit proven
+    useful by silencing (drop > zero_tol, the table's real
+    drop read) mutates at rate 0 -- proven material is
+    never risked. A proven unit also freezes its block's
+    layer-norm genes (lnA/lnF gain and bias): the block's
+    normalization is part of its proven material, and the
+    whole lineage descends from the champion, so donor and
+    recipient share that normalization baseline. Returns a
+    boolean vector aligned with the flat genome."""
+    mask = np.zeros(layout.n_params, dtype=bool)
+    proven_blocks = set()
+    for u in table["units"]:
+        if u["drop"] > zero_tol:
+            mask[unit_gene_indices(layout, u)] = True
+            proven_blocks.add((u["couple"], u["block"]))
+    for c, b in proven_blocks:
+        for nm in (f"c{c}.b{b}.lnA_gain", f"c{c}.b{b}.lnA_bias",
+                   f"c{c}.b{b}.lnF_gain", f"c{c}.b{b}.lnF_bias"):
+            try:
+                mask[layout.sl(nm)] = True
+            except KeyError:
+                pass
+    return mask
+
+
+def remap_vector_by_entries(vec, entries_old, entries_new):
+    """Remap a per-gene vector across an architecture change
+    by entry name. `entries_old` / `entries_new` are ordered
+    [(name, shape), ...] partitioning the flat vector (the
+    Layout.entries order). Genes that survive keep their
+    value; shapes that grew are copied over their
+    overlapping (per-axis prefix) region -- every transplant
+    places the old genes at the prefix of the widened entry;
+    new genes are 0. THE single implementation of the by-name
+    remap: remap_marks and the archive's usefulness rebase
+    both use it."""
+    vec = np.asarray(vec, dtype=float)
+    old = {}
+    off = 0
+    for n, sh in entries_old:
+        k = int(np.prod(sh))
+        old[n] = vec[off:off + k].reshape(sh)
+        off += k
+    out = np.zeros(sum(int(np.prod(sh))
+                       for _, sh in entries_new))
+    off = 0
+    for n, sh in entries_new:
+        k = int(np.prod(sh))
+        if n in old:
+            o = old[n]
+            sl = tuple(slice(0, min(a, b))
+                       for a, b in zip(o.shape, sh))
+            arr = np.zeros(sh)
+            arr[sl] = o[sl]
+            out[off:off + k] = arr.ravel()
+        off += k
+    return out
+
+
+def remap_marks(marks, layout_old, layout_new):
+    """Remap a marks vector across a transplant by entry
+    name. Genes that survive keep their mark; new genes are
+    unmarked (0). Shapes that grew are copied over their
+    overlapping (prefix-aligned) region -- every transplant
+    places the old genes at the prefix of the widened entry."""
+    return remap_vector_by_entries(
+        marks,
+        [(n, sh) for n, _, sh in layout_old.entries],
+        [(n, sh) for n, _, sh in layout_new.entries])
+
+
+def remap_frozen(mask, layout_old, layout_new):
+    """Remap a boolean frozen mask across a transplant by
+    entry name (the same by-name remap as the marks). A
+    gene stays frozen if any of its source genes was
+    frozen; new genes are unfrozen."""
+    out = remap_vector_by_entries(
+        np.asarray(mask, dtype=float),
+        [(n, sh) for n, _, sh in layout_old.entries],
+        [(n, sh) for n, _, sh in layout_new.entries])
+    return out > 0.0
+
+
+def split_units_from_table(table, per_block):
+    """Split candidates from a silencing table: per block,
+    the top `per_block` feed-forward units by drop. Returns
+    a list of (couple, block, unit_index). Every block
+    contributes the same count, because the architecture
+    carries a single ffn_hidden shared by all blocks -- so
+    a split attempt grows every block's FFN width by
+    `per_block`, with no zero-effect filler units."""
+    ffn_units = [u for u in table["units"]
+                 if u["kind"] == "ffn"]
+    by_block = {}
+    for u in ffn_units:
+        by_block.setdefault((u["couple"], u["block"]),
+                            []).append(u)
+    out = []
+    for (c, b), us in sorted(by_block.items()):
+        us.sort(key=lambda u: -u["drop"])
+        for u in us[:per_block]:
+            out.append((c, b, u["index"]))
+    return out
+
+
+def transplant_split_widen(arch, layout_old, genome,
+                           head_spec_fn, split_units, cfg):
+    """Widen variant B (plan 2026-11-22 step 2): widen the
+    feed-forward hidden width by SPLITTING working units,
+    Net2WiderNet style. split_units: (couple, block, unit)
+    triples with the same count per block (see
+    split_units_from_table). For each chosen unit the new
+    unit copies the original's incoming row (W_1 column)
+    and bias, and the original's outgoing row (W_2) is
+    halved between the two. Before noise the grown network
+    computes exactly what the champion computed in exact
+    arithmetic; in float64 the re-ordered FFN sum can
+    differ at ~1e-16, so the domain preservation gate is
+    the binding check, as for widen. New unit genes are
+    the evolving interface; pre-existing genes become
+    CLS_OLD per the standing rule. Returns (arch_new,
+    layout_new, template, classes) like the other
+    transplants."""
+    by_block = {}
+    for (c, b, u) in split_units:
+        by_block.setdefault((c, b), []).append(u)
+    if not by_block:
+        raise ValueError("split_widen needs at least one unit")
+    counts = {len(v) for v in by_block.values()}
+    if len(counts) != 1:
+        raise ValueError(
+            "split_widen needs the same split count per block "
+            f"(got {sorted(counts)})")
+    per_block = counts.pop()
+    ffn0 = arch.ffn_hidden
+    arch_new = ArchSpec(arch.input_dim, arch.d,
+                        ffn0 + per_block, arch.couples,
+                        arch.ln_eps, arch.attn_scale)
+    layout_new = Layout(arch_new, head_spec_fn(arch_new.d))
+    old_d = layout_old.unpack_dict(genome)
+    new_d = {n: np.zeros(sh)
+             for n, _, sh in layout_new.entries}
+    for n, arr in old_d.items():
+        if n in new_d:
+            sh = new_d[n].shape
+            sl = tuple(slice(0, min(a, b))
+                       for a, b in zip(arr.shape, sh))
+            new_d[n][sl] = arr[sl]
+    classes = _base_classes(layout_new, len(arch.couples) - 1)
+    for (c, b), units in sorted(by_block.items()):
+        p = f"c{c}.b{b}"
+        for k, u in enumerate(sorted(units)):
+            j = ffn0 + k
+            new_d[f"{p}.W_1"][:, j] = old_d[f"{p}.W_1"][:, u]
+            new_d[f"{p}.b_1"][j] = old_d[f"{p}.b_1"][u]
+            half = old_d[f"{p}.W_2"][u, :] / 2.0
+            new_d[f"{p}.W_2"][u, :] = half
+            new_d[f"{p}.W_2"][j, :] = half
+            w1 = layout_new.sl(f"{p}.W_1")
+            classes[w1].reshape(arch.d, ffn0 + per_block)[
+                :, j] = CLS_IFACE
+            classes[layout_new.sl(f"{p}.b_1")][j] = CLS_IFACE
+            w2 = layout_new.sl(f"{p}.W_2")
+            classes[w2].reshape(ffn0 + per_block, arch.d)[
+                j, :] = CLS_IFACE
+    return arch_new, layout_new, layout_new.pack_dict(new_d), \
+        classes
+
+
+def split_copy_indices(layout, split_units):
+    """Gene indices of the NEW (copy) units created by a
+    split widening: each copy's W_1 column, b_1, and W_2
+    row. The runner uses these to apply the split noise
+    after the preservation gate passes."""
+    by_block = {}
+    for (c, b, u) in split_units:
+        by_block.setdefault((c, b), []).append(u)
+    ffn_new = layout.arch.ffn_hidden
+    out = []
+    for (c, b), units in sorted(by_block.items()):
+        per_block = len(units)
+        for k in range(per_block):
+            j = ffn_new - per_block + k
+            out.append(unit_gene_indices(
+                layout, {"kind": "ffn", "couple": c,
+                         "block": b, "index": j}))
+    return np.concatenate(out) if out \
+        else np.array([], dtype=int)
+
+
+def apply_split_noise(template, layout, split_units, rng,
+                      lo, hi):
+    """Split noise (plan step 2): each copied weight w gets
+    w * (1 + u), with u drawn per weight with a random sign
+    from [lo, hi] -- a tiny relative noise so the copy is
+    not a perfect twin. Applied AFTER the preservation gate
+    passes, on the copies' genes only. Returns a new genome
+    array (the template is not modified)."""
+    out = np.array(template, dtype=float)
+    idx = split_copy_indices(layout, split_units)
+    if len(idx) == 0:
+        return out
+    mag = rng.uniform(lo, hi, size=len(idx))
+    sign = np.where(rng.random(len(idx)) < 0.5, -1.0, 1.0)
+    out[idx] = out[idx] * (1.0 + sign * mag)
+    return out
 
 
 # ================================================================
@@ -1038,6 +1461,8 @@ def checkpoint_payload(cfg: EngineConfig, arch: ArchSpec,
         "sizes": np.array([len(sp["pop"]) for sp in species]),
         "species_ids": np.array([sp["id"] for sp in species]),
         "lineages": np.array([sp["lineage"] for sp in species]),
+        "parent_species_ids": np.array(
+            [sp.get("parent_species_id", -1) for sp in species]),
         "draws": np.array([sp["draw"] for sp in species]),
         "targets": np.array([sp["target"] for sp in species]),
         "best_genomes": np.array(
@@ -1076,12 +1501,27 @@ def load_checkpoint(path, cfg: EngineConfig, arch: ArchSpec,
             "match the current layout.")
     sizes = z["sizes"]
     pops = np.split(z["pops"], np.cumsum(sizes)[:-1])
+    parents = z["parent_species_ids"] \
+        if "parent_species_ids" in z.files \
+        else np.full(len(sizes), -1)
+    meta = json.loads(str(z["meta"]))
+    # the silencing marks vector rides in meta; refuse a
+    # resume whose marks do not match the layout, the same
+    # refusal discipline as architecture mismatches
+    if "marks" in meta and meta["marks"] is not None:
+        if len(meta["marks"]) != layout.n_params:
+            raise SystemExit(
+                "REFUSING to resume: checkpoint silencing "
+                "marks do not match the current layout "
+                f"({len(meta['marks'])} marks for "
+                f"{layout.n_params} genes).")
     species = []
     for k in range(len(sizes)):
         bg = z["best_genomes"][k]
         species.append({
             "id": int(z["species_ids"][k]),
             "lineage": str(z["lineages"][k]),
+            "parent_species_id": int(parents[k]),
             "draw": z["draws"][k],
             "pop": pops[k],
             "target": int(z["targets"][k]),
@@ -1097,4 +1537,4 @@ def load_checkpoint(path, cfg: EngineConfig, arch: ArchSpec,
         str(z["draw_rng_state"]))
     return {"species": species, "classes": z["classes"],
             "rng": rng, "draw_rng": draw_rng,
-            "meta": json.loads(str(z["meta"]))}
+            "meta": meta}

@@ -1,0 +1,534 @@
+{
+ "experiment": "branch prune-and-graft scale test from zero",
+ "date": "2026-11-24",
+ "shape": "deep",
+ "arch_signature": "{\"attn_scale\": 0.5, \"couples\": [[3, 2]], \"d\": 4, \"ffn_hidden\": 16, \"input_dim\": 2, \"ln_eps\": 1e-05}",
+ "n_genes": 1008,
+ "seeds": {
+  "run_seed": 20262400,
+  "draw_seed": 20262401,
+  "graft_seed": 20262402,
+  "val_seed": 20261116
+ },
+ "founding": {
+  "champion_gap_pct": 15.502993599614957,
+  "champion_species_id": 11,
+  "n_species_final": 4
+ },
+ "rounds": [
+  {
+   "tag": "round1",
+   "subject_gap_pct": 15.502993599614957,
+   "subject_branches": [
+    {
+     "branch_id": 0,
+     "units": [
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 2,
+       "name": "c0.b0.ffn.u2",
+       "drop": 0.20121789329952416
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 5,
+       "name": "c0.b0.ffn.u5",
+       "drop": 0.15560599716194257
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 6,
+       "name": "c0.b0.ffn.u6",
+       "drop": 0.0747266152458011
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 8,
+       "name": "c0.b0.ffn.u8",
+       "drop": 0.15304406877028148
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 9,
+       "name": "c0.b0.ffn.u9",
+       "drop": 0.13703988091996872
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 10,
+       "name": "c0.b0.ffn.u10",
+       "drop": 0.01474689583970279
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 11,
+       "name": "c0.b0.ffn.u11",
+       "drop": 0.013450586959371624
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 0,
+       "name": "c0.b1.ffn.u0",
+       "drop": 0.031569797596721544
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 1,
+       "name": "c0.b1.ffn.u1",
+       "drop": 0.15836394792189812
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 3,
+       "name": "c0.b1.ffn.u3",
+       "drop": 0.09000000429621868
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 6,
+       "name": "c0.b1.ffn.u6",
+       "drop": 0.019263969032752987
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 11,
+       "name": "c0.b1.ffn.u11",
+       "drop": 0.17631677576746302
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 12,
+       "name": "c0.b1.ffn.u12",
+       "drop": 0.19954244166281188
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 14,
+       "name": "c0.b1.ffn.u14",
+       "drop": 0.002927688537610079
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 2,
+       "index": 0,
+       "name": "c0.b2.ffn.u0",
+       "drop": 0.11747610914231199
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 2,
+       "index": 4,
+       "name": "c0.b2.ffn.u4",
+       "drop": 0.04802422107024573
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 2,
+       "index": 6,
+       "name": "c0.b2.ffn.u6",
+       "drop": 0.13411618095428823
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 2,
+       "index": 9,
+       "name": "c0.b2.ffn.u9",
+       "drop": 0.17909942734403922
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 2,
+       "index": 11,
+       "name": "c0.b2.ffn.u11",
+       "drop": 0.07589041571774663
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 2,
+       "index": 13,
+       "name": "c0.b2.ffn.u13",
+       "drop": 0.23864207414909056
+      }
+     ],
+     "n_units": 20,
+     "group_drop_points": 0.7083497827680141,
+     "group_drop_rel_pct": 456.9116140160228
+    },
+    {
+     "branch_id": 1,
+     "units": [
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 0,
+       "name": "c0.b0.ffn.u0",
+       "drop": 0.11803753189150479
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 3,
+       "name": "c0.b0.ffn.u3",
+       "drop": 0.23057014049043373
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 4,
+       "name": "c0.b0.ffn.u4",
+       "drop": 0.237900474290286
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 7,
+       "name": "c0.b0.ffn.u7",
+       "drop": 0.2302189794670339
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 12,
+       "name": "c0.b0.ffn.u12",
+       "drop": 0.25693894203852513
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 13,
+       "name": "c0.b0.ffn.u13",
+       "drop": 0.21990114862286847
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 14,
+       "name": "c0.b0.ffn.u14",
+       "drop": 0.277274615517083
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 7,
+       "name": "c0.b1.ffn.u7",
+       "drop": 0.14307189909531492
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 8,
+       "name": "c0.b1.ffn.u8",
+       "drop": 0.2475165085971079
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 10,
+       "name": "c0.b1.ffn.u10",
+       "drop": 0.09897317266352895
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 15,
+       "name": "c0.b1.ffn.u15",
+       "drop": 0.20929064248981077
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 2,
+       "index": 2,
+       "name": "c0.b2.ffn.u2",
+       "drop": 0.6379202693368112
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 2,
+       "index": 3,
+       "name": "c0.b2.ffn.u3",
+       "drop": 0.25086255069697216
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 2,
+       "index": 12,
+       "name": "c0.b2.ffn.u12",
+       "drop": 0.27493085464093814
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 2,
+       "index": 15,
+       "name": "c0.b2.ffn.u15",
+       "drop": 0.24049679491880394
+      },
+      {
+       "kind": "head",
+       "couple": 0,
+       "block": 0,
+       "index": 0,
+       "name": "c0.b0.head.h0",
+       "drop": 0.37989275090564034
+      },
+      {
+       "kind": "head",
+       "couple": 0,
+       "block": 0,
+       "index": 1,
+       "name": "c0.b0.head.h1",
+       "drop": 0.25399240541896034
+      },
+      {
+       "kind": "head",
+       "couple": 0,
+       "block": 1,
+       "index": 0,
+       "name": "c0.b1.head.h0",
+       "drop": 0.25361050469382246
+      },
+      {
+       "kind": "head",
+       "couple": 0,
+       "block": 1,
+       "index": 1,
+       "name": "c0.b1.head.h1",
+       "drop": 0.704615942300466
+      },
+      {
+       "kind": "head",
+       "couple": 0,
+       "block": 2,
+       "index": 0,
+       "name": "c0.b2.head.h0",
+       "drop": 0.1367713045203549
+      },
+      {
+       "kind": "head",
+       "couple": 0,
+       "block": 2,
+       "index": 1,
+       "name": "c0.b2.head.h1",
+       "drop": 0.7054638479156424
+      }
+     ],
+     "n_units": 21,
+     "group_drop_points": 0.2959167837583808,
+     "group_drop_rel_pct": 190.87718888417166
+    },
+    {
+     "branch_id": 2,
+     "units": [
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 1,
+       "name": "c0.b0.ffn.u1",
+       "drop": 0.0030554121824108715
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 15,
+       "name": "c0.b0.ffn.u15",
+       "drop": 0.03241634273273425
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 2,
+       "name": "c0.b1.ffn.u2",
+       "drop": 0.05733364562208476
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 4,
+       "name": "c0.b1.ffn.u4",
+       "drop": 0.004256714855115806
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 5,
+       "name": "c0.b1.ffn.u5",
+       "drop": 0.054092937812065034
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 9,
+       "name": "c0.b1.ffn.u9",
+       "drop": 0.005931369340907405
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 13,
+       "name": "c0.b1.ffn.u13",
+       "drop": 0.021077094979817523
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 2,
+       "index": 1,
+       "name": "c0.b2.ffn.u1",
+       "drop": 0.0018128812920461534
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 2,
+       "index": 5,
+       "name": "c0.b2.ffn.u5",
+       "drop": 0.08775101194083579
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 2,
+       "index": 7,
+       "name": "c0.b2.ffn.u7",
+       "drop": 0.012873893668851166
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 2,
+       "index": 8,
+       "name": "c0.b2.ffn.u8",
+       "drop": 0.005591145357417532
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 2,
+       "index": 10,
+       "name": "c0.b2.ffn.u10",
+       "drop": 0.042815753791980965
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 2,
+       "index": 14,
+       "name": "c0.b2.ffn.u14",
+       "drop": 0.03381781640469006
+      }
+     ],
+     "n_units": 13,
+     "group_drop_points": 0.26626025807106496,
+     "group_drop_rel_pct": 171.74764109925067
+    }
+   ],
+   "proven_units": [
+    "c0.b0.ffn.u0",
+    "c0.b0.ffn.u2",
+    "c0.b0.ffn.u3",
+    "c0.b0.ffn.u4",
+    "c0.b0.ffn.u5",
+    "c0.b0.ffn.u6",
+    "c0.b0.ffn.u7",
+    "c0.b0.ffn.u8",
+    "c0.b0.ffn.u9",
+    "c0.b0.ffn.u12",
+    "c0.b0.ffn.u13",
+    "c0.b0.ffn.u14",
+    "c0.b0.ffn.u15",
+    "c0.b1.ffn.u0",
+    "c0.b1.ffn.u1",
+    "c0.b1.ffn.u2",
+    "c0.b1.ffn.u3",
+    "c0.b1.ffn.u5",
+    "c0.b1.ffn.u6",
+    "c0.b1.ffn.u7",
+    "c0.b1.ffn.u8",
+    "c0.b1.ffn.u10",
+    "c0.b1.ffn.u11",
+    "c0.b1.ffn.u12",
+    "c0.b1.ffn.u13",
+    "c0.b1.ffn.u15",
+    "c0.b2.ffn.u0",
+    "c0.b2.ffn.u2",
+    "c0.b2.ffn.u3",
+    "c0.b2.ffn.u4",
+    "c0.b2.ffn.u5",
+    "c0.b2.ffn.u6",
+    "c0.b2.ffn.u9",
+    "c0.b2.ffn.u10",
+    "c0.b2.ffn.u11",
+    "c0.b2.ffn.u12",
+    "c0.b2.ffn.u13",
+    "c0.b2.ffn.u14",
+    "c0.b2.ffn.u15",
+    "c0.b0.head.h0",
+    "c0.b0.head.h1",
+    "c0.b1.head.h0",
+    "c0.b1.head.h1",
+    "c0.b2.head.h0",
+    "c0.b2.head.h1"
+   ],
+   "n_frozen_genes": 831,
+   "n_slots": 0,
+   "graft": null,
+   "reason_no_graft": "no cleared slots"
+  }
+ ],
+ "elapsed_seconds": 49.7
+}

@@ -1,0 +1,33 @@
+{
+ "subject_gap_pct": 11.388526893403203,
+ "branch_sizes": [
+  12,
+  15,
+  9
+ ],
+ "clustered_group_drops_pct_of_gap": [
+  301.0,
+  292.8,
+  253.2
+ ],
+ "clustered_total": 847.0,
+ "random_total_mean": 829.4,
+ "random_total_max": 1327.5,
+ "random_per_size": {
+  "9": {
+   "mean": 263.8,
+   "max": 636.0
+  },
+  "12": {
+   "mean": 277.3,
+   "max": 655.7
+  },
+  "15": {
+   "mean": 288.3,
+   "max": 696.7
+  }
+ },
+ "clustered_coherence": 0.708,
+ "random_coherence_mean": 0.685,
+ "random_coherence_max": 0.698
+}

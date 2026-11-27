@@ -1,0 +1,102 @@
+{
+ "species": 6,
+ "generations": [
+  0,
+  49
+ ],
+ "recorded_genomes": 1293,
+ "families": [
+  {
+   "origin": "founding draw of species 6",
+   "units": [
+    "c0.b0.ffn.u0",
+    "c0.b0.ffn.u1",
+    "c0.b0.ffn.u2",
+    "c0.b0.ffn.u3",
+    "c0.b0.ffn.u4",
+    "c0.b0.ffn.u5",
+    "c0.b0.ffn.u6",
+    "c0.b0.ffn.u7",
+    "c0.b0.head.h0"
+   ]
+  }
+ ],
+ "units": [
+  {
+   "unit": "c0.b0.ffn.u0",
+   "kind": "ffn",
+   "origin": "founding draw of species 6",
+   "first_seen_generation": 0,
+   "last_change_generation": null,
+   "kept_generations": 50
+  },
+  {
+   "unit": "c0.b0.ffn.u1",
+   "kind": "ffn",
+   "origin": "founding draw of species 6",
+   "first_seen_generation": 0,
+   "last_change_generation": null,
+   "kept_generations": 50
+  },
+  {
+   "unit": "c0.b0.ffn.u2",
+   "kind": "ffn",
+   "origin": "founding draw of species 6",
+   "first_seen_generation": 0,
+   "last_change_generation": null,
+   "kept_generations": 50
+  },
+  {
+   "unit": "c0.b0.ffn.u3",
+   "kind": "ffn",
+   "origin": "founding draw of species 6",
+   "first_seen_generation": 0,
+   "last_change_generation": null,
+   "kept_generations": 50
+  },
+  {
+   "unit": "c0.b0.ffn.u4",
+   "kind": "ffn",
+   "origin": "founding draw of species 6",
+   "first_seen_generation": 0,
+   "last_change_generation": null,
+   "kept_generations": 50
+  },
+  {
+   "unit": "c0.b0.ffn.u5",
+   "kind": "ffn",
+   "origin": "founding draw of species 6",
+   "first_seen_generation": 0,
+   "last_change_generation": null,
+   "kept_generations": 50
+  },
+  {
+   "unit": "c0.b0.ffn.u6",
+   "kind": "ffn",
+   "origin": "founding draw of species 6",
+   "first_seen_generation": 0,
+   "last_change_generation": null,
+   "kept_generations": 50
+  },
+  {
+   "unit": "c0.b0.ffn.u7",
+   "kind": "ffn",
+   "origin": "founding draw of species 6",
+   "first_seen_generation": 0,
+   "last_change_generation": null,
+   "kept_generations": 50
+  },
+  {
+   "unit": "c0.b0.head.h0",
+   "kind": "head",
+   "origin": "founding draw of species 6",
+   "first_seen_generation": 0,
+   "last_change_generation": null,
+   "kept_generations": 50
+  }
+ ],
+ "outside_units": {
+  "genes": 24,
+  "genes_changed_since_first_generation": 8
+ }
+}

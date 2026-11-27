@@ -1,0 +1,381 @@
+{
+ "experiment": "branch prune-and-graft scale test from zero",
+ "date": "2026-11-24",
+ "shape": "wide",
+ "arch_signature": "{\"attn_scale\": 0.35355339059327373, \"couples\": [[2, 2]], \"d\": 8, \"ffn_hidden\": 16, \"input_dim\": 2, \"ln_eps\": 1e-05}",
+ "n_genes": 1880,
+ "seeds": {
+  "run_seed": 20262400,
+  "draw_seed": 20262401,
+  "graft_seed": 20262402,
+  "val_seed": 20261116
+ },
+ "founding": {
+  "champion_gap_pct": 11.388526893403203,
+  "champion_species_id": 0,
+  "n_species_final": 4
+ },
+ "rounds": [
+  {
+   "tag": "round1",
+   "subject_gap_pct": 11.388526893403203,
+   "subject_branches": [
+    {
+     "branch_id": 0,
+     "units": [
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 10,
+       "name": "c0.b0.ffn.u10",
+       "drop": 0.19178956482194578
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 13,
+       "name": "c0.b0.ffn.u13",
+       "drop": 0.12407135173473868
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 15,
+       "name": "c0.b0.ffn.u15",
+       "drop": 0.1276519395987496
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 0,
+       "name": "c0.b1.ffn.u0",
+       "drop": 0.1594012681690057
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 1,
+       "name": "c0.b1.ffn.u1",
+       "drop": 0.08870961963512033
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 2,
+       "name": "c0.b1.ffn.u2",
+       "drop": 0.15675842686616157
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 5,
+       "name": "c0.b1.ffn.u5",
+       "drop": 0.20986140652545596
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 8,
+       "name": "c0.b1.ffn.u8",
+       "drop": 0.21362200088084612
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 9,
+       "name": "c0.b1.ffn.u9",
+       "drop": 0.2357238506001593
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 12,
+       "name": "c0.b1.ffn.u12",
+       "drop": 0.2136247616235605
+      },
+      {
+       "kind": "head",
+       "couple": 0,
+       "block": 0,
+       "index": 1,
+       "name": "c0.b0.head.h1",
+       "drop": 0.26575530131378733
+      },
+      {
+       "kind": "head",
+       "couple": 0,
+       "block": 1,
+       "index": 0,
+       "name": "c0.b1.head.h0",
+       "drop": 0.20318147330277084
+      }
+     ],
+     "n_units": 12,
+     "group_drop_points": 0.34275371782378405,
+     "group_drop_rel_pct": 300.9640500759795
+    },
+    {
+     "branch_id": 2,
+     "units": [
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 0,
+       "name": "c0.b0.ffn.u0",
+       "drop": 0.16291427982715193
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 1,
+       "name": "c0.b0.ffn.u1",
+       "drop": 0.2520336145958355
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 2,
+       "name": "c0.b0.ffn.u2",
+       "drop": 0.06401105320173697
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 5,
+       "name": "c0.b0.ffn.u5",
+       "drop": 0.19532861274179883
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 6,
+       "name": "c0.b0.ffn.u6",
+       "drop": 0.10132835442473159
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 7,
+       "name": "c0.b0.ffn.u7",
+       "drop": 0.1342673456093312
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 11,
+       "name": "c0.b0.ffn.u11",
+       "drop": 0.295487823512135
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 12,
+       "name": "c0.b0.ffn.u12",
+       "drop": 0.27388847409428496
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 6,
+       "name": "c0.b1.ffn.u6",
+       "drop": 0.07672108889382354
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 10,
+       "name": "c0.b1.ffn.u10",
+       "drop": 0.09767710688539272
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 11,
+       "name": "c0.b1.ffn.u11",
+       "drop": 0.015733232612549886
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 13,
+       "name": "c0.b1.ffn.u13",
+       "drop": 0.1574248937278229
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 14,
+       "name": "c0.b1.ffn.u14",
+       "drop": 0.05874803994232489
+      },
+      {
+       "kind": "head",
+       "couple": 0,
+       "block": 0,
+       "index": 0,
+       "name": "c0.b0.head.h0",
+       "drop": 0.2921038025737155
+      },
+      {
+       "kind": "head",
+       "couple": 0,
+       "block": 1,
+       "index": 1,
+       "name": "c0.b1.head.h1",
+       "drop": 0.26621762615827593
+      }
+     ],
+     "n_units": 15,
+     "group_drop_points": 0.33348758519059984,
+     "group_drop_rel_pct": 292.8276750031405
+    },
+    {
+     "branch_id": 1,
+     "units": [
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 3,
+       "name": "c0.b0.ffn.u3",
+       "drop": 0.18706280010031964
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 4,
+       "name": "c0.b0.ffn.u4",
+       "drop": 0.23381317143285477
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 8,
+       "name": "c0.b0.ffn.u8",
+       "drop": 0.17771003574283198
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 9,
+       "name": "c0.b0.ffn.u9",
+       "drop": 0.1384916399906402
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 0,
+       "index": 14,
+       "name": "c0.b0.ffn.u14",
+       "drop": 0.1227478603119497
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 3,
+       "name": "c0.b1.ffn.u3",
+       "drop": 0.07384584516311726
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 4,
+       "name": "c0.b1.ffn.u4",
+       "drop": 0.07315834203656951
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 7,
+       "name": "c0.b1.ffn.u7",
+       "drop": 0.22607229069932208
+      },
+      {
+       "kind": "ffn",
+       "couple": 0,
+       "block": 1,
+       "index": 15,
+       "name": "c0.b1.ffn.u15",
+       "drop": 0.15764984920012495
+      }
+     ],
+     "n_units": 9,
+     "group_drop_points": 0.2883243347648805,
+     "group_drop_rel_pct": 253.1708775538759
+    }
+   ],
+   "proven_units": [
+    "c0.b0.ffn.u0",
+    "c0.b0.ffn.u1",
+    "c0.b0.ffn.u2",
+    "c0.b0.ffn.u3",
+    "c0.b0.ffn.u4",
+    "c0.b0.ffn.u5",
+    "c0.b0.ffn.u6",
+    "c0.b0.ffn.u7",
+    "c0.b0.ffn.u8",
+    "c0.b0.ffn.u9",
+    "c0.b0.ffn.u10",
+    "c0.b0.ffn.u11",
+    "c0.b0.ffn.u12",
+    "c0.b0.ffn.u13",
+    "c0.b0.ffn.u14",
+    "c0.b0.ffn.u15",
+    "c0.b1.ffn.u0",
+    "c0.b1.ffn.u1",
+    "c0.b1.ffn.u2",
+    "c0.b1.ffn.u3",
+    "c0.b1.ffn.u4",
+    "c0.b1.ffn.u5",
+    "c0.b1.ffn.u6",
+    "c0.b1.ffn.u7",
+    "c0.b1.ffn.u8",
+    "c0.b1.ffn.u9",
+    "c0.b1.ffn.u10",
+    "c0.b1.ffn.u11",
+    "c0.b1.ffn.u12",
+    "c0.b1.ffn.u13",
+    "c0.b1.ffn.u14",
+    "c0.b1.ffn.u15",
+    "c0.b0.head.h0",
+    "c0.b0.head.h1",
+    "c0.b1.head.h0",
+    "c0.b1.head.h1"
+   ],
+   "n_frozen_genes": 1696,
+   "n_slots": 0,
+   "graft": null,
+   "reason_no_graft": "no cleared slots"
+  }
+ ],
+ "elapsed_seconds": 46.4
+}

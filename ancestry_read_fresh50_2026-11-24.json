@@ -1,0 +1,61 @@
+{
+ "recorded_genomes": 1293,
+ "score_first_generation": -3.7826,
+ "score_last_generation": -3.643,
+ "units": [
+  {
+   "unit": "c0.b0.ffn.u0",
+   "kind": "ffn",
+   "locked_from_generation": 0,
+   "kept_for_generations": 50
+  },
+  {
+   "unit": "c0.b0.ffn.u1",
+   "kind": "ffn",
+   "locked_from_generation": 0,
+   "kept_for_generations": 50
+  },
+  {
+   "unit": "c0.b0.ffn.u2",
+   "kind": "ffn",
+   "locked_from_generation": 0,
+   "kept_for_generations": 50
+  },
+  {
+   "unit": "c0.b0.ffn.u3",
+   "kind": "ffn",
+   "locked_from_generation": 0,
+   "kept_for_generations": 50
+  },
+  {
+   "unit": "c0.b0.ffn.u4",
+   "kind": "ffn",
+   "locked_from_generation": 0,
+   "kept_for_generations": 50
+  },
+  {
+   "unit": "c0.b0.ffn.u5",
+   "kind": "ffn",
+   "locked_from_generation": 0,
+   "kept_for_generations": 50
+  },
+  {
+   "unit": "c0.b0.ffn.u6",
+   "kind": "ffn",
+   "locked_from_generation": 0,
+   "kept_for_generations": 50
+  },
+  {
+   "unit": "c0.b0.ffn.u7",
+   "kind": "ffn",
+   "locked_from_generation": 0,
+   "kept_for_generations": 50
+  },
+  {
+   "unit": "c0.b0.head.h0",
+   "kind": "head",
+   "locked_from_generation": 0,
+   "kept_for_generations": 50
+  }
+ ]
+}

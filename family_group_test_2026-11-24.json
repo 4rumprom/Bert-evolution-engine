@@ -1,0 +1,16 @@
+{
+ "family_drops_pct_of_gap": {
+  "ffn mother 0": 5.7,
+  "ffn mother 1": -2.4,
+  "ffn mother 2": 5.7,
+  "ffn mother 3": 13.4,
+  "ffn mother 4": 9.0,
+  "ffn mother 5": 8.9,
+  "ffn mother 6": 64.2,
+  "ffn mother 7": -1.9,
+  "head mother 0": 275.0
+ },
+ "random_pair_mean": 45.1,
+ "random_pair_max": 188.7,
+ "random_pair_p95": 162.7
+}
