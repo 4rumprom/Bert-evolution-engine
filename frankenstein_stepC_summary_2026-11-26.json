@@ -1,0 +1,129 @@
+{
+ "run": "frankenstein_stepC (step C: widen the Step B backend block by stitching its top two champions over the commonized trunk, then refine the widened block)",
+ "date": "2026-11-26",
+ "stepB_champions": {
+  "champion_1": {
+   "pop_index": 1,
+   "gap_pct": 7.9739,
+   "bit_identical_to_checkpoint_best": true
+  },
+  "champion_2": {
+   "pop_index": 91,
+   "gap_pct": 8.4313,
+   "definition": "best validation gap among genomes not bit-identical to champion #1"
+  },
+  "b5_distance": {
+   "genes": 136,
+   "n_differing": 133,
+   "max_abs_diff": 0.9244331724807813,
+   "rms_diff": 0.29479468074602744
+  }
+ },
+ "genes": {
+  "total": 1040,
+  "trunk_backbone": 788,
+  "widened_block_b5w_stitching": 252
+ },
+ "dropped_from_champion_2": [
+  "b5.lnA_gain",
+  "b5.lnA_bias",
+  "b5.lnF_gain",
+  "b5.lnF_bias",
+  "b5.b_2 (the FFN output bias is a single block-level parameter, like the layer-norms: champion #1's is used)"
+ ],
+ "birth_gap_pct": 25.6008,
+ "generations": 200,
+ "evolve_seed": 20261230,
+ "validation_walk": [
+  {
+   "gen": 0,
+   "val_gap_pct": 25.6008
+  },
+  {
+   "gen": 10,
+   "val_gap_pct": 10.3715
+  },
+  {
+   "gen": 20,
+   "val_gap_pct": 8.3165
+  },
+  {
+   "gen": 30,
+   "val_gap_pct": 8.1018
+  },
+  {
+   "gen": 40,
+   "val_gap_pct": 8.138
+  },
+  {
+   "gen": 50,
+   "val_gap_pct": 8.6966
+  },
+  {
+   "gen": 60,
+   "val_gap_pct": 8.9443
+  },
+  {
+   "gen": 70,
+   "val_gap_pct": 9.8603
+  },
+  {
+   "gen": 80,
+   "val_gap_pct": 9.4078
+  },
+  {
+   "gen": 90,
+   "val_gap_pct": 9.1117
+  },
+  {
+   "gen": 100,
+   "val_gap_pct": 8.235
+  },
+  {
+   "gen": 110,
+   "val_gap_pct": 8.2884
+  },
+  {
+   "gen": 120,
+   "val_gap_pct": 8.4147
+  },
+  {
+   "gen": 130,
+   "val_gap_pct": 8.4147
+  },
+  {
+   "gen": 140,
+   "val_gap_pct": 9.1809
+  },
+  {
+   "gen": 150,
+   "val_gap_pct": 9.5995
+  },
+  {
+   "gen": 160,
+   "val_gap_pct": 8.339
+  },
+  {
+   "gen": 170,
+   "val_gap_pct": 8.141
+  },
+  {
+   "gen": 180,
+   "val_gap_pct": 8.141
+  },
+  {
+   "gen": 190,
+   "val_gap_pct": 8.141
+  },
+  {
+   "gen": 199,
+   "val_gap_pct": 8.263
+  }
+ ],
+ "final_gap_pct": 8.1018,
+ "final_gap_generation": 30,
+ "stepB_champion_gap_pct": 7.9739,
+ "trunk_bit_identical_to_stepB_champion": true,
+ "widened_block_genes_changed": 99,
+ "champion": "engine_runs/frankenstein_stepC_evolution/frankenstein_stepC_evolved_champion.npz"
+}

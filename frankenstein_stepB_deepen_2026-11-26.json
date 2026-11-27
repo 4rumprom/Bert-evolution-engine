@@ -1,0 +1,30 @@
+{
+ "step": "B construction (deepen)",
+ "date": "2026-11-26",
+ "subject": "engine_runs/frankenstein_stepA2_evolution/frankenstein_stepA2_evolved_champion.npz",
+ "subject_gap_pct_recorded": 8.0009,
+ "subject_gap_pct_measured": 8.000862,
+ "subject_reproduces_recorded_gap": true,
+ "trunk_genes": 788,
+ "trunk_bit_identical_to_subject": true,
+ "new_block": "b5",
+ "new_block_genes": 136,
+ "new_block_shape": {
+  "heads": 1,
+  "ffn_hidden": 4,
+  "stream_width": 4
+ },
+ "total_genes": 924,
+ "blocks": [
+  "b0",
+  "b1",
+  "b2",
+  "b3",
+  "b4",
+  "b5"
+ ],
+ "fill_seed": 20261220,
+ "fill_sigma": 0.03,
+ "birth_gap_pct": 10.4234,
+ "note": "The birth gap is expected to be much worse than the subject's 8.0009%: the appended block is tiny-random filler that has not been bred in yet. Breeding is frankenstein_stepB_evolve_2026-11-26.py (new block's genes only, trunk frozen)."
+}

@@ -1,0 +1,103 @@
+{
+ "design": "sponsor decision, 2026-11-25 10:39 EST: Frankenstein 2's body with a merged decoder as the only change",
+ "parents": {
+  "host": {
+   "species": 8,
+   "gap_pct": 15.1315
+  },
+  "donor": {
+   "species": 9,
+   "gap_pct": 19.4412
+  }
+ },
+ "merged_decoder": {
+  "W_qd_host_block": [
+   [
+    0.03725224582567112,
+    0.3029837857007421
+   ],
+   [
+    0.3456196162681357,
+    -0.081296587260072
+   ]
+  ],
+  "W_qd_donor_block": [
+   [
+    0.8288183600823669,
+    0.6048921005777335
+   ],
+   [
+    0.13012537523876902,
+    -0.08763253513696095
+   ]
+  ],
+  "W_qd_full": [
+   [
+    0.03725224582567112,
+    0.3029837857007421,
+    -0.01507553767710617,
+    0.038887109124459945
+   ],
+   [
+    0.3456196162681357,
+    -0.081296587260072,
+    -0.0069839846199757916,
+    -0.0020050384882614562
+   ],
+   [
+    -0.013788523406416309,
+    -0.004663475318641498,
+    0.8288183600823669,
+    0.6048921005777335
+   ],
+   [
+    0.00797717468532582,
+    -0.0019111213939224027,
+    0.13012537523876902,
+    -0.08763253513696095
+   ]
+  ],
+  "b_qd": [
+   0.7988376864499317,
+   0.07043692562244085,
+   0.9215328087577723,
+   0.0354423857839105
+  ],
+  "v_start": [
+   0.25535992308385846,
+   -0.6766200095571703,
+   0.839879174795281,
+   0.8827105086989965
+  ],
+  "sigma_cross": 0.03,
+  "merge_seed": 20261127,
+  "attn_scale": 0.7071067811865475,
+  "attn_scale_source": "arch.attn_scale of be.initial_arch(cfg, 2) (the parents' d=2 arch), the same value Frankenstein 2's forward pass used for attention and decoder logits alike; recorded in Frankenstein 2's genome meta",
+  "clip": 10.0
+ },
+ "construction_check": {
+  "host_block_equals_species8_W_qd_exactly": true,
+  "donor_block_equals_species9_W_qd_exactly": true,
+  "b_qd_equals_concatenation_exactly": true,
+  "v_start_equals_concatenation_exactly": true,
+  "cross_block_max_abs": 0.038887109124459945,
+  "cross_block_std": 0.01608839746652649,
+  "body_non_decoder_arrays_bit_identical_to_f2": true,
+  "f2_genome_rescored_gap_pct": 41.474
+ },
+ "frankenstein4": {
+  "shape": {
+   "stream_width": 4,
+   "block1_ffn_width": 6,
+   "joining_block_ffn_width": 6,
+   "blocks": 2,
+   "heads_per_block": 1,
+   "decoders": 1,
+   "total_params": 344
+  },
+  "validation_gap_pct": 23.2865,
+  "mean_length": 3.5244582665846256,
+  "frankenstein2_gap_pct": 41.474,
+  "frankenstein3_gap_pct": 25.7642
+ }
+}

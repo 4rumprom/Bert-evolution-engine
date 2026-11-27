@@ -1,0 +1,37 @@
+{
+ "mode": "check",
+ "date": "2026-11-26",
+ "subject": {
+  "file": "engine_runs/frankenstein_twofranks_evolution/frankenstein_twofranks_extended_champion.npz",
+  "recorded_gap_pct": 7.3066,
+  "recomputed_gap_pct": 7.306624,
+  "genes_total": 1462,
+  "genes_backbone": 356,
+  "genes_stitching": 1106
+ },
+ "verifications": {
+  "sanity_gap_reproduced": true,
+  "jax_mirror_encoder_parity_max_abs_diff": 3.552713678800501e-15
+ },
+ "check_gradient": {
+  "batch_seed": 20261204,
+  "batch_problems": 64,
+  "samples_per_problem": 8,
+  "reinforce_loss": -0.1039,
+  "gradient_norm_stitching_genes": 9.4279,
+  "gradient_norm_all_genes": 9.4279,
+  "backbone_gradient_zeroed": true,
+  "weight_update_applied": false,
+  "champion_written": false
+ },
+ "batch_diagnostics": {
+  "mean_sampled_length": 4.8644,
+  "mean_greedy_length": 3.0715,
+  "mean_advantage_sample_mean_baseline": -0.0,
+  "std_advantage_sample_mean_baseline": 0.5276,
+  "mean_advantage_greedy_baseline": -1.7929,
+  "std_advantage_greedy_baseline": 0.7437,
+  "corr_sample_mean_vs_greedy_advantages": 0.7095
+ },
+ "wall_seconds": 13.2
+}

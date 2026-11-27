@@ -1,0 +1,602 @@
+{
+ "run": "REINFORCE training on the Two-Franks stitch (sponsor's spec) \u2014 arm A (4 draws on one city set) vs arm B (1 draw on four different city sets)",
+ "date": "2026-11-26",
+ "sponsor_direction": "Roman, 2026-11-26: greedy baseline with a configurable number of stochastic draws; weights unchanged while generating all the tours, losses averaged, one optimizer update; and his open question \u2014 four draws on the same city set are not necessarily better than one draw on four different city sets for the same budget; test and see what works better",
+ "method": {
+  "name": "REINFORCE (policy gradient) with a greedy baseline, exactly as the sponsor specified",
+  "sampling": "external sampling from the network's own pointer distribution (softmax over the decoder logits as produced; no temperature, no soft surrogate)",
+  "baseline": "the problem's own greedy tour length (always the most probable city)",
+  "advantage": "baseline length - sampled tour length (positive when the sample beats the greedy tour)",
+  "loss": "-mean over the update batch of advantage x (sum of log-probabilities of the actions actually taken); one optimizer update per batch; weights unchanged while all tours of the batch are generated",
+  "optimizer": "Adam, lr 0.0001, global-norm gradient clip 1.0, beta1 0.9, beta2 0.999, eps 1e-08",
+  "moving_genes": "stitching only (1106); backbone frozen (356), the same condition as both prior refinement runs on this subject",
+  "guard": "true-gap reads on the fixed validation set every 25 updates; best-on-validation weights are the working point; a worse read reverts to the best, resets Adam, and halves the lr (floor 1e-06)",
+  "problems": "fresh problems, n = 10 cities, uniform on the unit square, recorded seed streams, different per arm, same distribution; never the validation problems"
+ },
+ "equalization_decision": "The arms are equalized on SAMPLED tours per update (= 4) and on updates (= 400), because the sponsor's question is about the training signal per sampled tour. Greedy baseline tours are counted as overhead, not as part of the equalized budget: arm A computes 1 greedy tour per update (400 total); arm B computes 4 per update (1,600 total). Greedy tours are cheap deterministic rollouts; both arms' wall-times are reported so the overhead difference is visible.",
+ "subject": {
+  "file": "engine_runs/frankenstein_twofranks_evolution/frankenstein_twofranks_extended_champion.npz",
+  "recorded_gap_pct": 7.3066,
+  "genes_total": 1462,
+  "genes_backbone": 356,
+  "genes_stitching": 1106
+ },
+ "sanity": {
+  "recomputed_gap_pct": 7.306624,
+  "recorded_gap_pct": 7.3066,
+  "passed": true,
+  "jax_mirror_encoder_parity_max_abs_diff": 3.552713678800501e-15,
+  "jax_greedy_rollout_parity_max_abs_diff": 4.440892098500626e-16
+ },
+ "arms": {
+  "A": {
+   "arm": "A",
+   "label": "4 draws on the same city set",
+   "problems_per_update": 1,
+   "draws_per_problem": 4,
+   "sampled_tours_per_update": 4,
+   "greedy_tours_per_update": 1,
+   "greedy_tours_total": 400,
+   "updates": 400,
+   "seed_base": 20261210,
+   "reads": [
+    {
+     "update": 0,
+     "gap_pct": 7.3066,
+     "is_best": true,
+     "guard_action": "none_new_best",
+     "lr_after": 0.0001
+    },
+    {
+     "update": 25,
+     "gap_pct": 7.4591,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 5e-05
+    },
+    {
+     "update": 50,
+     "gap_pct": 7.3301,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 2.5e-05
+    },
+    {
+     "update": 75,
+     "gap_pct": 7.3688,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 1.25e-05
+    },
+    {
+     "update": 100,
+     "gap_pct": 7.548,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 6.25e-06
+    },
+    {
+     "update": 125,
+     "gap_pct": 7.4439,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 3.125e-06
+    },
+    {
+     "update": 150,
+     "gap_pct": 7.4666,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 1.5625e-06
+    },
+    {
+     "update": 175,
+     "gap_pct": 7.3439,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 200,
+     "gap_pct": 7.3439,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 225,
+     "gap_pct": 7.3223,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 250,
+     "gap_pct": 7.3066,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 275,
+     "gap_pct": 7.3223,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 300,
+     "gap_pct": 7.3066,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 325,
+     "gap_pct": 7.3066,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 350,
+     "gap_pct": 7.3066,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 375,
+     "gap_pct": 7.3066,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 400,
+     "gap_pct": 7.3223,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    }
+   ],
+   "guard": {
+    "reverts": 16,
+    "halvings": 7,
+    "final_lr": 1e-06,
+    "events": [
+     {
+      "update": 25,
+      "gap_pct": 7.4591,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 5e-05,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 50,
+      "gap_pct": 7.3301,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 2.5e-05,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 75,
+      "gap_pct": 7.3688,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 1.25e-05,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 100,
+      "gap_pct": 7.548,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 6.25e-06,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 125,
+      "gap_pct": 7.4439,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 3.125e-06,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 150,
+      "gap_pct": 7.4666,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 1.5625e-06,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 175,
+      "gap_pct": 7.3439,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 200,
+      "gap_pct": 7.3439,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 225,
+      "gap_pct": 7.3223,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 250,
+      "gap_pct": 7.3066,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 275,
+      "gap_pct": 7.3223,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 300,
+      "gap_pct": 7.3066,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 325,
+      "gap_pct": 7.3066,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 350,
+      "gap_pct": 7.3066,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 375,
+      "gap_pct": 7.3066,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 400,
+      "gap_pct": 7.3223,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     }
+    ]
+   },
+   "signal_stats": {
+    "n_sampled_tours": 1600,
+    "n_greedy_tours": 400,
+    "mean_sampled_length": 4.9722,
+    "std_sampled_length": 0.8127,
+    "mean_greedy_length": 3.1101,
+    "mean_advantage": -1.8621,
+    "advantage_spread_std": 0.7526,
+    "advantage_min": -5.0837,
+    "advantage_max": 0.1885,
+    "frac_samples_beating_greedy": 0.0019,
+    "mean_loss_first_25_updates": -27.2742,
+    "mean_loss_last_25_updates": -28.2278
+   },
+   "best_validation_gap_pct": 7.3066,
+   "best_validation_update": 0,
+   "improvement_vs_start_pct_points": -0.0,
+   "backbone_bit_identical_to_subject": true,
+   "stitching_genes_changed_vs_subject": 0,
+   "champion_file": "engine_runs/frankenstein_twofranks_reinforce/frankenstein_twofranks_reinforceA_champion.npz",
+   "wall_seconds": 9.0
+  },
+  "B": {
+   "arm": "B",
+   "label": "1 draw on 4 different city sets",
+   "problems_per_update": 4,
+   "draws_per_problem": 1,
+   "sampled_tours_per_update": 4,
+   "greedy_tours_per_update": 4,
+   "greedy_tours_total": 1600,
+   "updates": 400,
+   "seed_base": 20261220,
+   "reads": [
+    {
+     "update": 0,
+     "gap_pct": 7.3066,
+     "is_best": true,
+     "guard_action": "none_new_best",
+     "lr_after": 0.0001
+    },
+    {
+     "update": 25,
+     "gap_pct": 7.7883,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 5e-05
+    },
+    {
+     "update": 50,
+     "gap_pct": 7.3742,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 2.5e-05
+    },
+    {
+     "update": 75,
+     "gap_pct": 7.4812,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 1.25e-05
+    },
+    {
+     "update": 100,
+     "gap_pct": 7.3153,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 6.25e-06
+    },
+    {
+     "update": 125,
+     "gap_pct": 7.532,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 3.125e-06
+    },
+    {
+     "update": 150,
+     "gap_pct": 7.303,
+     "is_best": true,
+     "guard_action": "none_new_best",
+     "lr_after": 3.125e-06
+    },
+    {
+     "update": 175,
+     "gap_pct": 7.283,
+     "is_best": true,
+     "guard_action": "none_new_best",
+     "lr_after": 3.125e-06
+    },
+    {
+     "update": 200,
+     "gap_pct": 7.283,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 1.5625e-06
+    },
+    {
+     "update": 225,
+     "gap_pct": 7.371,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 250,
+     "gap_pct": 7.283,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 275,
+     "gap_pct": 7.283,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 300,
+     "gap_pct": 7.2849,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 325,
+     "gap_pct": 7.2849,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 350,
+     "gap_pct": 7.283,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 375,
+     "gap_pct": 7.2849,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 400,
+     "gap_pct": 7.283,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    }
+   ],
+   "guard": {
+    "reverts": 14,
+    "halvings": 7,
+    "final_lr": 1e-06,
+    "events": [
+     {
+      "update": 25,
+      "gap_pct": 7.7883,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 5e-05,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 50,
+      "gap_pct": 7.3742,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 2.5e-05,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 75,
+      "gap_pct": 7.4812,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 1.25e-05,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 100,
+      "gap_pct": 7.3153,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 6.25e-06,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 125,
+      "gap_pct": 7.532,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 3.125e-06,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 200,
+      "gap_pct": 7.283,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 1.5625e-06,
+      "best_gap_pct": 7.283,
+      "best_update": 175
+     },
+     {
+      "update": 225,
+      "gap_pct": 7.371,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.283,
+      "best_update": 175
+     },
+     {
+      "update": 250,
+      "gap_pct": 7.283,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.283,
+      "best_update": 175
+     },
+     {
+      "update": 275,
+      "gap_pct": 7.283,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.283,
+      "best_update": 175
+     },
+     {
+      "update": 300,
+      "gap_pct": 7.2849,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.283,
+      "best_update": 175
+     },
+     {
+      "update": 325,
+      "gap_pct": 7.2849,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.283,
+      "best_update": 175
+     },
+     {
+      "update": 350,
+      "gap_pct": 7.283,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.283,
+      "best_update": 175
+     },
+     {
+      "update": 375,
+      "gap_pct": 7.2849,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.283,
+      "best_update": 175
+     },
+     {
+      "update": 400,
+      "gap_pct": 7.283,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.283,
+      "best_update": 175
+     }
+    ]
+   },
+   "signal_stats": {
+    "n_sampled_tours": 1600,
+    "n_greedy_tours": 1600,
+    "mean_sampled_length": 4.9573,
+    "std_sampled_length": 0.7836,
+    "mean_greedy_length": 3.1037,
+    "mean_advantage": -1.8536,
+    "advantage_spread_std": 0.7231,
+    "advantage_min": -5.0837,
+    "advantage_max": 0.1235,
+    "frac_samples_beating_greedy": 0.0006,
+    "mean_loss_first_25_updates": -25.3202,
+    "mean_loss_last_25_updates": -27.6204
+   },
+   "best_validation_gap_pct": 7.283,
+   "best_validation_update": 175,
+   "improvement_vs_start_pct_points": 0.0236,
+   "backbone_bit_identical_to_subject": true,
+   "stitching_genes_changed_vs_subject": 1106,
+   "champion_file": "engine_runs/frankenstein_twofranks_reinforce/frankenstein_twofranks_reinforceB_champion.npz",
+   "wall_seconds": 9.5
+  }
+ },
+ "comparisons_pct": {
+  "start_subject": 7.3066,
+  "frank1_parent": 6.8959,
+  "frank2_parent": 7.017,
+  "arm_A_best": 7.3066,
+  "arm_B_best": 7.283
+ },
+ "answer_to_sponsor_question": "1 draw on four different city sets (arm B) worked better: its best true gap was 7.2830% against 7.3066% for 4 draws on one city set (arm A) \u2014 a margin of 0.0236 percentage points at the same sampled-tour budget (4 per update, 400 updates).",
+ "wall_seconds_total": 23.0
+}

@@ -1,0 +1,46 @@
+{
+ "design": "sponsor stitching design, stitch #3: join after the decoders (sponsor addition, 2026-11-25)",
+ "parents": {
+  "host": {
+   "species": 8,
+   "gap_pct": 15.1315
+  },
+  "donor": {
+   "species": 9,
+   "gap_pct": 19.4412
+  }
+ },
+ "frankenstein3": {
+  "shape": {
+   "stream_width": 4,
+   "block1_ffn_width": 6,
+   "blocks": 1,
+   "decoders": 2,
+   "decoder_territories": {
+    "host": [
+     0,
+     1
+    ],
+    "donor": [
+     2,
+     3
+    ]
+   },
+   "join": {
+    "in": 24,
+    "hidden": 16,
+    "out": 10,
+    "sigma": 0.03,
+    "seed": 20261126
+   },
+   "total_params": 752
+  },
+  "block1": "verbatim from Frankenstein 2 (same corrected paths, same side-by-side block, same filler)",
+  "decoders": "each parent's decoder kept whole, exact, reading only its own stream territory",
+  "validation_gap_pct": 25.7642,
+  "validation_gap_plain_average_pct": 24.2109,
+  "frankenstein2_gap_pct": 41.474,
+  "mean_length": 3.591428776494293,
+  "parity": "each decoder half alone, on its parent's own encoder output, reproduces the parent's engine tours exactly (asserted in the build log)"
+ }
+}

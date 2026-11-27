@@ -1,0 +1,1272 @@
+{
+ "run": "stage 1: Net2WiderNet split-widen of the Step C Frankenstein, with the sponsor's noise amendment on the new copies",
+ "date": "2026-11-26",
+ "sponsor_direction": "Roman, 2026-11-26 22:01 EST: widen it now with Net2Net and split neurons with the 50/50 weight technique; add a small random noise to the weight of the new synapses",
+ "subject": {
+  "file": "engine_runs/frankenstein_stepC_evolution/frankenstein_stepC_evolved_champion.npz",
+  "validation_gap_pct": 8.1018,
+  "recomputed_gap_pct": 8.101755,
+  "genes": 1040,
+  "ffn_widths": {
+   "b0": 7,
+   "b1": 5,
+   "b2": 6,
+   "b3": 5,
+   "b4": 5,
+   "b5w": 8
+  },
+  "heads_before": {
+   "b0..b4": "one fused attention set",
+   "b5w": 2
+  }
+ },
+ "shapes_before": {
+  "embed.W_in": [
+   2,
+   4
+  ],
+  "embed.b_in": [
+   4
+  ],
+  "b0.lnA_gain": [
+   4
+  ],
+  "b0.lnA_bias": [
+   4
+  ],
+  "b0.lnF_gain": [
+   4
+  ],
+  "b0.lnF_bias": [
+   4
+  ],
+  "b0.W_q": [
+   4,
+   4
+  ],
+  "b0.W_k": [
+   4,
+   4
+  ],
+  "b0.W_v": [
+   4,
+   4
+  ],
+  "b0.W_o": [
+   4,
+   4
+  ],
+  "b0.b_q": [
+   4
+  ],
+  "b0.b_k": [
+   4
+  ],
+  "b0.b_v": [
+   4
+  ],
+  "b0.b_o": [
+   4
+  ],
+  "b0.b_2": [
+   4
+  ],
+  "b0.W_1": [
+   4,
+   7
+  ],
+  "b0.W_2": [
+   7,
+   4
+  ],
+  "b0.b_1": [
+   7
+  ],
+  "b1.lnA_gain": [
+   4
+  ],
+  "b1.lnA_bias": [
+   4
+  ],
+  "b1.lnF_gain": [
+   4
+  ],
+  "b1.lnF_bias": [
+   4
+  ],
+  "b1.W_q": [
+   4,
+   4
+  ],
+  "b1.W_k": [
+   4,
+   4
+  ],
+  "b1.W_v": [
+   4,
+   4
+  ],
+  "b1.W_o": [
+   4,
+   4
+  ],
+  "b1.b_q": [
+   4
+  ],
+  "b1.b_k": [
+   4
+  ],
+  "b1.b_v": [
+   4
+  ],
+  "b1.b_o": [
+   4
+  ],
+  "b1.b_2": [
+   4
+  ],
+  "b1.W_1": [
+   4,
+   5
+  ],
+  "b1.W_2": [
+   5,
+   4
+  ],
+  "b1.b_1": [
+   5
+  ],
+  "b2.lnA_gain": [
+   4
+  ],
+  "b2.lnA_bias": [
+   4
+  ],
+  "b2.lnF_gain": [
+   4
+  ],
+  "b2.lnF_bias": [
+   4
+  ],
+  "b2.W_q": [
+   4,
+   4
+  ],
+  "b2.W_k": [
+   4,
+   4
+  ],
+  "b2.W_v": [
+   4,
+   4
+  ],
+  "b2.W_o": [
+   4,
+   4
+  ],
+  "b2.b_q": [
+   4
+  ],
+  "b2.b_k": [
+   4
+  ],
+  "b2.b_v": [
+   4
+  ],
+  "b2.b_o": [
+   4
+  ],
+  "b2.b_2": [
+   4
+  ],
+  "b2.W_1": [
+   4,
+   6
+  ],
+  "b2.W_2": [
+   6,
+   4
+  ],
+  "b2.b_1": [
+   6
+  ],
+  "b3.lnA_gain": [
+   4
+  ],
+  "b3.lnA_bias": [
+   4
+  ],
+  "b3.lnF_gain": [
+   4
+  ],
+  "b3.lnF_bias": [
+   4
+  ],
+  "b3.W_q": [
+   4,
+   4
+  ],
+  "b3.W_k": [
+   4,
+   4
+  ],
+  "b3.W_v": [
+   4,
+   4
+  ],
+  "b3.W_o": [
+   4,
+   4
+  ],
+  "b3.b_q": [
+   4
+  ],
+  "b3.b_k": [
+   4
+  ],
+  "b3.b_v": [
+   4
+  ],
+  "b3.b_o": [
+   4
+  ],
+  "b3.b_2": [
+   4
+  ],
+  "b3.W_1": [
+   4,
+   5
+  ],
+  "b3.W_2": [
+   5,
+   4
+  ],
+  "b3.b_1": [
+   5
+  ],
+  "b4.lnA_gain": [
+   4
+  ],
+  "b4.lnA_bias": [
+   4
+  ],
+  "b4.lnF_gain": [
+   4
+  ],
+  "b4.lnF_bias": [
+   4
+  ],
+  "b4.W_q": [
+   4,
+   4
+  ],
+  "b4.W_k": [
+   4,
+   4
+  ],
+  "b4.W_v": [
+   4,
+   4
+  ],
+  "b4.W_o": [
+   4,
+   4
+  ],
+  "b4.b_q": [
+   4
+  ],
+  "b4.b_k": [
+   4
+  ],
+  "b4.b_v": [
+   4
+  ],
+  "b4.b_o": [
+   4
+  ],
+  "b4.b_2": [
+   4
+  ],
+  "b4.W_1": [
+   4,
+   5
+  ],
+  "b4.b_1": [
+   5
+  ],
+  "b4.W_2": [
+   5,
+   4
+  ],
+  "head.W_qd": [
+   4,
+   4
+  ],
+  "head.b_qd": [
+   4
+  ],
+  "head.v_start": [
+   4
+  ],
+  "b5w.lnA_gain": [
+   4
+  ],
+  "b5w.lnA_bias": [
+   4
+  ],
+  "b5w.h0.W_q": [
+   4,
+   4
+  ],
+  "b5w.h0.W_k": [
+   4,
+   4
+  ],
+  "b5w.h0.W_v": [
+   4,
+   4
+  ],
+  "b5w.h0.W_o": [
+   4,
+   4
+  ],
+  "b5w.h0.b_q": [
+   4
+  ],
+  "b5w.h0.b_k": [
+   4
+  ],
+  "b5w.h0.b_v": [
+   4
+  ],
+  "b5w.h0.b_o": [
+   4
+  ],
+  "b5w.h1.W_q": [
+   4,
+   4
+  ],
+  "b5w.h1.W_k": [
+   4,
+   4
+  ],
+  "b5w.h1.W_v": [
+   4,
+   4
+  ],
+  "b5w.h1.W_o": [
+   4,
+   4
+  ],
+  "b5w.h1.b_q": [
+   4
+  ],
+  "b5w.h1.b_k": [
+   4
+  ],
+  "b5w.h1.b_v": [
+   4
+  ],
+  "b5w.h1.b_o": [
+   4
+  ],
+  "b5w.lnF_gain": [
+   4
+  ],
+  "b5w.lnF_bias": [
+   4
+  ],
+  "b5w.W_1": [
+   4,
+   8
+  ],
+  "b5w.b_1": [
+   8
+  ],
+  "b5w.W_2": [
+   8,
+   4
+  ],
+  "b5w.b_2": [
+   4
+  ]
+ },
+ "shapes_after": {
+  "embed.W_in": [
+   2,
+   8
+  ],
+  "embed.b_in": [
+   8
+  ],
+  "b0.lnA_gain": [
+   8
+  ],
+  "b0.lnA_bias": [
+   8
+  ],
+  "b0.h0.W_q": [
+   8,
+   8
+  ],
+  "b0.h0.W_k": [
+   8,
+   8
+  ],
+  "b0.h0.W_v": [
+   8,
+   8
+  ],
+  "b0.h0.W_o": [
+   8,
+   8
+  ],
+  "b0.h0.b_q": [
+   8
+  ],
+  "b0.h0.b_k": [
+   8
+  ],
+  "b0.h0.b_v": [
+   8
+  ],
+  "b0.h0.b_o": [
+   8
+  ],
+  "b0.h1.W_q": [
+   8,
+   8
+  ],
+  "b0.h1.W_k": [
+   8,
+   8
+  ],
+  "b0.h1.W_v": [
+   8,
+   8
+  ],
+  "b0.h1.W_o": [
+   8,
+   8
+  ],
+  "b0.h1.b_q": [
+   8
+  ],
+  "b0.h1.b_k": [
+   8
+  ],
+  "b0.h1.b_v": [
+   8
+  ],
+  "b0.h1.b_o": [
+   8
+  ],
+  "b0.h2.W_q": [
+   8,
+   8
+  ],
+  "b0.h2.W_k": [
+   8,
+   8
+  ],
+  "b0.h2.W_v": [
+   8,
+   8
+  ],
+  "b0.h2.W_o": [
+   8,
+   8
+  ],
+  "b0.h2.b_q": [
+   8
+  ],
+  "b0.h2.b_k": [
+   8
+  ],
+  "b0.h2.b_v": [
+   8
+  ],
+  "b0.h2.b_o": [
+   8
+  ],
+  "b0.h3.W_q": [
+   8,
+   8
+  ],
+  "b0.h3.W_k": [
+   8,
+   8
+  ],
+  "b0.h3.W_v": [
+   8,
+   8
+  ],
+  "b0.h3.W_o": [
+   8,
+   8
+  ],
+  "b0.h3.b_q": [
+   8
+  ],
+  "b0.h3.b_k": [
+   8
+  ],
+  "b0.h3.b_v": [
+   8
+  ],
+  "b0.h3.b_o": [
+   8
+  ],
+  "b0.lnF_gain": [
+   8
+  ],
+  "b0.lnF_bias": [
+   8
+  ],
+  "b0.W_1": [
+   8,
+   14
+  ],
+  "b0.b_1": [
+   14
+  ],
+  "b0.W_2": [
+   14,
+   8
+  ],
+  "b0.b_2": [
+   8
+  ],
+  "b1.lnA_gain": [
+   8
+  ],
+  "b1.lnA_bias": [
+   8
+  ],
+  "b1.h0.W_q": [
+   8,
+   8
+  ],
+  "b1.h0.W_k": [
+   8,
+   8
+  ],
+  "b1.h0.W_v": [
+   8,
+   8
+  ],
+  "b1.h0.W_o": [
+   8,
+   8
+  ],
+  "b1.h0.b_q": [
+   8
+  ],
+  "b1.h0.b_k": [
+   8
+  ],
+  "b1.h0.b_v": [
+   8
+  ],
+  "b1.h0.b_o": [
+   8
+  ],
+  "b1.h1.W_q": [
+   8,
+   8
+  ],
+  "b1.h1.W_k": [
+   8,
+   8
+  ],
+  "b1.h1.W_v": [
+   8,
+   8
+  ],
+  "b1.h1.W_o": [
+   8,
+   8
+  ],
+  "b1.h1.b_q": [
+   8
+  ],
+  "b1.h1.b_k": [
+   8
+  ],
+  "b1.h1.b_v": [
+   8
+  ],
+  "b1.h1.b_o": [
+   8
+  ],
+  "b1.h2.W_q": [
+   8,
+   8
+  ],
+  "b1.h2.W_k": [
+   8,
+   8
+  ],
+  "b1.h2.W_v": [
+   8,
+   8
+  ],
+  "b1.h2.W_o": [
+   8,
+   8
+  ],
+  "b1.h2.b_q": [
+   8
+  ],
+  "b1.h2.b_k": [
+   8
+  ],
+  "b1.h2.b_v": [
+   8
+  ],
+  "b1.h2.b_o": [
+   8
+  ],
+  "b1.h3.W_q": [
+   8,
+   8
+  ],
+  "b1.h3.W_k": [
+   8,
+   8
+  ],
+  "b1.h3.W_v": [
+   8,
+   8
+  ],
+  "b1.h3.W_o": [
+   8,
+   8
+  ],
+  "b1.h3.b_q": [
+   8
+  ],
+  "b1.h3.b_k": [
+   8
+  ],
+  "b1.h3.b_v": [
+   8
+  ],
+  "b1.h3.b_o": [
+   8
+  ],
+  "b1.lnF_gain": [
+   8
+  ],
+  "b1.lnF_bias": [
+   8
+  ],
+  "b1.W_1": [
+   8,
+   10
+  ],
+  "b1.b_1": [
+   10
+  ],
+  "b1.W_2": [
+   10,
+   8
+  ],
+  "b1.b_2": [
+   8
+  ],
+  "b2.lnA_gain": [
+   8
+  ],
+  "b2.lnA_bias": [
+   8
+  ],
+  "b2.h0.W_q": [
+   8,
+   8
+  ],
+  "b2.h0.W_k": [
+   8,
+   8
+  ],
+  "b2.h0.W_v": [
+   8,
+   8
+  ],
+  "b2.h0.W_o": [
+   8,
+   8
+  ],
+  "b2.h0.b_q": [
+   8
+  ],
+  "b2.h0.b_k": [
+   8
+  ],
+  "b2.h0.b_v": [
+   8
+  ],
+  "b2.h0.b_o": [
+   8
+  ],
+  "b2.h1.W_q": [
+   8,
+   8
+  ],
+  "b2.h1.W_k": [
+   8,
+   8
+  ],
+  "b2.h1.W_v": [
+   8,
+   8
+  ],
+  "b2.h1.W_o": [
+   8,
+   8
+  ],
+  "b2.h1.b_q": [
+   8
+  ],
+  "b2.h1.b_k": [
+   8
+  ],
+  "b2.h1.b_v": [
+   8
+  ],
+  "b2.h1.b_o": [
+   8
+  ],
+  "b2.h2.W_q": [
+   8,
+   8
+  ],
+  "b2.h2.W_k": [
+   8,
+   8
+  ],
+  "b2.h2.W_v": [
+   8,
+   8
+  ],
+  "b2.h2.W_o": [
+   8,
+   8
+  ],
+  "b2.h2.b_q": [
+   8
+  ],
+  "b2.h2.b_k": [
+   8
+  ],
+  "b2.h2.b_v": [
+   8
+  ],
+  "b2.h2.b_o": [
+   8
+  ],
+  "b2.h3.W_q": [
+   8,
+   8
+  ],
+  "b2.h3.W_k": [
+   8,
+   8
+  ],
+  "b2.h3.W_v": [
+   8,
+   8
+  ],
+  "b2.h3.W_o": [
+   8,
+   8
+  ],
+  "b2.h3.b_q": [
+   8
+  ],
+  "b2.h3.b_k": [
+   8
+  ],
+  "b2.h3.b_v": [
+   8
+  ],
+  "b2.h3.b_o": [
+   8
+  ],
+  "b2.lnF_gain": [
+   8
+  ],
+  "b2.lnF_bias": [
+   8
+  ],
+  "b2.W_1": [
+   8,
+   12
+  ],
+  "b2.b_1": [
+   12
+  ],
+  "b2.W_2": [
+   12,
+   8
+  ],
+  "b2.b_2": [
+   8
+  ],
+  "b3.lnA_gain": [
+   8
+  ],
+  "b3.lnA_bias": [
+   8
+  ],
+  "b3.h0.W_q": [
+   8,
+   8
+  ],
+  "b3.h0.W_k": [
+   8,
+   8
+  ],
+  "b3.h0.W_v": [
+   8,
+   8
+  ],
+  "b3.h0.W_o": [
+   8,
+   8
+  ],
+  "b3.h0.b_q": [
+   8
+  ],
+  "b3.h0.b_k": [
+   8
+  ],
+  "b3.h0.b_v": [
+   8
+  ],
+  "b3.h0.b_o": [
+   8
+  ],
+  "b3.h1.W_q": [
+   8,
+   8
+  ],
+  "b3.h1.W_k": [
+   8,
+   8
+  ],
+  "b3.h1.W_v": [
+   8,
+   8
+  ],
+  "b3.h1.W_o": [
+   8,
+   8
+  ],
+  "b3.h1.b_q": [
+   8
+  ],
+  "b3.h1.b_k": [
+   8
+  ],
+  "b3.h1.b_v": [
+   8
+  ],
+  "b3.h1.b_o": [
+   8
+  ],
+  "b3.h2.W_q": [
+   8,
+   8
+  ],
+  "b3.h2.W_k": [
+   8,
+   8
+  ],
+  "b3.h2.W_v": [
+   8,
+   8
+  ],
+  "b3.h2.W_o": [
+   8,
+   8
+  ],
+  "b3.h2.b_q": [
+   8
+  ],
+  "b3.h2.b_k": [
+   8
+  ],
+  "b3.h2.b_v": [
+   8
+  ],
+  "b3.h2.b_o": [
+   8
+  ],
+  "b3.h3.W_q": [
+   8,
+   8
+  ],
+  "b3.h3.W_k": [
+   8,
+   8
+  ],
+  "b3.h3.W_v": [
+   8,
+   8
+  ],
+  "b3.h3.W_o": [
+   8,
+   8
+  ],
+  "b3.h3.b_q": [
+   8
+  ],
+  "b3.h3.b_k": [
+   8
+  ],
+  "b3.h3.b_v": [
+   8
+  ],
+  "b3.h3.b_o": [
+   8
+  ],
+  "b3.lnF_gain": [
+   8
+  ],
+  "b3.lnF_bias": [
+   8
+  ],
+  "b3.W_1": [
+   8,
+   10
+  ],
+  "b3.b_1": [
+   10
+  ],
+  "b3.W_2": [
+   10,
+   8
+  ],
+  "b3.b_2": [
+   8
+  ],
+  "b4.lnA_gain": [
+   8
+  ],
+  "b4.lnA_bias": [
+   8
+  ],
+  "b4.h0.W_q": [
+   8,
+   8
+  ],
+  "b4.h0.W_k": [
+   8,
+   8
+  ],
+  "b4.h0.W_v": [
+   8,
+   8
+  ],
+  "b4.h0.W_o": [
+   8,
+   8
+  ],
+  "b4.h0.b_q": [
+   8
+  ],
+  "b4.h0.b_k": [
+   8
+  ],
+  "b4.h0.b_v": [
+   8
+  ],
+  "b4.h0.b_o": [
+   8
+  ],
+  "b4.h1.W_q": [
+   8,
+   8
+  ],
+  "b4.h1.W_k": [
+   8,
+   8
+  ],
+  "b4.h1.W_v": [
+   8,
+   8
+  ],
+  "b4.h1.W_o": [
+   8,
+   8
+  ],
+  "b4.h1.b_q": [
+   8
+  ],
+  "b4.h1.b_k": [
+   8
+  ],
+  "b4.h1.b_v": [
+   8
+  ],
+  "b4.h1.b_o": [
+   8
+  ],
+  "b4.h2.W_q": [
+   8,
+   8
+  ],
+  "b4.h2.W_k": [
+   8,
+   8
+  ],
+  "b4.h2.W_v": [
+   8,
+   8
+  ],
+  "b4.h2.W_o": [
+   8,
+   8
+  ],
+  "b4.h2.b_q": [
+   8
+  ],
+  "b4.h2.b_k": [
+   8
+  ],
+  "b4.h2.b_v": [
+   8
+  ],
+  "b4.h2.b_o": [
+   8
+  ],
+  "b4.h3.W_q": [
+   8,
+   8
+  ],
+  "b4.h3.W_k": [
+   8,
+   8
+  ],
+  "b4.h3.W_v": [
+   8,
+   8
+  ],
+  "b4.h3.W_o": [
+   8,
+   8
+  ],
+  "b4.h3.b_q": [
+   8
+  ],
+  "b4.h3.b_k": [
+   8
+  ],
+  "b4.h3.b_v": [
+   8
+  ],
+  "b4.h3.b_o": [
+   8
+  ],
+  "b4.lnF_gain": [
+   8
+  ],
+  "b4.lnF_bias": [
+   8
+  ],
+  "b4.W_1": [
+   8,
+   10
+  ],
+  "b4.b_1": [
+   10
+  ],
+  "b4.W_2": [
+   10,
+   8
+  ],
+  "b4.b_2": [
+   8
+  ],
+  "b5w.lnA_gain": [
+   8
+  ],
+  "b5w.lnA_bias": [
+   8
+  ],
+  "b5w.h0.W_q": [
+   8,
+   8
+  ],
+  "b5w.h0.W_k": [
+   8,
+   8
+  ],
+  "b5w.h0.W_v": [
+   8,
+   8
+  ],
+  "b5w.h0.W_o": [
+   8,
+   8
+  ],
+  "b5w.h0.b_q": [
+   8
+  ],
+  "b5w.h0.b_k": [
+   8
+  ],
+  "b5w.h0.b_v": [
+   8
+  ],
+  "b5w.h0.b_o": [
+   8
+  ],
+  "b5w.h1.W_q": [
+   8,
+   8
+  ],
+  "b5w.h1.W_k": [
+   8,
+   8
+  ],
+  "b5w.h1.W_v": [
+   8,
+   8
+  ],
+  "b5w.h1.W_o": [
+   8,
+   8
+  ],
+  "b5w.h1.b_q": [
+   8
+  ],
+  "b5w.h1.b_k": [
+   8
+  ],
+  "b5w.h1.b_v": [
+   8
+  ],
+  "b5w.h1.b_o": [
+   8
+  ],
+  "b5w.h2.W_q": [
+   8,
+   8
+  ],
+  "b5w.h2.W_k": [
+   8,
+   8
+  ],
+  "b5w.h2.W_v": [
+   8,
+   8
+  ],
+  "b5w.h2.W_o": [
+   8,
+   8
+  ],
+  "b5w.h2.b_q": [
+   8
+  ],
+  "b5w.h2.b_k": [
+   8
+  ],
+  "b5w.h2.b_v": [
+   8
+  ],
+  "b5w.h2.b_o": [
+   8
+  ],
+  "b5w.h3.W_q": [
+   8,
+   8
+  ],
+  "b5w.h3.W_k": [
+   8,
+   8
+  ],
+  "b5w.h3.W_v": [
+   8,
+   8
+  ],
+  "b5w.h3.W_o": [
+   8,
+   8
+  ],
+  "b5w.h3.b_q": [
+   8
+  ],
+  "b5w.h3.b_k": [
+   8
+  ],
+  "b5w.h3.b_v": [
+   8
+  ],
+  "b5w.h3.b_o": [
+   8
+  ],
+  "b5w.lnF_gain": [
+   8
+  ],
+  "b5w.lnF_bias": [
+   8
+  ],
+  "b5w.W_1": [
+   8,
+   16
+  ],
+  "b5w.b_1": [
+   16
+  ],
+  "b5w.W_2": [
+   16,
+   8
+  ],
+  "b5w.b_2": [
+   8
+  ],
+  "head.W_qd": [
+   8,
+   8
+  ],
+  "head.b_qd": [
+   8
+  ],
+  "head.v_start": [
+   8
+  ]
+ },
+ "gene_counts": {
+  "total": 8480,
+  "frozen_original_copies": 1440,
+  "trainable_new_copies": 7040
+ },
+ "conventions": {
+  "stream": "d 4 -> 8 by duplication; copies appended (coords 4..7 copy 0..3); output sides of the stream are duplicated, input sides are split evenly (each copy carries half)",
+  "attn_scale": "0.7071067811865475 -> 0.35355339059327373 (halved; attention-score and decoder dot products run over the duplicated stream)",
+  "ln_eps": "1e-05 unchanged (duplication preserves LN mean/variance)",
+  "ln_gains_biases": "duplicated",
+  "heads": "x2 in every block. Fused blocks (b0..b4): the stored fused attention is decomposed into 2 heads (full W_q/W_k/W_v each; W_o, b_o halved between them), then each head is split (Q/K/V copied exactly, W_o and b_o halved in both daughters) -> 4 heads, all identical before noise. b5w: each of its 2 heads is split the same way -> 4 heads (daughters of h0: h0, h2; of h1: h1, h3)",
+  "ffn": "x2 per block by Net2WiderNet split: W_1 column and b_1 copied exactly into the appended copy unit, W_2 row halved in both copies (the stream input-split also applies to W_1's rows and W_2's columns)",
+  "decoder": "W_qd (8,8) by the uniform duplication rule (input split, output duplicated); b_qd and v_start duplicated",
+  "entry": "W_in columns duplicated; b_in duplicated",
+  "noise": "Gaussian std 0.03, seed 20261240, one rng stream drawn per key in gene order, added AFTER splitting to the trainable entries only (every weight entry belonging to a new copy: its incoming and outgoing weights); the original copies' entries, including their halved outgoing weights, stay exact",
+  "mask_rule": "frozen = every gene of the original copies (union rule: an entry is frozen iff every widened axis it touches is an original index \u2014 stream 0..3, units 0..U0-1, heads 0..1); trainable = the rest (any entry touching a copy index, or belonging to a copy unit or head). The noise set equals the trainable set"
+ },
+ "parity_gate_no_noise": {
+  "pass": true,
+  "tours_identical_all_200": true,
+  "subject_gap_pct_recomputed": 8.101755,
+  "widened_gap_pct": 8.101755
+ },
+ "birth_gap_with_noise": {
+  "gap_pct": 20.312084,
+  "subject_gap_pct": 8.1018,
+  "drift_points": 12.2103,
+  "tours_changed_of_200": 194,
+  "note": "exact preservation does NOT hold for the noisy genome \u2014 the noise on the new copies moves the function, by the sponsor's design"
+ },
+ "genome_file": "frankenstein_stepC_widened_genome.npz (arrays + trainable_mask + frozen_idx + trainable_idx + meta)"
+}

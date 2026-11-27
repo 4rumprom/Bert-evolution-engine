@@ -1,0 +1,169 @@
+{
+ "run": "backpropagation on the Two-Franks stitch, sponsor's full schedule",
+ "date": "2026-11-26",
+ "sponsor_direction": "Roman, 2026-11-26 09:07 EST: 'Your full schedule: seams first, backbone in once below 6.90%'",
+ "subject": {
+  "file": "engine_runs/frankenstein_twofranks_evolution/frankenstein_twofranks_extended_champion.npz",
+  "recorded_gap_pct": 7.3066,
+  "genes_total": 1462,
+  "genes_backbone": 356,
+  "genes_stitching": 1106
+ },
+ "sanity": {
+  "recomputed_gap_pct": 7.306624,
+  "recorded_gap_pct": 7.3066,
+  "abs_diff_pct_points": 2.379e-05,
+  "passed": true,
+  "jax_mirror_encoder_parity_max_abs_diff": 3.552713678800501e-15
+ },
+ "surrogate": {
+  "kind": "anchored expected tour length (bert_attribution.soft_forward structure): the network's own greedy picks held constant; at each visited state the pointer distribution at temperature tau prices the expected next leg",
+  "tau": 0.1,
+  "pearson_vs_true_lengths_validation": 0.5845,
+  "mean_soft_length_validation": 4.3536,
+  "mean_true_length_validation": 3.0719,
+  "note": "measured on the fixed validation set for this subject before training; the run proceeded regardless of the value"
+ },
+ "training": {
+  "optimizer": "hand-rolled Adam, bias-corrected, one global step counter",
+  "learning_rate": 0.01,
+  "adam_beta1": 0.9,
+  "adam_beta2": 0.999,
+  "adam_eps": 1e-08,
+  "batch": 64,
+  "batch_stream": "64 fresh problems per step, n = 10 cities, uniform on the unit square, numpy default_rng seed 20261202; never the validation problems",
+  "picks": "each step's batch picks are the current weights' own greedy picks (numpy decode), held constant inside that step's gradient",
+  "gradient_masking": "a gene with multiplier 0 also receives zero gradient, so its Adam moments stay at zero and its value is bit-identical while frozen",
+  "objective": "mean anchored soft tour length over the batch (raw lengths, not gaps: fresh problems have no optima computed)"
+ },
+ "schedule": {
+  "trigger": "true validation gap < 6.8959% at a read (reads every 100 steps)",
+  "phase1": "stitching genes only; stop the whole run if no trigger after 1500 steps",
+  "phase1_extra_steps_after_trigger": 200,
+  "phase2_ramp": null,
+  "phase3_steps": 500,
+  "hard_cap_steps": 2200
+ },
+ "outcome": {
+  "trigger_fired": false,
+  "trigger_step": null,
+  "phase1_end_step": 1500,
+  "phase2_end_step": null,
+  "phase3_end_step": null,
+  "phase3_truncated_by_hard_cap": false,
+  "total_steps": 1500,
+  "phase1_backbone_bit_identical": true,
+  "best_validation_gap_pct": 7.3066,
+  "best_validation_step": 0,
+  "genes_changed_vs_subject": {
+   "stitching": 0,
+   "backbone": 0
+  },
+  "backbone_diff_vs_founder_stitch_genes": 0
+ },
+ "reads": [
+  {
+   "step": 0,
+   "segment": "phase1",
+   "gap_pct": 7.3066,
+   "is_best": true
+  },
+  {
+   "step": 100,
+   "segment": "phase1",
+   "gap_pct": 85.0839,
+   "is_best": false
+  },
+  {
+   "step": 200,
+   "segment": "phase1",
+   "gap_pct": 85.0839,
+   "is_best": false
+  },
+  {
+   "step": 300,
+   "segment": "phase1",
+   "gap_pct": 85.0839,
+   "is_best": false
+  },
+  {
+   "step": 400,
+   "segment": "phase1",
+   "gap_pct": 85.0839,
+   "is_best": false
+  },
+  {
+   "step": 500,
+   "segment": "phase1",
+   "gap_pct": 85.0839,
+   "is_best": false
+  },
+  {
+   "step": 600,
+   "segment": "phase1",
+   "gap_pct": 85.0839,
+   "is_best": false
+  },
+  {
+   "step": 700,
+   "segment": "phase1",
+   "gap_pct": 85.0839,
+   "is_best": false
+  },
+  {
+   "step": 800,
+   "segment": "phase1",
+   "gap_pct": 85.0839,
+   "is_best": false
+  },
+  {
+   "step": 900,
+   "segment": "phase1",
+   "gap_pct": 85.0839,
+   "is_best": false
+  },
+  {
+   "step": 1000,
+   "segment": "phase1",
+   "gap_pct": 85.0839,
+   "is_best": false
+  },
+  {
+   "step": 1100,
+   "segment": "phase1",
+   "gap_pct": 85.0839,
+   "is_best": false
+  },
+  {
+   "step": 1200,
+   "segment": "phase1",
+   "gap_pct": 85.0839,
+   "is_best": false
+  },
+  {
+   "step": 1300,
+   "segment": "phase1",
+   "gap_pct": 85.0839,
+   "is_best": false
+  },
+  {
+   "step": 1400,
+   "segment": "phase1",
+   "gap_pct": 85.0839,
+   "is_best": false
+  },
+  {
+   "step": 1500,
+   "segment": "phase1",
+   "gap_pct": 85.0839,
+   "is_best": false
+  }
+ ],
+ "comparisons_pct": {
+  "subject_evolution_result": 7.3066,
+  "frank1_parent": 6.8959,
+  "frank2_parent": 7.017,
+  "this_run_best": 7.3066
+ },
+ "wall_seconds": 20.9
+}

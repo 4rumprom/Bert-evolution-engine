@@ -1,0 +1,374 @@
+{
+ "run": "REINFORCE, STITCHES ONLY, on the widened (noise std 0.003) Step C Frankenstein \u2014 one sampled path per starting city, 20 cities; Adam lr 5e-6 (factor-20 correction)",
+ "date": "2026-11-26",
+ "sponsor_direction": "Roman, 2026-11-26 22:17-22:18 EST: start the training over with smaller error correction by a factor 20 (the old parameters suit a random network; this one is already good), and train the STITCHES only",
+ "method": {
+  "name": "REINFORCE (policy gradient) with a greedy baseline, exactly as the sponsor specified",
+  "sampling": "external sampling from the network's own pointer distribution (softmax over the decoder logits as produced; no temperature, no soft surrogate)",
+  "rollouts": "one sampled path per starting city: 20 rollouts per problem, the first pick forced to each city in turn",
+  "first_pick_logprob": "EXCLUDED from the loss \u2014 the forced first pick is not a network choice. The rollout still conditions on it: the start city is marked visited and its embedding is the 'last' state for the next step",
+  "baseline": "the problem's own greedy tour length (always the most probable city), computed once per problem",
+  "advantage": "baseline length - sampled tour length (positive when the sample beats the greedy tour)",
+  "loss": "-mean over the update batch (4 problems x 20 rollouts = 80 sampled tours) of advantage x (sum of log-probabilities of the sampled actions, forced first pick excluded); one optimizer update per batch; weights unchanged while all tours of the batch are generated",
+  "optimizer": "Adam, lr 5e-06, global-norm gradient clip 1.0, beta1 0.9, beta2 0.999, eps 1e-08",
+  "moving_genes": "STITCHES ONLY: the genes of the widened backend block b5w (1464); everything else frozen (7016) bit-identical throughout",
+  "guard": "true-gap reads on the fixed validation set (10 cities) every 25 updates; best-on-validation weights are the working point; a worse read reverts to the best, resets Adam, and halves the lr (floor 5e-08)",
+  "problems": "fresh problems, n = 20 cities, uniform on the unit square, seed stream 20261241 (update u uses batch seed 20261241 + u); never the validation problems"
+ },
+ "stage1_widen": {
+  "genome_file": "frankenstein_stepC_widened003_genome.npz",
+  "genes_total": 8480,
+  "genes_frozen": 1440,
+  "genes_trainable": 7040,
+  "parity_gate_no_noise": {
+   "pass": true,
+   "tours_identical_all_200": true,
+   "subject_gap_pct_recomputed": 8.101755,
+   "widened_gap_pct": 8.101755
+  },
+  "birth_gap_with_noise_pct": 8.782789,
+  "pre_widen_subject_gap_pct": 8.1018
+ },
+ "trainable_set": {
+  "rule": "STITCHES ONLY: every gene of the widened backend block b5w (both copies of its heads and FFN units, its layer norms), located via the widened genome's gene layout; everything else frozen",
+  "stitch_genes": 1464,
+  "frozen_genes": 7016,
+  "stitch_keys": [
+   "b5w.lnA_gain",
+   "b5w.lnA_bias",
+   "b5w.h0.W_q",
+   "b5w.h0.W_k",
+   "b5w.h0.W_v",
+   "b5w.h0.W_o",
+   "b5w.h0.b_q",
+   "b5w.h0.b_k",
+   "b5w.h0.b_v",
+   "b5w.h0.b_o",
+   "b5w.h1.W_q",
+   "b5w.h1.W_k",
+   "b5w.h1.W_v",
+   "b5w.h1.W_o",
+   "b5w.h1.b_q",
+   "b5w.h1.b_k",
+   "b5w.h1.b_v",
+   "b5w.h1.b_o",
+   "b5w.h2.W_q",
+   "b5w.h2.W_k",
+   "b5w.h2.W_v",
+   "b5w.h2.W_o",
+   "b5w.h2.b_q",
+   "b5w.h2.b_k",
+   "b5w.h2.b_v",
+   "b5w.h2.b_o",
+   "b5w.h3.W_q",
+   "b5w.h3.W_k",
+   "b5w.h3.W_v",
+   "b5w.h3.W_o",
+   "b5w.h3.b_q",
+   "b5w.h3.b_k",
+   "b5w.h3.b_v",
+   "b5w.h3.b_o",
+   "b5w.lnF_gain",
+   "b5w.lnF_bias",
+   "b5w.W_1",
+   "b5w.b_1",
+   "b5w.W_2",
+   "b5w.b_2"
+  ]
+ },
+ "sanity": {
+  "widened_birth_gap_recomputed_pct": 8.782789,
+  "stage1_recorded_birth_gap_pct": 8.782789,
+  "passed": true,
+  "jax_mirror_encoder_parity_max_abs_diff": 2.4424906541753444e-15,
+  "jax_greedy_parity_n10_max_abs_diff": 4.440892098500626e-16,
+  "jax_greedy_parity_n20_max_abs_diff": 8.881784197001252e-16
+ },
+ "training": {
+  "updates": 400,
+  "problems_per_update": 4,
+  "rollouts_per_problem": 20,
+  "sampled_tours_per_update": 80,
+  "greedy_tours_per_update": 4,
+  "seed_base": 20261241,
+  "reads": [
+   {
+    "update": 0,
+    "gap_pct": 8.7828,
+    "is_best": true,
+    "guard_action": "none_new_best",
+    "lr_after": 5e-06
+   },
+   {
+    "update": 25,
+    "gap_pct": 8.8947,
+    "is_best": false,
+    "guard_action": "revert_to_best_and_halve_lr",
+    "lr_after": 2.5e-06
+   },
+   {
+    "update": 50,
+    "gap_pct": 8.881,
+    "is_best": false,
+    "guard_action": "revert_to_best_and_halve_lr",
+    "lr_after": 1.25e-06
+   },
+   {
+    "update": 75,
+    "gap_pct": 8.9088,
+    "is_best": false,
+    "guard_action": "revert_to_best_and_halve_lr",
+    "lr_after": 6.25e-07
+   },
+   {
+    "update": 100,
+    "gap_pct": 8.9088,
+    "is_best": false,
+    "guard_action": "revert_to_best_and_halve_lr",
+    "lr_after": 3.125e-07
+   },
+   {
+    "update": 125,
+    "gap_pct": 8.8975,
+    "is_best": false,
+    "guard_action": "revert_to_best_and_halve_lr",
+    "lr_after": 1.5625e-07
+   },
+   {
+    "update": 150,
+    "gap_pct": 8.8042,
+    "is_best": false,
+    "guard_action": "revert_to_best_and_halve_lr",
+    "lr_after": 7.8125e-08
+   },
+   {
+    "update": 175,
+    "gap_pct": 8.7828,
+    "is_best": false,
+    "guard_action": "revert_to_best_and_halve_lr",
+    "lr_after": 5e-08
+   },
+   {
+    "update": 200,
+    "gap_pct": 8.7828,
+    "is_best": false,
+    "guard_action": "revert_to_best_lr_at_floor",
+    "lr_after": 5e-08
+   },
+   {
+    "update": 225,
+    "gap_pct": 8.7828,
+    "is_best": false,
+    "guard_action": "revert_to_best_lr_at_floor",
+    "lr_after": 5e-08
+   },
+   {
+    "update": 250,
+    "gap_pct": 8.7828,
+    "is_best": false,
+    "guard_action": "revert_to_best_lr_at_floor",
+    "lr_after": 5e-08
+   },
+   {
+    "update": 275,
+    "gap_pct": 8.7828,
+    "is_best": false,
+    "guard_action": "revert_to_best_lr_at_floor",
+    "lr_after": 5e-08
+   },
+   {
+    "update": 300,
+    "gap_pct": 8.7828,
+    "is_best": false,
+    "guard_action": "revert_to_best_lr_at_floor",
+    "lr_after": 5e-08
+   },
+   {
+    "update": 325,
+    "gap_pct": 8.7828,
+    "is_best": false,
+    "guard_action": "revert_to_best_lr_at_floor",
+    "lr_after": 5e-08
+   },
+   {
+    "update": 350,
+    "gap_pct": 8.7828,
+    "is_best": false,
+    "guard_action": "revert_to_best_lr_at_floor",
+    "lr_after": 5e-08
+   },
+   {
+    "update": 375,
+    "gap_pct": 8.7828,
+    "is_best": false,
+    "guard_action": "revert_to_best_lr_at_floor",
+    "lr_after": 5e-08
+   },
+   {
+    "update": 400,
+    "gap_pct": 8.7828,
+    "is_best": false,
+    "guard_action": "revert_to_best_lr_at_floor",
+    "lr_after": 5e-08
+   }
+  ],
+  "guard": {
+   "reverts": 16,
+   "halvings": 7,
+   "final_lr": 5e-08,
+   "events": [
+    {
+     "update": 25,
+     "gap_pct": 8.8947,
+     "action": "revert_to_best_and_halve_lr",
+     "lr_after": 2.5e-06,
+     "best_gap_pct": 8.7828,
+     "best_update": 0
+    },
+    {
+     "update": 50,
+     "gap_pct": 8.881,
+     "action": "revert_to_best_and_halve_lr",
+     "lr_after": 1.25e-06,
+     "best_gap_pct": 8.7828,
+     "best_update": 0
+    },
+    {
+     "update": 75,
+     "gap_pct": 8.9088,
+     "action": "revert_to_best_and_halve_lr",
+     "lr_after": 6.25e-07,
+     "best_gap_pct": 8.7828,
+     "best_update": 0
+    },
+    {
+     "update": 100,
+     "gap_pct": 8.9088,
+     "action": "revert_to_best_and_halve_lr",
+     "lr_after": 3.125e-07,
+     "best_gap_pct": 8.7828,
+     "best_update": 0
+    },
+    {
+     "update": 125,
+     "gap_pct": 8.8975,
+     "action": "revert_to_best_and_halve_lr",
+     "lr_after": 1.5625e-07,
+     "best_gap_pct": 8.7828,
+     "best_update": 0
+    },
+    {
+     "update": 150,
+     "gap_pct": 8.8042,
+     "action": "revert_to_best_and_halve_lr",
+     "lr_after": 7.8125e-08,
+     "best_gap_pct": 8.7828,
+     "best_update": 0
+    },
+    {
+     "update": 175,
+     "gap_pct": 8.7828,
+     "action": "revert_to_best_and_halve_lr",
+     "lr_after": 5e-08,
+     "best_gap_pct": 8.7828,
+     "best_update": 0
+    },
+    {
+     "update": 200,
+     "gap_pct": 8.7828,
+     "action": "revert_to_best_lr_at_floor",
+     "lr_after": 5e-08,
+     "best_gap_pct": 8.7828,
+     "best_update": 0
+    },
+    {
+     "update": 225,
+     "gap_pct": 8.7828,
+     "action": "revert_to_best_lr_at_floor",
+     "lr_after": 5e-08,
+     "best_gap_pct": 8.7828,
+     "best_update": 0
+    },
+    {
+     "update": 250,
+     "gap_pct": 8.7828,
+     "action": "revert_to_best_lr_at_floor",
+     "lr_after": 5e-08,
+     "best_gap_pct": 8.7828,
+     "best_update": 0
+    },
+    {
+     "update": 275,
+     "gap_pct": 8.7828,
+     "action": "revert_to_best_lr_at_floor",
+     "lr_after": 5e-08,
+     "best_gap_pct": 8.7828,
+     "best_update": 0
+    },
+    {
+     "update": 300,
+     "gap_pct": 8.7828,
+     "action": "revert_to_best_lr_at_floor",
+     "lr_after": 5e-08,
+     "best_gap_pct": 8.7828,
+     "best_update": 0
+    },
+    {
+     "update": 325,
+     "gap_pct": 8.7828,
+     "action": "revert_to_best_lr_at_floor",
+     "lr_after": 5e-08,
+     "best_gap_pct": 8.7828,
+     "best_update": 0
+    },
+    {
+     "update": 350,
+     "gap_pct": 8.7828,
+     "action": "revert_to_best_lr_at_floor",
+     "lr_after": 5e-08,
+     "best_gap_pct": 8.7828,
+     "best_update": 0
+    },
+    {
+     "update": 375,
+     "gap_pct": 8.7828,
+     "action": "revert_to_best_lr_at_floor",
+     "lr_after": 5e-08,
+     "best_gap_pct": 8.7828,
+     "best_update": 0
+    },
+    {
+     "update": 400,
+     "gap_pct": 8.7828,
+     "action": "revert_to_best_lr_at_floor",
+     "lr_after": 5e-08,
+     "best_gap_pct": 8.7828,
+     "best_update": 0
+    }
+   ]
+  },
+  "signal_stats_n20": {
+   "n_sampled_tours": 32000,
+   "n_greedy_tours": 1600,
+   "mean_sampled_length": 9.5297,
+   "std_sampled_length": 1.1235,
+   "mean_greedy_length": 4.4828,
+   "mean_advantage": -5.0469,
+   "advantage_spread_std": 1.0793,
+   "advantage_min": -9.4886,
+   "advantage_max": -1.1918,
+   "frac_samples_beating_greedy": 0.0,
+   "mean_loss_first_25_updates": -197.058,
+   "mean_loss_last_25_updates": -195.205
+  },
+  "best_validation_gap_pct": 8.7828,
+  "best_validation_update": 0,
+  "improvement_vs_widened_birth_pct_points": 0.0,
+  "improvement_vs_subject_pct_points": -0.681,
+  "frozen_bit_identical_to_widened": true,
+  "trainable_genes_changed_vs_widened": 0,
+  "champion_file": "engine_runs/frankenstein_stepC_reinforce_stitch/frankenstein_stepC_reinforce_stitch_champion.npz",
+  "wall_seconds": 23.4
+ },
+ "wall_seconds_total": 31.9
+}

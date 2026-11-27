@@ -1,0 +1,92 @@
+{
+ "run": "frankenstein_stepC stitch (step C: widen the backend block b5 by stitching the top two Step B champions over the commonized trunk)",
+ "date": "2026-11-26",
+ "validation_set": "fixed 200 problems, 10 cities, val_seed 20261116 (TSPDomain)",
+ "step1_champion_search": {
+  "population": "final population of the Step B run (checkpoint.npz, 100 genomes, all sharing the frozen 788-gene trunk, differing only in b5)",
+  "champion_1": {
+   "pop_index": 1,
+   "gap_pct": 7.9739,
+   "bit_identical_to_checkpoint_best": true
+  },
+  "champion_2": {
+   "pop_index": 91,
+   "gap_pct": 8.4313,
+   "definition": "best validation gap among genomes not bit-identical to champion #1"
+  },
+  "b5_distance": {
+   "genes": 136,
+   "n_differing": 133,
+   "max_abs_diff": 0.9244331724807813,
+   "rms_diff": 0.29479468074602744
+  },
+  "top10_validation_gaps_pct": [
+   7.9739,
+   8.4313,
+   8.6729,
+   8.7491,
+   8.7976,
+   8.9154,
+   9.0725,
+   9.2995,
+   9.3096,
+   9.3593
+  ]
+ },
+ "stitch": {
+  "trunk": "embed + blocks b0..b4 + merged decoder, 788 genes, kept ONCE, bit-exact from champion #1 (the same trunk in both parents - the common ancestor, not duplicated)",
+  "widened_block_b5w": {
+   "position": "after the joining block (b4), before the merged decoder - replaces b5",
+   "stream_width": 4,
+   "attention": "2 heads; head 0 = champion #1's b5 head, head 1 = champion #2's b5 head; head outputs summed into the stream, each head adding its own W_o and b_o; every entry bit-exact",
+   "ffn": "width 8; units 0-3 = champion #1's (W_1 columns 0-3, W_2 rows 0-3, b_1[0:4]), units 4-7 = champion #2's (W_1 columns 4-7, W_2 rows 4-7, b_1[4:8]); every entry bit-exact",
+   "shared_layer_norms": "lnA and lnF are champion #1's genes",
+   "dropped_from_champion_2": [
+    "b5.lnA_gain",
+    "b5.lnA_bias",
+    "b5.lnF_gain",
+    "b5.lnF_bias",
+    "b5.b_2 (the FFN output bias is a single block-level parameter, like the layer-norms: champion #1's is used)"
+   ],
+   "rescaling": "none - no weight is halved or rescaled; there are no filler entries in this stitch"
+  },
+  "gene_accounting": {
+   "backbone_trunk": 788,
+   "stitching_b5w": 252,
+   "b5w_breakdown": {
+    "lnA": 8,
+    "heads": 160,
+    "lnF": 8,
+    "ffn": 76
+   },
+   "total": 1040,
+   "rule": "backbone = the 788 trunk genes; stitching = ALL genes of the widened block b5w, which must now be refined as a unit"
+  }
+ },
+ "verification": {
+  "h0.W_q == champ1 b5.W_q": true,
+  "h1.W_q == champ2 b5.W_q": true,
+  "h0.W_k == champ1 b5.W_k": true,
+  "h1.W_k == champ2 b5.W_k": true,
+  "h0.W_v == champ1 b5.W_v": true,
+  "h1.W_v == champ2 b5.W_v": true,
+  "h0.W_o == champ1 b5.W_o": true,
+  "h1.W_o == champ2 b5.W_o": true,
+  "h0.b_q == champ1 b5.b_q": true,
+  "h1.b_q == champ2 b5.b_q": true,
+  "h0.b_k == champ1 b5.b_k": true,
+  "h1.b_k == champ2 b5.b_k": true,
+  "h0.b_v == champ1 b5.b_v": true,
+  "h1.b_v == champ2 b5.b_v": true,
+  "h0.b_o == champ1 b5.b_o": true,
+  "h1.b_o == champ2 b5.b_o": true,
+  "lnA/lnF == champ1": true,
+  "W_1 cols 0-3 == champ1, 4-7 == champ2": true,
+  "W_2 rows 0-3 == champ1, 4-7 == champ2": true,
+  "b_1 halves == champ1/champ2": true,
+  "b_2 == champ1": true,
+  "branch-2-masked stitch == champion #1 (gap + tours)": true
+ },
+ "birth_gap_pct": 25.6008,
+ "birth_gap_note": "two branches' outputs now sum into the same stream with no rescaling, so a birth gap worse than champion #1's 7.9739% is expected"
+}

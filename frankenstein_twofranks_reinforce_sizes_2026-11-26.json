@@ -1,0 +1,603 @@
+{
+ "run": "REINFORCE training on the Two-Franks stitch \u2014 TRAINING PROBLEM SIZE test: arm B recipe trained on 5-city problems (B5) and on 20-city problems (B20), judged on the fixed 10-city validation set",
+ "date": "2026-11-26",
+ "sponsor_direction": "Roman, 2026-11-26: the training runs pull 10-city problems \u2014 'Try to go down and to go up. Could go either way.' Test whether the training problem size helps or hurts.",
+ "method": {
+  "name": "REINFORCE (policy gradient) with a greedy baseline, arm B recipe exactly as in the prior test; only the training problem size varies",
+  "sampling": "external sampling from the network's own pointer distribution (softmax over the decoder logits as produced; no temperature, no soft surrogate)",
+  "baseline": "each problem's own greedy tour length (at that problem's size)",
+  "advantage": "baseline length - sampled tour length (positive when the sample beats the greedy tour)",
+  "loss": "-mean over the update batch of advantage x (sum of log-probabilities of the actions actually taken); one optimizer update per batch; weights unchanged while all tours of the batch are generated",
+  "optimizer": "Adam, lr 0.0001, global-norm gradient clip 1.0, beta1 0.9, beta2 0.999, eps 1e-08",
+  "moving_genes": "stitching only (1106); backbone frozen (356)",
+  "guard": "true-gap reads on the fixed 10-city validation set every 25 updates; best-on-validation weights are the working point; a worse read reverts to the best, resets Adam, and halves the lr (floor 1e-06)",
+  "problems": "fresh problems, uniform on the unit square, recorded seed streams, different per arm; never the validation problems"
+ },
+ "subject": {
+  "file": "engine_runs/frankenstein_twofranks_evolution/frankenstein_twofranks_extended_champion.npz",
+  "recorded_gap_pct": 7.3066,
+  "genes_total": 1462,
+  "genes_backbone": 356,
+  "genes_stitching": 1106
+ },
+ "sanity": {
+  "recomputed_gap_pct": 7.306624,
+  "recorded_gap_pct": 7.3066,
+  "passed": true,
+  "jax_mirror_encoder_parity_max_abs_diff": 3.552713678800501e-15,
+  "size_sanity": {
+   "n5": {
+    "numpy_greedy_lengths_mean": 2.2988,
+    "jax_greedy_lengths_mean": 2.2988,
+    "jax_sampled_lengths_mean": 2.9546,
+    "greedy_parity_max_abs_diff": 0.0,
+    "all_lengths_finite": true
+   },
+   "n20": {
+    "numpy_greedy_lengths_mean": 4.4691,
+    "jax_greedy_lengths_mean": 4.4691,
+    "jax_sampled_lengths_mean": 8.5663,
+    "greedy_parity_max_abs_diff": 8.881784197001252e-16,
+    "all_lengths_finite": true
+   }
+  },
+  "size_sanity_passed": true
+ },
+ "arms": {
+  "B5": {
+   "arm": "B5",
+   "label": "arm B recipe, 5-city training problems",
+   "training_n_cities": 5,
+   "problems_per_update": 4,
+   "draws_per_problem": 1,
+   "sampled_tours_per_update": 4,
+   "greedy_tours_per_update": 4,
+   "greedy_tours_total": 1600,
+   "updates": 400,
+   "seed_base": 20261230,
+   "reads": [
+    {
+     "update": 0,
+     "gap_pct": 7.3066,
+     "is_best": true,
+     "guard_action": "none_new_best",
+     "lr_after": 0.0001
+    },
+    {
+     "update": 25,
+     "gap_pct": 7.3607,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 5e-05
+    },
+    {
+     "update": 50,
+     "gap_pct": 7.6499,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 2.5e-05
+    },
+    {
+     "update": 75,
+     "gap_pct": 7.2982,
+     "is_best": true,
+     "guard_action": "none_new_best",
+     "lr_after": 2.5e-05
+    },
+    {
+     "update": 100,
+     "gap_pct": 7.3555,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 1.25e-05
+    },
+    {
+     "update": 125,
+     "gap_pct": 7.3845,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 6.25e-06
+    },
+    {
+     "update": 150,
+     "gap_pct": 7.4366,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 3.125e-06
+    },
+    {
+     "update": 175,
+     "gap_pct": 7.2867,
+     "is_best": true,
+     "guard_action": "none_new_best",
+     "lr_after": 3.125e-06
+    },
+    {
+     "update": 200,
+     "gap_pct": 7.3515,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 1.5625e-06
+    },
+    {
+     "update": 225,
+     "gap_pct": 7.3517,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 250,
+     "gap_pct": 7.3515,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 275,
+     "gap_pct": 7.3102,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 300,
+     "gap_pct": 7.3064,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 325,
+     "gap_pct": 7.3064,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 350,
+     "gap_pct": 7.2867,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 375,
+     "gap_pct": 7.2867,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 400,
+     "gap_pct": 7.3102,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    }
+   ],
+   "guard": {
+    "reverts": 14,
+    "halvings": 7,
+    "final_lr": 1e-06,
+    "events": [
+     {
+      "update": 25,
+      "gap_pct": 7.3607,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 5e-05,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 50,
+      "gap_pct": 7.6499,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 2.5e-05,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 100,
+      "gap_pct": 7.3555,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 1.25e-05,
+      "best_gap_pct": 7.2982,
+      "best_update": 75
+     },
+     {
+      "update": 125,
+      "gap_pct": 7.3845,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 6.25e-06,
+      "best_gap_pct": 7.2982,
+      "best_update": 75
+     },
+     {
+      "update": 150,
+      "gap_pct": 7.4366,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 3.125e-06,
+      "best_gap_pct": 7.2982,
+      "best_update": 75
+     },
+     {
+      "update": 200,
+      "gap_pct": 7.3515,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 1.5625e-06,
+      "best_gap_pct": 7.2867,
+      "best_update": 175
+     },
+     {
+      "update": 225,
+      "gap_pct": 7.3517,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.2867,
+      "best_update": 175
+     },
+     {
+      "update": 250,
+      "gap_pct": 7.3515,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.2867,
+      "best_update": 175
+     },
+     {
+      "update": 275,
+      "gap_pct": 7.3102,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.2867,
+      "best_update": 175
+     },
+     {
+      "update": 300,
+      "gap_pct": 7.3064,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.2867,
+      "best_update": 175
+     },
+     {
+      "update": 325,
+      "gap_pct": 7.3064,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.2867,
+      "best_update": 175
+     },
+     {
+      "update": 350,
+      "gap_pct": 7.2867,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.2867,
+      "best_update": 175
+     },
+     {
+      "update": 375,
+      "gap_pct": 7.2867,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.2867,
+      "best_update": 175
+     },
+     {
+      "update": 400,
+      "gap_pct": 7.3102,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.2867,
+      "best_update": 175
+     }
+    ]
+   },
+   "signal_stats": {
+    "n_sampled_tours": 1600,
+    "n_greedy_tours": 1600,
+    "mean_sampled_length": 2.5574,
+    "std_sampled_length": 0.5689,
+    "mean_greedy_length": 2.1858,
+    "mean_advantage": -0.3716,
+    "advantage_spread_std": 0.3706,
+    "advantage_min": -1.657,
+    "advantage_max": 0.3457,
+    "frac_samples_beating_greedy": 0.115,
+    "mean_loss_first_25_updates": -1.6097,
+    "mean_loss_last_25_updates": -1.7708
+   },
+   "best_validation_gap_pct": 7.2867,
+   "best_validation_update": 175,
+   "improvement_vs_start_pct_points": 0.0199,
+   "backbone_bit_identical_to_subject": true,
+   "stitching_genes_changed_vs_subject": 1106,
+   "champion_file": "engine_runs/frankenstein_twofranks_reinforce_sizes/frankenstein_twofranks_reinforceB5_champion.npz",
+   "wall_seconds": 8.2
+  },
+  "B20": {
+   "arm": "B20",
+   "label": "arm B recipe, 20-city training problems",
+   "training_n_cities": 20,
+   "problems_per_update": 4,
+   "draws_per_problem": 1,
+   "sampled_tours_per_update": 4,
+   "greedy_tours_per_update": 4,
+   "greedy_tours_total": 1600,
+   "updates": 400,
+   "seed_base": 20261240,
+   "reads": [
+    {
+     "update": 0,
+     "gap_pct": 7.3066,
+     "is_best": true,
+     "guard_action": "none_new_best",
+     "lr_after": 0.0001
+    },
+    {
+     "update": 25,
+     "gap_pct": 7.4202,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 5e-05
+    },
+    {
+     "update": 50,
+     "gap_pct": 7.3772,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 2.5e-05
+    },
+    {
+     "update": 75,
+     "gap_pct": 7.3663,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 1.25e-05
+    },
+    {
+     "update": 100,
+     "gap_pct": 7.2505,
+     "is_best": true,
+     "guard_action": "none_new_best",
+     "lr_after": 1.25e-05
+    },
+    {
+     "update": 125,
+     "gap_pct": 7.3596,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 6.25e-06
+    },
+    {
+     "update": 150,
+     "gap_pct": 7.3177,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 3.125e-06
+    },
+    {
+     "update": 175,
+     "gap_pct": 7.2406,
+     "is_best": true,
+     "guard_action": "none_new_best",
+     "lr_after": 3.125e-06
+    },
+    {
+     "update": 200,
+     "gap_pct": 7.2144,
+     "is_best": true,
+     "guard_action": "none_new_best",
+     "lr_after": 3.125e-06
+    },
+    {
+     "update": 225,
+     "gap_pct": 7.2144,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 1.5625e-06
+    },
+    {
+     "update": 250,
+     "gap_pct": 7.2258,
+     "is_best": false,
+     "guard_action": "revert_to_best_and_halve_lr",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 275,
+     "gap_pct": 7.2144,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 300,
+     "gap_pct": 7.2277,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 325,
+     "gap_pct": 7.2144,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 350,
+     "gap_pct": 7.2144,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 375,
+     "gap_pct": 7.2144,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    },
+    {
+     "update": 400,
+     "gap_pct": 7.2144,
+     "is_best": false,
+     "guard_action": "revert_to_best_lr_at_floor",
+     "lr_after": 1e-06
+    }
+   ],
+   "guard": {
+    "reverts": 13,
+    "halvings": 7,
+    "final_lr": 1e-06,
+    "events": [
+     {
+      "update": 25,
+      "gap_pct": 7.4202,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 5e-05,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 50,
+      "gap_pct": 7.3772,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 2.5e-05,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 75,
+      "gap_pct": 7.3663,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 1.25e-05,
+      "best_gap_pct": 7.3066,
+      "best_update": 0
+     },
+     {
+      "update": 125,
+      "gap_pct": 7.3596,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 6.25e-06,
+      "best_gap_pct": 7.2505,
+      "best_update": 100
+     },
+     {
+      "update": 150,
+      "gap_pct": 7.3177,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 3.125e-06,
+      "best_gap_pct": 7.2505,
+      "best_update": 100
+     },
+     {
+      "update": 225,
+      "gap_pct": 7.2144,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 1.5625e-06,
+      "best_gap_pct": 7.2144,
+      "best_update": 200
+     },
+     {
+      "update": 250,
+      "gap_pct": 7.2258,
+      "action": "revert_to_best_and_halve_lr",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.2144,
+      "best_update": 200
+     },
+     {
+      "update": 275,
+      "gap_pct": 7.2144,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.2144,
+      "best_update": 200
+     },
+     {
+      "update": 300,
+      "gap_pct": 7.2277,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.2144,
+      "best_update": 200
+     },
+     {
+      "update": 325,
+      "gap_pct": 7.2144,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.2144,
+      "best_update": 200
+     },
+     {
+      "update": 350,
+      "gap_pct": 7.2144,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.2144,
+      "best_update": 200
+     },
+     {
+      "update": 375,
+      "gap_pct": 7.2144,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.2144,
+      "best_update": 200
+     },
+     {
+      "update": 400,
+      "gap_pct": 7.2144,
+      "action": "revert_to_best_lr_at_floor",
+      "lr_after": 1e-06,
+      "best_gap_pct": 7.2144,
+      "best_update": 200
+     }
+    ]
+   },
+   "signal_stats": {
+    "n_sampled_tours": 1600,
+    "n_greedy_tours": 1600,
+    "mean_sampled_length": 9.6054,
+    "std_sampled_length": 1.2085,
+    "mean_greedy_length": 4.5096,
+    "mean_advantage": -5.0958,
+    "advantage_spread_std": 1.177,
+    "advantage_min": -8.7949,
+    "advantage_max": -1.659,
+    "frac_samples_beating_greedy": 0.0,
+    "mean_loss_first_25_updates": -181.3376,
+    "mean_loss_last_25_updates": -211.0808
+   },
+   "best_validation_gap_pct": 7.2144,
+   "best_validation_update": 200,
+   "improvement_vs_start_pct_points": 0.0922,
+   "backbone_bit_identical_to_subject": true,
+   "stitching_genes_changed_vs_subject": 1106,
+   "champion_file": "engine_runs/frankenstein_twofranks_reinforce_sizes/frankenstein_twofranks_reinforceB20_champion.npz",
+   "wall_seconds": 13.1
+  }
+ },
+ "reference_10_city_arm_B": {
+  "source": "frankenstein_twofranks_reinforce_2026-11-26.json (prior test, not rerun)",
+  "best_validation_gap_pct": 7.283,
+  "best_validation_update": 175,
+  "frac_samples_beating_greedy": 0.0006
+ },
+ "comparisons_pct": {
+  "start_subject": 7.3066,
+  "frank1_parent": 6.8959,
+  "frank2_parent": 7.017,
+  "arm_B5_best": 7.2867,
+  "arm_B10_best_reference": 7.283,
+  "arm_B20_best": 7.2144
+ },
+ "verdict_direction": "up",
+ "answer": "Going UP in training problem size helped: 20-city training (arm B20) reached 7.2144%, the best final score of the three sizes \u2014 better than 10-city training (7.2830%, prior test) and 5-city training (7.2867%).",
+ "wall_seconds_total": 31.4
+}
