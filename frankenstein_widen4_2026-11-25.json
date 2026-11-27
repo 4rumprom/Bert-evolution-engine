@@ -1,0 +1,454 @@
+{
+ "design": "sponsor direction, 2026-11-25 22:20 EST: widen the evolved Frankenstein 4 champion (Net2WiderNet), then evolve only the added material",
+ "subject": {
+  "file": "/home/hatch/workspace/bert-engine/engine_runs/frankenstein4_evolution/frankenstein_4_evolved_champion.npz",
+  "validation_gap_pct": 6.8959,
+  "genes": 344
+ },
+ "shapes_before": {
+  "embed.W_in": [
+   2,
+   4
+  ],
+  "embed.b_in": [
+   4
+  ],
+  "b0.lnA_gain": [
+   4
+  ],
+  "b0.lnA_bias": [
+   4
+  ],
+  "b0.lnF_gain": [
+   4
+  ],
+  "b0.lnF_bias": [
+   4
+  ],
+  "b0.W_q": [
+   4,
+   4
+  ],
+  "b0.W_k": [
+   4,
+   4
+  ],
+  "b0.W_v": [
+   4,
+   4
+  ],
+  "b0.W_o": [
+   4,
+   4
+  ],
+  "b0.b_q": [
+   4
+  ],
+  "b0.b_k": [
+   4
+  ],
+  "b0.b_v": [
+   4
+  ],
+  "b0.b_o": [
+   4
+  ],
+  "b0.b_2": [
+   4
+  ],
+  "b0.W_1": [
+   4,
+   6
+  ],
+  "b0.W_2": [
+   6,
+   4
+  ],
+  "b0.b_1": [
+   6
+  ],
+  "b1.lnA_gain": [
+   4
+  ],
+  "b1.lnA_bias": [
+   4
+  ],
+  "b1.lnF_gain": [
+   4
+  ],
+  "b1.lnF_bias": [
+   4
+  ],
+  "b1.W_q": [
+   4,
+   4
+  ],
+  "b1.W_k": [
+   4,
+   4
+  ],
+  "b1.W_v": [
+   4,
+   4
+  ],
+  "b1.W_o": [
+   4,
+   4
+  ],
+  "b1.b_q": [
+   4
+  ],
+  "b1.b_k": [
+   4
+  ],
+  "b1.b_v": [
+   4
+  ],
+  "b1.b_o": [
+   4
+  ],
+  "b1.b_2": [
+   4
+  ],
+  "b1.W_1": [
+   4,
+   6
+  ],
+  "b1.b_1": [
+   6
+  ],
+  "b1.W_2": [
+   6,
+   4
+  ],
+  "head.W_qd": [
+   4,
+   4
+  ],
+  "head.v_start": [
+   4
+  ],
+  "head.b_qd": [
+   4
+  ]
+ },
+ "shapes_after": {
+  "embed.W_in": [
+   2,
+   8
+  ],
+  "embed.b_in": [
+   8
+  ],
+  "b0.lnA_gain": [
+   8
+  ],
+  "b0.lnA_bias": [
+   8
+  ],
+  "b0.lnF_gain": [
+   8
+  ],
+  "b0.lnF_bias": [
+   8
+  ],
+  "b0.h0.W_q": [
+   8,
+   8
+  ],
+  "b0.h0.W_k": [
+   8,
+   8
+  ],
+  "b0.h0.W_v": [
+   8,
+   8
+  ],
+  "b0.h0.W_o": [
+   8,
+   8
+  ],
+  "b0.h0.b_q": [
+   8
+  ],
+  "b0.h0.b_k": [
+   8
+  ],
+  "b0.h0.b_v": [
+   8
+  ],
+  "b0.h0.b_o": [
+   8
+  ],
+  "b0.h1.W_q": [
+   8,
+   8
+  ],
+  "b0.h1.W_k": [
+   8,
+   8
+  ],
+  "b0.h1.W_v": [
+   8,
+   8
+  ],
+  "b0.h1.W_o": [
+   8,
+   8
+  ],
+  "b0.h1.b_q": [
+   8
+  ],
+  "b0.h1.b_k": [
+   8
+  ],
+  "b0.h1.b_v": [
+   8
+  ],
+  "b0.h1.b_o": [
+   8
+  ],
+  "b0.h2.W_q": [
+   8,
+   8
+  ],
+  "b0.h2.W_k": [
+   8,
+   8
+  ],
+  "b0.h2.W_v": [
+   8,
+   8
+  ],
+  "b0.h2.W_o": [
+   8,
+   8
+  ],
+  "b0.h2.b_q": [
+   8
+  ],
+  "b0.h2.b_k": [
+   8
+  ],
+  "b0.h2.b_v": [
+   8
+  ],
+  "b0.h2.b_o": [
+   8
+  ],
+  "b0.h3.W_q": [
+   8,
+   8
+  ],
+  "b0.h3.W_k": [
+   8,
+   8
+  ],
+  "b0.h3.W_v": [
+   8,
+   8
+  ],
+  "b0.h3.W_o": [
+   8,
+   8
+  ],
+  "b0.h3.b_q": [
+   8
+  ],
+  "b0.h3.b_k": [
+   8
+  ],
+  "b0.h3.b_v": [
+   8
+  ],
+  "b0.h3.b_o": [
+   8
+  ],
+  "b0.W_1": [
+   8,
+   12
+  ],
+  "b0.b_1": [
+   12
+  ],
+  "b0.W_2": [
+   12,
+   8
+  ],
+  "b0.b_2": [
+   8
+  ],
+  "b1.lnA_gain": [
+   8
+  ],
+  "b1.lnA_bias": [
+   8
+  ],
+  "b1.lnF_gain": [
+   8
+  ],
+  "b1.lnF_bias": [
+   8
+  ],
+  "b1.h0.W_q": [
+   8,
+   8
+  ],
+  "b1.h0.W_k": [
+   8,
+   8
+  ],
+  "b1.h0.W_v": [
+   8,
+   8
+  ],
+  "b1.h0.W_o": [
+   8,
+   8
+  ],
+  "b1.h0.b_q": [
+   8
+  ],
+  "b1.h0.b_k": [
+   8
+  ],
+  "b1.h0.b_v": [
+   8
+  ],
+  "b1.h0.b_o": [
+   8
+  ],
+  "b1.h1.W_q": [
+   8,
+   8
+  ],
+  "b1.h1.W_k": [
+   8,
+   8
+  ],
+  "b1.h1.W_v": [
+   8,
+   8
+  ],
+  "b1.h1.W_o": [
+   8,
+   8
+  ],
+  "b1.h1.b_q": [
+   8
+  ],
+  "b1.h1.b_k": [
+   8
+  ],
+  "b1.h1.b_v": [
+   8
+  ],
+  "b1.h1.b_o": [
+   8
+  ],
+  "b1.h2.W_q": [
+   8,
+   8
+  ],
+  "b1.h2.W_k": [
+   8,
+   8
+  ],
+  "b1.h2.W_v": [
+   8,
+   8
+  ],
+  "b1.h2.W_o": [
+   8,
+   8
+  ],
+  "b1.h2.b_q": [
+   8
+  ],
+  "b1.h2.b_k": [
+   8
+  ],
+  "b1.h2.b_v": [
+   8
+  ],
+  "b1.h2.b_o": [
+   8
+  ],
+  "b1.h3.W_q": [
+   8,
+   8
+  ],
+  "b1.h3.W_k": [
+   8,
+   8
+  ],
+  "b1.h3.W_v": [
+   8,
+   8
+  ],
+  "b1.h3.W_o": [
+   8,
+   8
+  ],
+  "b1.h3.b_q": [
+   8
+  ],
+  "b1.h3.b_k": [
+   8
+  ],
+  "b1.h3.b_v": [
+   8
+  ],
+  "b1.h3.b_o": [
+   8
+  ],
+  "b1.W_1": [
+   8,
+   12
+  ],
+  "b1.b_1": [
+   12
+  ],
+  "b1.W_2": [
+   12,
+   8
+  ],
+  "b1.b_2": [
+   8
+  ],
+  "head.W_qd": [
+   8,
+   8
+  ],
+  "head.b_qd": [
+   8
+  ],
+  "head.v_start": [
+   8
+  ]
+ },
+ "gene_counts": {
+  "total": 2896,
+  "base_frozen": 504,
+  "added_evolving": 2392
+ },
+ "conventions": {
+  "stream": "d 4 -> 8 by duplication; copies appended (coords 4..7 copy 0..3); output sides of the stream are duplicated, input sides are split evenly (each copy carries half)",
+  "attn_scale": "0.7071067811865475 -> 0.35355339059327373 (halved; attention-score and decoder dot products run over the duplicated stream)",
+  "ln_eps": "1e-05 unchanged (duplication preserves LN mean/variance)",
+  "ln_gains_biases": "duplicated",
+  "heads": "2 -> 4 per block by split: the stored fused attention is first decomposed into 2 heads (full W_q/W_k/W_v each; W_o, b_o halved between them), then each head is split (Q/K/V copied exactly, W_o and b_o halved in both daughters). All 4 heads identical at the founder; heads 0,1 base, heads 2,3 appended copies",
+  "ffn": "6 -> 12 per block by Net2WiderNet split (transplant_split_widen convention): W_1 column and b_1 copied exactly, W_2 row halved in both copies; units 0..5 base, 6..11 appended copies",
+  "decoder": "W_qd (8,8) by the uniform duplication rule (input split, output duplicated); b_qd and v_start duplicated",
+  "entry": "W_in columns duplicated; b_in duplicated",
+  "split_noise": "none applied (the founder must be the exact widened champion for the gate; evolution's mutation breaks twin symmetry)",
+  "base_added_rule": "union rule: added iff any widened axis touched is a copy index or the gene belongs to a copy unit/head (mirrors the engine's class assignment for widen transplants)"
+ },
+ "preservation_gate": {
+  "pass": true,
+  "tours_identical_all_200": true,
+  "champion_gap_pct_recomputed": 6.895878,
+  "widened_gap_pct": 6.895878,
+  "recorded_champion_gap_pct": 6.8959
+ }
+}

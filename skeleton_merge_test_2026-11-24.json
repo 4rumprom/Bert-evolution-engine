@@ -1,0 +1,54 @@
+{
+ "total_generations": 86,
+ "midpoint_generation": 43,
+ "species_a": 8,
+ "species_b": 9,
+ "gap_a_pct": 16.28464266252351,
+ "gap_b_pct": 16.912972600565055,
+ "created_a": {
+  "c0.b0.ffn.u0": 50,
+  "c0.b0.ffn.u1": 38,
+  "c0.b0.ffn.u2": 38,
+  "c0.b0.ffn.u3": 37,
+  "c0.b0.ffn.u4": 50,
+  "c0.b0.ffn.u5": 38,
+  "c0.b0.ffn.u6": 38,
+  "c0.b0.ffn.u7": 50,
+  "c0.b0.head.h0": 47,
+  "output_path": 50,
+  "trunk": 50
+ },
+ "created_b": {
+  "c0.b0.ffn.u0": 54,
+  "c0.b0.ffn.u1": 52,
+  "c0.b0.ffn.u2": 47,
+  "c0.b0.ffn.u3": 54,
+  "c0.b0.ffn.u4": 54,
+  "c0.b0.ffn.u5": 47,
+  "c0.b0.ffn.u6": 50,
+  "c0.b0.ffn.u7": 54,
+  "c0.b0.head.h0": 54,
+  "output_path": 54,
+  "trunk": 53
+ },
+ "skeleton_a": [
+  "c0.b0.ffn.u1",
+  "c0.b0.ffn.u2",
+  "c0.b0.ffn.u3",
+  "c0.b0.ffn.u5",
+  "c0.b0.ffn.u6"
+ ],
+ "skeleton_b": [],
+ "merged_pieces": [],
+ "gap_merged_pct": 16.28464266252351,
+ "placebo_pieces": [],
+ "gap_placebo_pct": 16.28464266252351,
+ "never_skeleton_either": [
+  "c0.b0.ffn.u0",
+  "c0.b0.ffn.u4",
+  "c0.b0.ffn.u7",
+  "c0.b0.head.h0",
+  "output_path",
+  "trunk"
+ ]
+}

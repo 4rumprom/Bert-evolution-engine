@@ -1,0 +1,104 @@
+{
+ "probe": "tau sweep: at what temperature, if any, does the soft surrogate track the true score on the two-Franks stitch?",
+ "date": "2026-11-26",
+ "subject": {
+  "file": "engine_runs/frankenstein_twofranks_evolution/frankenstein_twofranks_extended_champion.npz",
+  "recorded_gap_pct": 7.3066,
+  "recomputed_gap_pct": 7.306624,
+  "genes_total": 1462
+ },
+ "sanity": {
+  "passed": true,
+  "jax_mirror_encoder_parity_max_abs_diff": 3.552713678800501e-15
+ },
+ "batch": {
+  "n_problems": 200,
+  "n_cities": 10,
+  "seed": 20261210,
+  "source": "fresh uniform training problems; never the validation problems",
+  "mean_true_length": 3.0606
+ },
+ "logit_gap_scale": {
+  "mean": 0.3477461875815403,
+  "median": 2.6605513259170266e-07,
+  "p10": 2.0257751032204397e-11,
+  "p90": 0.18089110046654946,
+  "min": 5.329070518200751e-15,
+  "max": 19.371138150969834,
+  "fraction_exactly_zero": 0.0,
+  "fraction_below_1e-3": 0.8022222222222222,
+  "fraction_below_1e-2": 0.8444444444444444,
+  "fraction_below_0.1": 0.8822222222222222,
+  "n_steps_measured": 1800
+ },
+ "prior_measurements": {
+  "tau_0.1_validation_set": {
+   "pearson": 0.5845,
+   "onpick_mass": 0.38
+  },
+  "tau_0.01_validation_set": {
+   "pearson": 0.5686,
+   "onpick_mass": 0.4066
+  },
+  "note": "measured on the fixed validation set in backprop runs 1 and 2; this sweep uses the fresh 200-problem batch"
+ },
+ "sweep": [
+  {
+   "tau": 0.1,
+   "pearson_vs_true_length": 0.5799,
+   "onpick_mass": 0.3727,
+   "mean_soft_length": 4.3596,
+   "mean_true_length": 3.0606,
+   "soft_minus_true_length": 1.299
+  },
+  {
+   "tau": 0.03,
+   "pearson_vs_true_length": 0.5738,
+   "onpick_mass": 0.3895,
+   "mean_soft_length": 4.312,
+   "mean_true_length": 3.0606,
+   "soft_minus_true_length": 1.2514
+  },
+  {
+   "tau": 0.01,
+   "pearson_vs_true_length": 0.5668,
+   "onpick_mass": 0.4009,
+   "mean_soft_length": 4.2804,
+   "mean_true_length": 3.0606,
+   "soft_minus_true_length": 1.2197
+  },
+  {
+   "tau": 0.003,
+   "pearson_vs_true_length": 0.557,
+   "onpick_mass": 0.414,
+   "mean_soft_length": 4.2465,
+   "mean_true_length": 3.0606,
+   "soft_minus_true_length": 1.1858
+  },
+  {
+   "tau": 0.001,
+   "pearson_vs_true_length": 0.5605,
+   "onpick_mass": 0.429,
+   "mean_soft_length": 4.2113,
+   "mean_true_length": 3.0606,
+   "soft_minus_true_length": 1.1506
+  },
+  {
+   "tau": 0.0003,
+   "pearson_vs_true_length": 0.5661,
+   "onpick_mass": 0.4481,
+   "mean_soft_length": 4.1663,
+   "mean_true_length": 3.0606,
+   "soft_minus_true_length": 1.1056
+  },
+  {
+   "tau": 0.0001,
+   "pearson_vs_true_length": 0.5645,
+   "onpick_mass": 0.4694,
+   "mean_soft_length": 4.1147,
+   "mean_true_length": 3.0606,
+   "soft_minus_true_length": 1.0541
+  }
+ ],
+ "wall_seconds": 7.0
+}

@@ -1,0 +1,150 @@
+{
+ "total_generations": 86,
+ "species_a": 8,
+ "species_b": 9,
+ "gap_a_pct": 16.28464266252351,
+ "gap_b_pct": 16.912972600565055,
+ "read_a": {
+  "c0.b0.ffn.u0": {
+   "status": "skeleton",
+   "set_gen": 50,
+   "how": "won its place"
+  },
+  "c0.b0.ffn.u1": {
+   "status": "skeleton",
+   "set_gen": 38,
+   "how": "won its place"
+  },
+  "c0.b0.ffn.u2": {
+   "status": "skeleton",
+   "set_gen": 38,
+   "how": "won its place"
+  },
+  "c0.b0.ffn.u3": {
+   "status": "churn",
+   "set_gen": 37,
+   "how": "changed in a child that did not beat its parent"
+  },
+  "c0.b0.ffn.u4": {
+   "status": "skeleton",
+   "set_gen": 50,
+   "how": "won its place"
+  },
+  "c0.b0.ffn.u5": {
+   "status": "skeleton",
+   "set_gen": 38,
+   "how": "won its place"
+  },
+  "c0.b0.ffn.u6": {
+   "status": "skeleton",
+   "set_gen": 38,
+   "how": "won its place"
+  },
+  "c0.b0.ffn.u7": {
+   "status": "skeleton",
+   "set_gen": 50,
+   "how": "won its place"
+  },
+  "c0.b0.head.h0": {
+   "status": "churn",
+   "set_gen": 47,
+   "how": "changed in a child that did not beat its parent"
+  },
+  "output_path": {
+   "status": "skeleton",
+   "set_gen": 50,
+   "how": "won its place"
+  },
+  "trunk": {
+   "status": "skeleton",
+   "set_gen": 50,
+   "how": "won its place"
+  }
+ },
+ "read_b": {
+  "c0.b0.ffn.u0": {
+   "status": "skeleton",
+   "set_gen": 54,
+   "how": "won its place"
+  },
+  "c0.b0.ffn.u1": {
+   "status": "churn",
+   "set_gen": 52,
+   "how": "changed in a child that did not beat its parent"
+  },
+  "c0.b0.ffn.u2": {
+   "status": "skeleton",
+   "set_gen": 47,
+   "how": "won its place"
+  },
+  "c0.b0.ffn.u3": {
+   "status": "skeleton",
+   "set_gen": 54,
+   "how": "won its place"
+  },
+  "c0.b0.ffn.u4": {
+   "status": "skeleton",
+   "set_gen": 54,
+   "how": "won its place"
+  },
+  "c0.b0.ffn.u5": {
+   "status": "skeleton",
+   "set_gen": 47,
+   "how": "won its place"
+  },
+  "c0.b0.ffn.u6": {
+   "status": "skeleton",
+   "set_gen": 50,
+   "how": "won its place"
+  },
+  "c0.b0.ffn.u7": {
+   "status": "skeleton",
+   "set_gen": 54,
+   "how": "won its place"
+  },
+  "c0.b0.head.h0": {
+   "status": "skeleton",
+   "set_gen": 54,
+   "how": "won its place"
+  },
+  "output_path": {
+   "status": "skeleton",
+   "set_gen": 54,
+   "how": "won its place"
+  },
+  "trunk": {
+   "status": "churn",
+   "set_gen": 53,
+   "how": "changed in a child that did not beat its parent"
+  }
+ },
+ "skeleton_a": [
+  "c0.b0.ffn.u0",
+  "c0.b0.ffn.u1",
+  "c0.b0.ffn.u2",
+  "c0.b0.ffn.u4",
+  "c0.b0.ffn.u5",
+  "c0.b0.ffn.u6",
+  "c0.b0.ffn.u7",
+  "output_path",
+  "trunk"
+ ],
+ "skeleton_b": [
+  "c0.b0.ffn.u0",
+  "c0.b0.ffn.u2",
+  "c0.b0.ffn.u3",
+  "c0.b0.ffn.u4",
+  "c0.b0.ffn.u5",
+  "c0.b0.ffn.u6",
+  "c0.b0.ffn.u7",
+  "c0.b0.head.h0",
+  "output_path"
+ ],
+ "merged_pieces": [
+  "c0.b0.ffn.u3",
+  "c0.b0.head.h0"
+ ],
+ "gap_merged_pct": 40.05436658516428,
+ "placebo_pieces": [],
+ "gap_placebo_pct": 16.28464266252351
+}

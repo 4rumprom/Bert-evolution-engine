@@ -1,0 +1,111 @@
+{
+ "run": "full-network evolution of the widened Frankenstein (sponsor order 2026-11-26 23:04 EST: one species, the champion, 1000 individuals, nothing frozen)",
+ "date": "2026-11-26",
+ "founder": "engine_runs/reinforce_tuning/best_champion.npz (REINFORCE tuning run C1_temp08)",
+ "founder_gap_pct": 8.4415,
+ "config": {
+  "pop_n": 1000,
+  "gens": 200,
+  "mut_p": 0.1,
+  "mut_sigma": 0.15,
+  "elites": 2,
+  "tournament": 3,
+  "train_batch": 200,
+  "train_pool": 2000,
+  "run_seed": 20261260,
+  "founder_file": "engine_runs/reinforce_tuning/best_champion.npz",
+  "founder_gap_pct": 8.4415,
+  "genes": 8480
+ },
+ "validation_walk": [
+  {
+   "gen": 0,
+   "val_gap_pct": 9.4141
+  },
+  {
+   "gen": 10,
+   "val_gap_pct": 9.3019
+  },
+  {
+   "gen": 20,
+   "val_gap_pct": 9.3019
+  },
+  {
+   "gen": 30,
+   "val_gap_pct": 9.3019
+  },
+  {
+   "gen": 40,
+   "val_gap_pct": 9.4661
+  },
+  {
+   "gen": 50,
+   "val_gap_pct": 9.7073
+  },
+  {
+   "gen": 60,
+   "val_gap_pct": 9.7073
+  },
+  {
+   "gen": 70,
+   "val_gap_pct": 9.7073
+  },
+  {
+   "gen": 80,
+   "val_gap_pct": 9.7073
+  },
+  {
+   "gen": 90,
+   "val_gap_pct": 9.7073
+  },
+  {
+   "gen": 100,
+   "val_gap_pct": 9.7777
+  },
+  {
+   "gen": 110,
+   "val_gap_pct": 9.7777
+  },
+  {
+   "gen": 120,
+   "val_gap_pct": 10.0847
+  },
+  {
+   "gen": 130,
+   "val_gap_pct": 9.7073
+  },
+  {
+   "gen": 140,
+   "val_gap_pct": 9.7073
+  },
+  {
+   "gen": 150,
+   "val_gap_pct": 9.7073
+  },
+  {
+   "gen": 160,
+   "val_gap_pct": 9.7073
+  },
+  {
+   "gen": 170,
+   "val_gap_pct": 9.7073
+  },
+  {
+   "gen": 180,
+   "val_gap_pct": 9.7073
+  },
+  {
+   "gen": 190,
+   "val_gap_pct": 9.7073
+  },
+  {
+   "gen": 199,
+   "val_gap_pct": 9.7073
+  }
+ ],
+ "final_best_gap_pct": 8.4415,
+ "final_best_generation": -1,
+ "genes_changed_vs_founder": 0,
+ "wall_seconds": 5518.3,
+ "champion": "engine_runs/frankenstein_widened_evolution/frankenstein_widened_evolved_champion.npz"
+}

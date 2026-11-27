@@ -1,0 +1,2239 @@
+{
+ "experiment": "prune-and-graft round on the widened champion (new lineage)",
+ "date": "2026-11-23",
+ "subject": {
+  "file": "/home/hatch/workspace/bert-engine/double_widen_d2_2026-11-23_treatment_champion.npz",
+  "stored_val_score": -0.1400307792397698,
+  "arch_signature": "{\"attn_scale\": 0.7071067811865475, \"couples\": [[1, 2]], \"d\": 4, \"ffn_hidden\": 16, \"input_dim\": 2, \"ln_eps\": 5e-06}",
+  "n_genes": 360
+ },
+ "seeds": {
+  "run_seed": 20262300,
+  "draw_seed": 20262301,
+  "graft_seed": 20262304,
+  "val_seed": 20261116
+ },
+ "before": {
+  "champion_score": -0.1400307792397698,
+  "n_units": 18,
+  "exact_zero_positive": 13,
+  "band_counts": {
+   "contributing": 5,
+   "neutral": 10,
+   "harmful": 3
+  },
+  "units": [
+   {
+    "name": "c0.b0.ffn.u0",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 0,
+    "drop": 0.002579592923626639,
+    "se": 0.005252668378215483,
+    "band": 0.010505336756430965,
+    "cat": "neutral",
+    "rel_drop_pct": 1.8421613716865006,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u1",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 1,
+    "drop": -0.006723728305469023,
+    "se": 0.002344921689035847,
+    "band": 0.004689843378071694,
+    "cat": "harmful",
+    "rel_drop_pct": -4.801607433717281,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u2",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 2,
+    "drop": -0.008097804322009988,
+    "se": 0.0035210581228045114,
+    "band": 0.007042116245609023,
+    "cat": "harmful",
+    "rel_drop_pct": -5.782874569414772,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u3",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 3,
+    "drop": -0.007644777961290428,
+    "se": 0.004371332709930823,
+    "band": 0.008742665419861646,
+    "cat": "neutral",
+    "rel_drop_pct": -5.459355437993058,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u4",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 4,
+    "drop": 0.002706987333449623,
+    "se": 0.0036060695263346763,
+    "band": 0.007212139052669353,
+    "cat": "neutral",
+    "rel_drop_pct": 1.9331373774722365,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u5",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 5,
+    "drop": 0.00036512530302371116,
+    "se": 0.004986157345007078,
+    "band": 0.009972314690014156,
+    "cat": "neutral",
+    "rel_drop_pct": 0.2607464623177736,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u6",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 6,
+    "drop": 0.019462313378933588,
+    "se": 0.009324838229965736,
+    "band": 0.018649676459931472,
+    "cat": "contributing",
+    "rel_drop_pct": 13.898596783217886,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u7",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 7,
+    "drop": 0.0013082514392956657,
+    "se": 0.0022295593071791505,
+    "band": 0.004459118614358301,
+    "cat": "neutral",
+    "rel_drop_pct": 0.9342599151402224,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u8",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 8,
+    "drop": 0.0023882114321533976,
+    "se": 0.004013182674216479,
+    "band": 0.008026365348432958,
+    "cat": "neutral",
+    "rel_drop_pct": 1.7054903537058426,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u9",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 9,
+    "drop": 0.0006348106222690553,
+    "se": 0.0017251075006387603,
+    "band": 0.0034502150012775206,
+    "cat": "neutral",
+    "rel_drop_pct": 0.45333649195945075,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u10",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 10,
+    "drop": 0.005048439303558444,
+    "se": 0.004924145838236957,
+    "band": 0.009848291676473914,
+    "cat": "neutral",
+    "rel_drop_pct": 3.605235456780668,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u11",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 11,
+    "drop": 0.01359880083466572,
+    "se": 0.004246669569794958,
+    "band": 0.008493339139589917,
+    "cat": "contributing",
+    "rel_drop_pct": 9.71129412297347,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u12",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 12,
+    "drop": 0.005019786974898466,
+    "se": 0.00624687326212572,
+    "band": 0.01249374652425144,
+    "cat": "neutral",
+    "rel_drop_pct": 3.5847740062227746,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u13",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 13,
+    "drop": -0.0019280549830582583,
+    "se": 0.004723231907881746,
+    "band": 0.009446463815763492,
+    "cat": "neutral",
+    "rel_drop_pct": -1.3768794214569906,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u14",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 14,
+    "drop": 0.2099766947292262,
+    "se": 0.015637558272473658,
+    "band": 0.031275116544947315,
+    "cat": "contributing",
+    "rel_drop_pct": 149.95038652872913,
+    "cloud_cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u15",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 15,
+    "drop": -0.008102504337500316,
+    "se": 0.0025148366004625992,
+    "band": 0.0050296732009251985,
+    "cat": "harmful",
+    "rel_drop_pct": -5.786230985422627,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.head.h0",
+    "kind": "head",
+    "couple": 0,
+    "block": 0,
+    "index": 0,
+    "drop": 0.1686738688364905,
+    "se": 0.012058483865433123,
+    "band": 0.024116967730866246,
+    "cat": "contributing",
+    "rel_drop_pct": 120.45485267755036,
+    "cloud_cat": "contributing"
+   },
+   {
+    "name": "c0.b0.head.h1",
+    "kind": "head",
+    "couple": 0,
+    "block": 0,
+    "index": 1,
+    "drop": 0.1409927172956129,
+    "se": 0.011840655267146024,
+    "band": 0.02368131053429205,
+    "cat": "contributing",
+    "rel_drop_pct": 100.68694758471351,
+    "cloud_cat": "contributing"
+   }
+  ],
+  "cloud": {
+   "limit_pct": 14.419973059548063,
+   "sigma_pct": 7.2099865297740315,
+   "counts": {
+    "contributing": 3,
+    "neutral": 15,
+    "harmful": 0
+   }
+  }
+ },
+ "freeze_prep": {
+  "basis": "band-contributing units of the subject",
+  "useful_units": [
+   "c0.b0.ffn.u6",
+   "c0.b0.ffn.u11",
+   "c0.b0.ffn.u14",
+   "c0.b0.head.h0",
+   "c0.b0.head.h1"
+  ],
+  "n_frozen_genes": 187
+ },
+ "donor_pool_reproduction": {
+  "champion_val_rebuilt": -0.1400307792397698,
+  "champion_genome_bit_identical": true,
+  "n_species_final": 4,
+  "species_ids": [
+   10,
+   2,
+   3,
+   11
+  ]
+ },
+ "graft_inventory": {
+  "n_pruned_slots": 5,
+  "pruned_units": [
+   "c0.b0.ffn.u1",
+   "c0.b0.ffn.u2",
+   "c0.b0.ffn.u3",
+   "c0.b0.ffn.u13",
+   "c0.b0.ffn.u15"
+  ],
+  "pruned_base_score": -0.13660163709101666,
+  "donor_species_ids": [
+   10,
+   2,
+   11
+  ],
+  "donor_tables": {
+   "10": {
+    "donor_val_score": -0.1497652375386331,
+    "positive_drop_units": [
+     "c0.b0.ffn.u2",
+     "c0.b0.ffn.u3",
+     "c0.b0.ffn.u4",
+     "c0.b0.ffn.u5",
+     "c0.b0.ffn.u6",
+     "c0.b0.ffn.u7",
+     "c0.b0.ffn.u8",
+     "c0.b0.ffn.u9",
+     "c0.b0.ffn.u10",
+     "c0.b0.ffn.u11",
+     "c0.b0.ffn.u12",
+     "c0.b0.ffn.u13",
+     "c0.b0.ffn.u15",
+     "c0.b0.head.h0",
+     "c0.b0.head.h1"
+    ]
+   },
+   "2": {
+    "donor_val_score": -0.19755689612406904,
+    "positive_drop_units": [
+     "c0.b0.ffn.u4",
+     "c0.b0.ffn.u5",
+     "c0.b0.ffn.u6",
+     "c0.b0.ffn.u7",
+     "c0.b0.ffn.u8",
+     "c0.b0.ffn.u9",
+     "c0.b0.ffn.u12",
+     "c0.b0.ffn.u13",
+     "c0.b0.ffn.u14",
+     "c0.b0.ffn.u15",
+     "c0.b0.head.h0",
+     "c0.b0.head.h1"
+    ]
+   },
+   "11": {
+    "donor_val_score": -0.168084737034226,
+    "positive_drop_units": [
+     "c0.b0.ffn.u2",
+     "c0.b0.ffn.u3",
+     "c0.b0.ffn.u4",
+     "c0.b0.ffn.u7",
+     "c0.b0.ffn.u9",
+     "c0.b0.ffn.u10",
+     "c0.b0.ffn.u12",
+     "c0.b0.ffn.u13",
+     "c0.b0.ffn.u14",
+     "c0.b0.head.h0",
+     "c0.b0.head.h1"
+    ]
+   }
+  },
+  "n_eligible_slots": 4,
+  "eligible_slots": [
+   {
+    "unit": "c0.b0.ffn.u13",
+    "donor_species_ids": [
+     10,
+     2,
+     11
+    ]
+   },
+   {
+    "unit": "c0.b0.ffn.u15",
+    "donor_species_ids": [
+     10,
+     2
+    ]
+   },
+   {
+    "unit": "c0.b0.ffn.u2",
+    "donor_species_ids": [
+     10,
+     11
+    ]
+   },
+   {
+    "unit": "c0.b0.ffn.u3",
+    "donor_species_ids": [
+     10,
+     11
+    ]
+   }
+  ],
+  "slots_without_eligible_donor": [
+   "c0.b0.ffn.u1"
+  ],
+  "pruned_base_delta_vs_champion": 0.003429142148753145
+ },
+ "species_variants": [
+  {
+   "species_index": 0,
+   "fraction": 0.25,
+   "n_grafts": 1,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u3",
+     "donor_species_id": 11
+    }
+   ],
+   "variant_base_val_score": -0.14237934445455075
+  },
+  {
+   "species_index": 1,
+   "fraction": 0.3181818181818182,
+   "n_grafts": 1,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u2",
+     "donor_species_id": 10
+    }
+   ],
+   "variant_base_val_score": -0.13238042518153012
+  },
+  {
+   "species_index": 2,
+   "fraction": 0.38636363636363635,
+   "n_grafts": 2,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u15",
+     "donor_species_id": 10
+    },
+    {
+     "unit": "c0.b0.ffn.u3",
+     "donor_species_id": 10
+    }
+   ],
+   "variant_base_val_score": -0.13446959505540698
+  },
+  {
+   "species_index": 3,
+   "fraction": 0.45454545454545453,
+   "n_grafts": 2,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u2",
+     "donor_species_id": 10
+    },
+    {
+     "unit": "c0.b0.ffn.u13",
+     "donor_species_id": 2
+    }
+   ],
+   "variant_base_val_score": -0.13674247660995273
+  },
+  {
+   "species_index": 4,
+   "fraction": 0.5227272727272727,
+   "n_grafts": 2,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u2",
+     "donor_species_id": 11
+    },
+    {
+     "unit": "c0.b0.ffn.u15",
+     "donor_species_id": 2
+    }
+   ],
+   "variant_base_val_score": -0.1446900080508189
+  },
+  {
+   "species_index": 5,
+   "fraction": 0.5909090909090908,
+   "n_grafts": 2,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u2",
+     "donor_species_id": 10
+    },
+    {
+     "unit": "c0.b0.ffn.u3",
+     "donor_species_id": 11
+    }
+   ],
+   "variant_base_val_score": -0.1425159141444957
+  },
+  {
+   "species_index": 6,
+   "fraction": 0.6590909090909091,
+   "n_grafts": 3,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u13",
+     "donor_species_id": 2
+    },
+    {
+     "unit": "c0.b0.ffn.u15",
+     "donor_species_id": 2
+    },
+    {
+     "unit": "c0.b0.ffn.u2",
+     "donor_species_id": 10
+    }
+   ],
+   "variant_base_val_score": -0.16642463682534603
+  },
+  {
+   "species_index": 7,
+   "fraction": 0.7272727272727273,
+   "n_grafts": 3,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u3",
+     "donor_species_id": 11
+    },
+    {
+     "unit": "c0.b0.ffn.u15",
+     "donor_species_id": 10
+    },
+    {
+     "unit": "c0.b0.ffn.u2",
+     "donor_species_id": 10
+    }
+   ],
+   "variant_base_val_score": -0.13463374619839302
+  },
+  {
+   "species_index": 8,
+   "fraction": 0.7954545454545454,
+   "n_grafts": 3,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u13",
+     "donor_species_id": 11
+    },
+    {
+     "unit": "c0.b0.ffn.u3",
+     "donor_species_id": 11
+    },
+    {
+     "unit": "c0.b0.ffn.u15",
+     "donor_species_id": 2
+    }
+   ],
+   "variant_base_val_score": -0.1474217539047956
+  },
+  {
+   "species_index": 9,
+   "fraction": 0.8636363636363635,
+   "n_grafts": 3,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u2",
+     "donor_species_id": 11
+    },
+    {
+     "unit": "c0.b0.ffn.u13",
+     "donor_species_id": 2
+    },
+    {
+     "unit": "c0.b0.ffn.u15",
+     "donor_species_id": 10
+    }
+   ],
+   "variant_base_val_score": -0.15189353739345254
+  },
+  {
+   "species_index": 10,
+   "fraction": 0.9318181818181818,
+   "n_grafts": 4,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u3",
+     "donor_species_id": 10
+    },
+    {
+     "unit": "c0.b0.ffn.u15",
+     "donor_species_id": 10
+    },
+    {
+     "unit": "c0.b0.ffn.u13",
+     "donor_species_id": 11
+    },
+    {
+     "unit": "c0.b0.ffn.u2",
+     "donor_species_id": 10
+    }
+   ],
+   "variant_base_val_score": -0.13629895726727395
+  },
+  {
+   "species_index": 11,
+   "fraction": 1.0,
+   "n_grafts": 4,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u2",
+     "donor_species_id": 11
+    },
+    {
+     "unit": "c0.b0.ffn.u13",
+     "donor_species_id": 11
+    },
+    {
+     "unit": "c0.b0.ffn.u15",
+     "donor_species_id": 2
+    },
+    {
+     "unit": "c0.b0.ffn.u3",
+     "donor_species_id": 10
+    }
+   ],
+   "variant_base_val_score": -0.1508856024585611
+  }
+ ],
+ "treatment": {
+  "final_champion_val_score": -0.12574337895776308,
+  "mean_gap_percent": 12.574337895776308,
+  "delta_vs_start": 0.01428740028200673,
+  "champion_species_id": 1,
+  "n_species_final": 4,
+  "wall_seconds": 8.874314546585083,
+  "density_exact_zero_positive": 15,
+  "density_band_counts": {
+   "contributing": 6,
+   "neutral": 12,
+   "harmful": 0
+  },
+  "density_units": [
+   {
+    "name": "c0.b0.ffn.u0",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 0,
+    "drop": 0.0046969802539134076,
+    "se": 0.003868457185389365,
+    "band": 0.00773691437077873,
+    "cat": "neutral",
+    "rel_drop_pct": 3.735369840420077,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u1",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 1,
+    "drop": 0.00017230299753634437,
+    "se": 0.0014236018762950771,
+    "band": 0.0028472037525901542,
+    "cat": "neutral",
+    "rel_drop_pct": 0.13702749120032837,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u2",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 2,
+    "drop": 0.00017878546467570144,
+    "se": 0.0020830993505979774,
+    "band": 0.004166198701195955,
+    "cat": "neutral",
+    "rel_drop_pct": 0.1421828060909315,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u3",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 3,
+    "drop": -0.0008150165951892885,
+    "se": 0.0017730768109134427,
+    "band": 0.0035461536218268854,
+    "cat": "neutral",
+    "rel_drop_pct": -0.6481586561015278,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u4",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 4,
+    "drop": 0.01373733629102733,
+    "se": 0.004529359075828284,
+    "band": 0.009058718151656568,
+    "cat": "contributing",
+    "rel_drop_pct": 10.924898316627607,
+    "cloud_cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u5",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 5,
+    "drop": 0.004436304202600244,
+    "se": 0.006156585290134161,
+    "band": 0.012313170580268321,
+    "cat": "neutral",
+    "rel_drop_pct": 3.5280618664545265,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u6",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 6,
+    "drop": 0.19638861040227143,
+    "se": 0.014704933855801185,
+    "band": 0.02940986771160237,
+    "cat": "contributing",
+    "rel_drop_pct": 156.18206861471245,
+    "cloud_cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u7",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 7,
+    "drop": -0.0048807374550860205,
+    "se": 0.0028370038547631694,
+    "band": 0.005674007709526339,
+    "cat": "neutral",
+    "rel_drop_pct": -3.8815065218864917,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u8",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 8,
+    "drop": 0.0052780338497380175,
+    "se": 0.004319353022635431,
+    "band": 0.008638706045270861,
+    "cat": "neutral",
+    "rel_drop_pct": 4.197464624766364,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u9",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 9,
+    "drop": 0.0013432737976072917,
+    "se": 0.002527914672862094,
+    "band": 0.005055829345724188,
+    "cat": "neutral",
+    "rel_drop_pct": 1.0682660262044448,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u10",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 10,
+    "drop": 0.0067013788724549495,
+    "se": 0.0042443529770843594,
+    "band": 0.008488705954168719,
+    "cat": "neutral",
+    "rel_drop_pct": 5.3294089342914255,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u11",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 11,
+    "drop": 0.004411963456650458,
+    "se": 0.004289570198335688,
+    "band": 0.008579140396671375,
+    "cat": "neutral",
+    "rel_drop_pct": 3.508704389224682,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u12",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 12,
+    "drop": 0.01341684527621112,
+    "se": 0.006493378840521474,
+    "band": 0.012986757681042948,
+    "cat": "contributing",
+    "rel_drop_pct": 10.670021266660735,
+    "cloud_cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u13",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 13,
+    "drop": 0.0,
+    "se": 0.0,
+    "band": 0.0,
+    "cat": "neutral",
+    "rel_drop_pct": 0.0,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u14",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 14,
+    "drop": 0.2380348904712871,
+    "se": 0.015532880576456829,
+    "band": 0.031065761152913658,
+    "cat": "contributing",
+    "rel_drop_pct": 189.30212663622035,
+    "cloud_cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u15",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 15,
+    "drop": 0.0002830064248714459,
+    "se": 0.00034520717842988983,
+    "band": 0.0006904143568597797,
+    "cat": "neutral",
+    "rel_drop_pct": 0.2250666613361067,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.head.h0",
+    "kind": "head",
+    "couple": 0,
+    "block": 0,
+    "index": 0,
+    "drop": 0.21479558516565692,
+    "se": 0.012321603156412404,
+    "band": 0.02464320631282481,
+    "cat": "contributing",
+    "rel_drop_pct": 170.82059265944036,
+    "cloud_cat": "contributing"
+   },
+   {
+    "name": "c0.b0.head.h1",
+    "kind": "head",
+    "couple": 0,
+    "block": 0,
+    "index": 1,
+    "drop": 0.14242573374364417,
+    "se": 0.011300747211835433,
+    "band": 0.022601494423670866,
+    "cat": "contributing",
+    "rel_drop_pct": 113.26698465092517,
+    "cloud_cat": "contributing"
+   }
+  ],
+  "history": [
+   {
+    "generation": 0,
+    "phase": "A",
+    "gen_in_phase": 0,
+    "n_species": 12,
+    "pop_total": 120,
+    "best_score": -3.25644237007975,
+    "median_score": -3.302918825562301,
+    "elim_median": -3.347392939404774,
+    "cull": false
+   },
+   {
+    "generation": 1,
+    "phase": "A",
+    "gen_in_phase": 1,
+    "n_species": 12,
+    "pop_total": 120,
+    "best_score": -3.2465782113125035,
+    "median_score": -3.295299214273056,
+    "elim_median": -3.3326199441780346,
+    "cull": false
+   },
+   {
+    "generation": 2,
+    "phase": "A",
+    "gen_in_phase": 2,
+    "n_species": 10,
+    "pop_total": 100,
+    "best_score": -3.2465782113125035,
+    "median_score": -3.2842365321798006,
+    "elim_median": -3.356320615495605,
+    "cull": true
+   },
+   {
+    "generation": 3,
+    "phase": "A",
+    "gen_in_phase": 3,
+    "n_species": 10,
+    "pop_total": 120,
+    "best_score": -3.260794384966892,
+    "median_score": -3.3101959760297524,
+    "elim_median": -3.3108369253115093,
+    "cull": false
+   },
+   {
+    "generation": 4,
+    "phase": "A",
+    "gen_in_phase": 4,
+    "n_species": 10,
+    "pop_total": 120,
+    "best_score": -3.260794384966892,
+    "median_score": -3.295062790870185,
+    "elim_median": -3.3108369253115093,
+    "cull": false
+   },
+   {
+    "generation": 5,
+    "phase": "A",
+    "gen_in_phase": 5,
+    "n_species": 8,
+    "pop_total": 96,
+    "best_score": -3.260794384966892,
+    "median_score": -3.295559253128,
+    "elim_median": -3.3175858320138762,
+    "cull": true
+   },
+   {
+    "generation": 6,
+    "phase": "A",
+    "gen_in_phase": 6,
+    "n_species": 8,
+    "pop_total": 120,
+    "best_score": -3.260794384966892,
+    "median_score": -3.2898434245556234,
+    "elim_median": -3.3061376338968813,
+    "cull": false
+   },
+   {
+    "generation": 7,
+    "phase": "A",
+    "gen_in_phase": 7,
+    "n_species": 8,
+    "pop_total": 120,
+    "best_score": -3.260794384966892,
+    "median_score": -3.2924523444760876,
+    "elim_median": -3.288817962613777,
+    "cull": false
+   },
+   {
+    "generation": 8,
+    "phase": "A",
+    "gen_in_phase": 8,
+    "n_species": 6,
+    "pop_total": 90,
+    "best_score": -3.251341890849732,
+    "median_score": -3.2931554083184498,
+    "elim_median": -3.288817962613777,
+    "cull": true
+   },
+   {
+    "generation": 9,
+    "phase": "A",
+    "gen_in_phase": 9,
+    "n_species": 6,
+    "pop_total": 120,
+    "best_score": -3.2331509938841965,
+    "median_score": -3.313842768575051,
+    "elim_median": -3.2888374720663087,
+    "cull": false
+   },
+   {
+    "generation": 10,
+    "phase": "A",
+    "gen_in_phase": 10,
+    "n_species": 6,
+    "pop_total": 120,
+    "best_score": -3.2331509938841965,
+    "median_score": -3.3081595254562957,
+    "elim_median": -3.2856900253288486,
+    "cull": false
+   },
+   {
+    "generation": 11,
+    "phase": "A",
+    "gen_in_phase": 11,
+    "n_species": 5,
+    "pop_total": 100,
+    "best_score": -3.2331509938841965,
+    "median_score": -3.300590515396432,
+    "elim_median": -3.2869456696783867,
+    "cull": true
+   },
+   {
+    "generation": 12,
+    "phase": "A",
+    "gen_in_phase": 12,
+    "n_species": 5,
+    "pop_total": 120,
+    "best_score": -3.2475672299985865,
+    "median_score": -3.28943063902402,
+    "elim_median": -3.3129433555599244,
+    "cull": false
+   },
+   {
+    "generation": 13,
+    "phase": "A",
+    "gen_in_phase": 13,
+    "n_species": 5,
+    "pop_total": 120,
+    "best_score": -3.2392435917379196,
+    "median_score": -3.2843999764257896,
+    "elim_median": -3.279998790512747,
+    "cull": false
+   },
+   {
+    "generation": 14,
+    "phase": "A",
+    "gen_in_phase": 14,
+    "n_species": 4,
+    "pop_total": 96,
+    "best_score": -3.2392435917379196,
+    "median_score": -3.2844388402859397,
+    "elim_median": -3.279998790512747,
+    "cull": true
+   },
+   {
+    "generation": 15,
+    "phase": "A",
+    "gen_in_phase": 15,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.233072667685767,
+    "median_score": -3.2824231508123503,
+    "elim_median": -3.274465633591931,
+    "cull": false
+   },
+   {
+    "generation": 16,
+    "phase": "A",
+    "gen_in_phase": 16,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.233072667685767,
+    "median_score": -3.2803558644056814,
+    "elim_median": -3.2764717456207335,
+    "cull": false
+   },
+   {
+    "generation": 17,
+    "phase": "A",
+    "gen_in_phase": 17,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.2327685562767856,
+    "median_score": -3.2882842383815802,
+    "elim_median": -3.2778942716896777,
+    "cull": false
+   },
+   {
+    "generation": 18,
+    "phase": "A",
+    "gen_in_phase": 18,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.2327685562767856,
+    "median_score": -3.2808288132481254,
+    "elim_median": -3.2778942716896777,
+    "cull": false
+   },
+   {
+    "generation": 19,
+    "phase": "A",
+    "gen_in_phase": 19,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.2327685562767856,
+    "median_score": -3.276240125350492,
+    "elim_median": -3.2778942716896777,
+    "cull": false
+   },
+   {
+    "generation": 20,
+    "phase": "A",
+    "gen_in_phase": 20,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.2327685562767856,
+    "median_score": -3.2790836599746074,
+    "elim_median": -3.2778942716896777,
+    "cull": false
+   },
+   {
+    "generation": 21,
+    "phase": "A",
+    "gen_in_phase": 21,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.2327685562767856,
+    "median_score": -3.2766670127698254,
+    "elim_median": -3.2778942716896777,
+    "cull": false
+   },
+   {
+    "generation": 22,
+    "phase": "A",
+    "gen_in_phase": 22,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.2327685562767856,
+    "median_score": -3.2757055711052536,
+    "elim_median": -3.277941965397098,
+    "cull": false
+   },
+   {
+    "generation": 23,
+    "phase": "A",
+    "gen_in_phase": 23,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.2327685562767856,
+    "median_score": -3.2852192359611054,
+    "elim_median": -3.277941965397098,
+    "cull": false
+   },
+   {
+    "generation": 24,
+    "phase": "A",
+    "gen_in_phase": 24,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.2327685562767856,
+    "median_score": -3.27267598992362,
+    "elim_median": -3.2759134475372944,
+    "cull": false
+   },
+   {
+    "generation": 25,
+    "phase": "B",
+    "gen_in_phase": 0,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.220249303119638,
+    "median_score": -3.2826210290946323,
+    "elim_median": -3.2996898098063836,
+    "cull": false
+   },
+   {
+    "generation": 26,
+    "phase": "B",
+    "gen_in_phase": 1,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.185262154428877,
+    "median_score": -3.239028258987963,
+    "elim_median": -3.3124609753838565,
+    "cull": false
+   },
+   {
+    "generation": 27,
+    "phase": "B",
+    "gen_in_phase": 2,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.225333979418033,
+    "median_score": -3.2988735514780734,
+    "elim_median": -3.279421355998893,
+    "cull": false
+   },
+   {
+    "generation": 28,
+    "phase": "B",
+    "gen_in_phase": 3,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.1401803864085744,
+    "median_score": -3.2335663527025753,
+    "elim_median": -3.282559015180456,
+    "cull": false
+   },
+   {
+    "generation": 29,
+    "phase": "B",
+    "gen_in_phase": 4,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.2129335812203736,
+    "median_score": -3.2751018270058814,
+    "elim_median": -3.2594740188139837,
+    "cull": false
+   },
+   {
+    "generation": 30,
+    "phase": "B",
+    "gen_in_phase": 5,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.1573869579514615,
+    "median_score": -3.235582306865438,
+    "elim_median": -3.2758731698224643,
+    "cull": false
+   },
+   {
+    "generation": 31,
+    "phase": "B",
+    "gen_in_phase": 6,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.2166367193213867,
+    "median_score": -3.290203228987576,
+    "elim_median": -3.2603966276433267,
+    "cull": false
+   },
+   {
+    "generation": 32,
+    "phase": "B",
+    "gen_in_phase": 7,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.1766984651245123,
+    "median_score": -3.2553907550864625,
+    "elim_median": -3.236212839446303,
+    "cull": false
+   },
+   {
+    "generation": 33,
+    "phase": "B",
+    "gen_in_phase": 8,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.1992591734188314,
+    "median_score": -3.2800433834457734,
+    "elim_median": -3.2896834797935774,
+    "cull": false
+   },
+   {
+    "generation": 34,
+    "phase": "B",
+    "gen_in_phase": 9,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.171967026107687,
+    "median_score": -3.262968869614142,
+    "elim_median": -3.261599318252065,
+    "cull": false
+   },
+   {
+    "generation": 35,
+    "phase": "B",
+    "gen_in_phase": 10,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.220243751681829,
+    "median_score": -3.321685368907372,
+    "elim_median": -3.2554626739080907,
+    "cull": false
+   },
+   {
+    "generation": 36,
+    "phase": "B",
+    "gen_in_phase": 11,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.179845980941871,
+    "median_score": -3.278608559002087,
+    "elim_median": -3.2454137060595416,
+    "cull": false
+   },
+   {
+    "generation": 37,
+    "phase": "B",
+    "gen_in_phase": 12,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.134981282822044,
+    "median_score": -3.2399426276435808,
+    "elim_median": -3.274084924578396,
+    "cull": false
+   },
+   {
+    "generation": 38,
+    "phase": "B",
+    "gen_in_phase": 13,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.181303239480239,
+    "median_score": -3.285797441645813,
+    "elim_median": -3.278800304863111,
+    "cull": false
+   },
+   {
+    "generation": 39,
+    "phase": "B",
+    "gen_in_phase": 14,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.1600010618585523,
+    "median_score": -3.266344101849961,
+    "elim_median": -3.2585883986384294,
+    "cull": false
+   },
+   {
+    "generation": 40,
+    "phase": "B",
+    "gen_in_phase": 15,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.156029113839212,
+    "median_score": -3.2575917820369913,
+    "elim_median": -3.2819508859215407,
+    "cull": false
+   },
+   {
+    "generation": 41,
+    "phase": "B",
+    "gen_in_phase": 16,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.1932460497084385,
+    "median_score": -3.2866803098205803,
+    "elim_median": -3.2758985761766803,
+    "cull": false
+   },
+   {
+    "generation": 42,
+    "phase": "B",
+    "gen_in_phase": 17,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.182282154251211,
+    "median_score": -3.2732241023474202,
+    "elim_median": -3.253019338987978,
+    "cull": false
+   },
+   {
+    "generation": 43,
+    "phase": "B",
+    "gen_in_phase": 18,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.1854436721786445,
+    "median_score": -3.29378956897766,
+    "elim_median": -3.2771311344654945,
+    "cull": false
+   },
+   {
+    "generation": 44,
+    "phase": "B",
+    "gen_in_phase": 19,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.2104471719706,
+    "median_score": -3.292973501434882,
+    "elim_median": -3.263370770160044,
+    "cull": false
+   },
+   {
+    "generation": 45,
+    "phase": "B",
+    "gen_in_phase": 20,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.133412808369938,
+    "median_score": -3.2165469944527905,
+    "elim_median": -3.2516001111143797,
+    "cull": false
+   },
+   {
+    "generation": 46,
+    "phase": "B",
+    "gen_in_phase": 21,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.178441175945403,
+    "median_score": -3.276393205414962,
+    "elim_median": -3.254778339609823,
+    "cull": false
+   },
+   {
+    "generation": 47,
+    "phase": "B",
+    "gen_in_phase": 22,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.227027429757967,
+    "median_score": -3.3005066316081533,
+    "elim_median": -3.2538477790151017,
+    "cull": false
+   },
+   {
+    "generation": 48,
+    "phase": "B",
+    "gen_in_phase": 23,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.134183374273661,
+    "median_score": -3.2781827911055412,
+    "elim_median": -3.2597447076836206,
+    "cull": false
+   },
+   {
+    "generation": 49,
+    "phase": "B",
+    "gen_in_phase": 24,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.1395992239787502,
+    "median_score": -3.2575025636347754,
+    "elim_median": -3.2822274650056995,
+    "cull": false
+   }
+  ],
+  "density_cloud_counts": {
+   "contributing": 6,
+   "neutral": 12,
+   "harmful": 0
+  },
+  "density_cloud_limit_pct": 10.56560689015868
+ },
+ "control": {
+  "final_champion_val_score": -0.11846653066217602,
+  "mean_gap_percent": 11.846653066217602,
+  "delta_vs_start": 0.021564248577593786,
+  "champion_species_id": 9,
+  "n_species_final": 4,
+  "wall_seconds": 8.834022283554077,
+  "density_exact_zero_positive": 18,
+  "density_band_counts": {
+   "contributing": 10,
+   "neutral": 8,
+   "harmful": 0
+  },
+  "density_units": [
+   {
+    "name": "c0.b0.ffn.u0",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 0,
+    "drop": 0.026213078572953075,
+    "se": 0.006069853383095817,
+    "band": 0.012139706766191635,
+    "cat": "contributing",
+    "rel_drop_pct": 22.126990996050484,
+    "cloud_cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u1",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 1,
+    "drop": 0.002023622680634815,
+    "se": 0.004587833682104658,
+    "band": 0.009175667364209316,
+    "cat": "neutral",
+    "rel_drop_pct": 1.7081809261431482,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u2",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 2,
+    "drop": 0.006813284062925251,
+    "se": 0.003478965288967927,
+    "band": 0.006957930577935854,
+    "cat": "neutral",
+    "rel_drop_pct": 5.751231191495165,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u3",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 3,
+    "drop": 0.0025346349610758795,
+    "se": 0.005573429601015606,
+    "band": 0.011146859202031211,
+    "cat": "neutral",
+    "rel_drop_pct": 2.139536750935796,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u4",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 4,
+    "drop": 0.007217657089878926,
+    "se": 0.0037501967280587703,
+    "band": 0.007500393456117541,
+    "cat": "neutral",
+    "rel_drop_pct": 6.092570660705082,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u5",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 5,
+    "drop": 0.017678094719388276,
+    "se": 0.007312645358654146,
+    "band": 0.014625290717308292,
+    "cat": "contributing",
+    "rel_drop_pct": 14.92243811022022,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u6",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 6,
+    "drop": 0.2269371252865879,
+    "se": 0.014846564935012583,
+    "band": 0.029693129870025165,
+    "cat": "contributing",
+    "rel_drop_pct": 191.5622277601182,
+    "cloud_cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u7",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 7,
+    "drop": 0.004496882790571907,
+    "se": 0.004287553523571073,
+    "band": 0.008575107047142146,
+    "cat": "neutral",
+    "rel_drop_pct": 3.7959099210859826,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u8",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 8,
+    "drop": 0.010124086506998475,
+    "se": 0.006259176572509657,
+    "band": 0.012518353145019314,
+    "cat": "neutral",
+    "rel_drop_pct": 8.54594664873637,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u9",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 9,
+    "drop": 0.003919223490101473,
+    "se": 0.0021994106744271315,
+    "band": 0.004398821348854263,
+    "cat": "neutral",
+    "rel_drop_pct": 3.3082959956662275,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u10",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 10,
+    "drop": 0.030368213652855608,
+    "se": 0.006409550273030437,
+    "band": 0.012819100546060874,
+    "cat": "contributing",
+    "rel_drop_pct": 25.634424746897366,
+    "cloud_cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u11",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 11,
+    "drop": 0.009891014551764193,
+    "se": 0.004205356876868587,
+    "band": 0.008410713753737174,
+    "cat": "contributing",
+    "rel_drop_pct": 8.349205886656556,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u12",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 12,
+    "drop": 0.006478378977719315,
+    "se": 0.003231042444540134,
+    "band": 0.006462084889080268,
+    "cat": "contributing",
+    "rel_drop_pct": 5.468531020118521,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u13",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 13,
+    "drop": 0.025013174381081943,
+    "se": 0.0062376981718889465,
+    "band": 0.012475396343777893,
+    "cat": "contributing",
+    "rel_drop_pct": 21.1141275440998,
+    "cloud_cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u14",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 14,
+    "drop": 0.2516446032532952,
+    "se": 0.01524222184997602,
+    "band": 0.03048444369995204,
+    "cat": "contributing",
+    "rel_drop_pct": 212.41831076398714,
+    "cloud_cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u15",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 15,
+    "drop": 0.006397123678050204,
+    "se": 0.005040747119312294,
+    "band": 0.010081494238624589,
+    "cat": "neutral",
+    "rel_drop_pct": 5.399941774519001,
+    "cloud_cat": "neutral"
+   },
+   {
+    "name": "c0.b0.head.h0",
+    "kind": "head",
+    "couple": 0,
+    "block": 0,
+    "index": 0,
+    "drop": 0.2182540619667959,
+    "se": 0.012060388977338984,
+    "band": 0.024120777954677968,
+    "cat": "contributing",
+    "rel_drop_pct": 184.23267799508542,
+    "cloud_cat": "contributing"
+   },
+   {
+    "name": "c0.b0.head.h1",
+    "kind": "head",
+    "couple": 0,
+    "block": 0,
+    "index": 1,
+    "drop": 0.1808904589619704,
+    "se": 0.01164516089522819,
+    "band": 0.02329032179045638,
+    "cat": "contributing",
+    "rel_drop_pct": 152.69330329070326,
+    "cloud_cat": "contributing"
+   }
+  ],
+  "history": [
+   {
+    "generation": 0,
+    "phase": "A",
+    "gen_in_phase": 0,
+    "n_species": 12,
+    "pop_total": 120,
+    "best_score": -3.2660457565966743,
+    "median_score": -3.302340170827977,
+    "elim_median": -3.279035241142651,
+    "cull": false
+   },
+   {
+    "generation": 1,
+    "phase": "A",
+    "gen_in_phase": 1,
+    "n_species": 12,
+    "pop_total": 120,
+    "best_score": -3.25720399530168,
+    "median_score": -3.2972165729275957,
+    "elim_median": -3.279035241142651,
+    "cull": false
+   },
+   {
+    "generation": 2,
+    "phase": "A",
+    "gen_in_phase": 2,
+    "n_species": 10,
+    "pop_total": 100,
+    "best_score": -3.25720399530168,
+    "median_score": -3.291553132731896,
+    "elim_median": -3.2723006499447855,
+    "cull": true
+   },
+   {
+    "generation": 3,
+    "phase": "A",
+    "gen_in_phase": 3,
+    "n_species": 10,
+    "pop_total": 120,
+    "best_score": -3.2520872110108074,
+    "median_score": -3.285802288719683,
+    "elim_median": -3.2615501676463747,
+    "cull": false
+   },
+   {
+    "generation": 4,
+    "phase": "A",
+    "gen_in_phase": 4,
+    "n_species": 10,
+    "pop_total": 120,
+    "best_score": -3.234688991631537,
+    "median_score": -3.2845351088408616,
+    "elim_median": -3.266708843858621,
+    "cull": false
+   },
+   {
+    "generation": 5,
+    "phase": "A",
+    "gen_in_phase": 5,
+    "n_species": 8,
+    "pop_total": 96,
+    "best_score": -3.234688991631537,
+    "median_score": -3.281071612776808,
+    "elim_median": -3.270183240034701,
+    "cull": true
+   },
+   {
+    "generation": 6,
+    "phase": "A",
+    "gen_in_phase": 6,
+    "n_species": 8,
+    "pop_total": 120,
+    "best_score": -3.234688991631537,
+    "median_score": -3.281000253050691,
+    "elim_median": -3.2791993953522063,
+    "cull": false
+   },
+   {
+    "generation": 7,
+    "phase": "A",
+    "gen_in_phase": 7,
+    "n_species": 8,
+    "pop_total": 120,
+    "best_score": -3.234688991631537,
+    "median_score": -3.2809773253383487,
+    "elim_median": -3.2692215578584256,
+    "cull": false
+   },
+   {
+    "generation": 8,
+    "phase": "A",
+    "gen_in_phase": 8,
+    "n_species": 6,
+    "pop_total": 90,
+    "best_score": -3.2296806541511,
+    "median_score": -3.282529891601855,
+    "elim_median": -3.2679512160403377,
+    "cull": true
+   },
+   {
+    "generation": 9,
+    "phase": "A",
+    "gen_in_phase": 9,
+    "n_species": 6,
+    "pop_total": 120,
+    "best_score": -3.2255127224346585,
+    "median_score": -3.2782309957084776,
+    "elim_median": -3.261894822009485,
+    "cull": false
+   },
+   {
+    "generation": 10,
+    "phase": "A",
+    "gen_in_phase": 10,
+    "n_species": 6,
+    "pop_total": 120,
+    "best_score": -3.2255127224346585,
+    "median_score": -3.2845019246636733,
+    "elim_median": -3.261894822009485,
+    "cull": false
+   },
+   {
+    "generation": 11,
+    "phase": "A",
+    "gen_in_phase": 11,
+    "n_species": 5,
+    "pop_total": 100,
+    "best_score": -3.2255127224346585,
+    "median_score": -3.2838348189663638,
+    "elim_median": -3.261894822009485,
+    "cull": true
+   },
+   {
+    "generation": 12,
+    "phase": "A",
+    "gen_in_phase": 12,
+    "n_species": 5,
+    "pop_total": 120,
+    "best_score": -3.2255127224346585,
+    "median_score": -3.28632050966707,
+    "elim_median": -3.257662092245144,
+    "cull": false
+   },
+   {
+    "generation": 13,
+    "phase": "A",
+    "gen_in_phase": 13,
+    "n_species": 5,
+    "pop_total": 120,
+    "best_score": -3.222071570233388,
+    "median_score": -3.2864114330364194,
+    "elim_median": -3.257662092245144,
+    "cull": false
+   },
+   {
+    "generation": 14,
+    "phase": "A",
+    "gen_in_phase": 14,
+    "n_species": 4,
+    "pop_total": 96,
+    "best_score": -3.222071570233388,
+    "median_score": -3.2901236347209855,
+    "elim_median": -3.257662092245144,
+    "cull": true
+   },
+   {
+    "generation": 15,
+    "phase": "A",
+    "gen_in_phase": 15,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.221577607415564,
+    "median_score": -3.2843953397333445,
+    "elim_median": -3.2578059334179157,
+    "cull": false
+   },
+   {
+    "generation": 16,
+    "phase": "A",
+    "gen_in_phase": 16,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.221577607415564,
+    "median_score": -3.2804867370499258,
+    "elim_median": -3.259266470281744,
+    "cull": false
+   },
+   {
+    "generation": 17,
+    "phase": "A",
+    "gen_in_phase": 17,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.221577607415564,
+    "median_score": -3.285868814760142,
+    "elim_median": -3.259266470281744,
+    "cull": false
+   },
+   {
+    "generation": 18,
+    "phase": "A",
+    "gen_in_phase": 18,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.221324234493844,
+    "median_score": -3.286103606656516,
+    "elim_median": -3.2578059334179157,
+    "cull": false
+   },
+   {
+    "generation": 19,
+    "phase": "A",
+    "gen_in_phase": 19,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.221324234493844,
+    "median_score": -3.284031658951867,
+    "elim_median": -3.259266470281744,
+    "cull": false
+   },
+   {
+    "generation": 20,
+    "phase": "A",
+    "gen_in_phase": 20,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.221324234493844,
+    "median_score": -3.285277359886597,
+    "elim_median": -3.259266470281744,
+    "cull": false
+   },
+   {
+    "generation": 21,
+    "phase": "A",
+    "gen_in_phase": 21,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.221324234493844,
+    "median_score": -3.2856928115942385,
+    "elim_median": -3.259266470281744,
+    "cull": false
+   },
+   {
+    "generation": 22,
+    "phase": "A",
+    "gen_in_phase": 22,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.221324234493844,
+    "median_score": -3.286779132133326,
+    "elim_median": -3.259266470281744,
+    "cull": false
+   },
+   {
+    "generation": 23,
+    "phase": "A",
+    "gen_in_phase": 23,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.221324234493844,
+    "median_score": -3.295577517315343,
+    "elim_median": -3.259266470281744,
+    "cull": false
+   },
+   {
+    "generation": 24,
+    "phase": "A",
+    "gen_in_phase": 24,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.221324234493844,
+    "median_score": -3.2901414745556403,
+    "elim_median": -3.259266470281744,
+    "cull": false
+   },
+   {
+    "generation": 25,
+    "phase": "B",
+    "gen_in_phase": 0,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.2217760126702473,
+    "median_score": -3.3066415355919903,
+    "elim_median": -3.2511172071847807,
+    "cull": false
+   },
+   {
+    "generation": 26,
+    "phase": "B",
+    "gen_in_phase": 1,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.173457419197666,
+    "median_score": -3.233964495209148,
+    "elim_median": -3.2842261633549263,
+    "cull": false
+   },
+   {
+    "generation": 27,
+    "phase": "B",
+    "gen_in_phase": 2,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.226231956001851,
+    "median_score": -3.2931939579970173,
+    "elim_median": -3.275041609564296,
+    "cull": false
+   },
+   {
+    "generation": 28,
+    "phase": "B",
+    "gen_in_phase": 3,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.1514109188526804,
+    "median_score": -3.2384523449147973,
+    "elim_median": -3.248821913239783,
+    "cull": false
+   },
+   {
+    "generation": 29,
+    "phase": "B",
+    "gen_in_phase": 4,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.204320256870109,
+    "median_score": -3.289405689930315,
+    "elim_median": -3.2655085873449927,
+    "cull": false
+   },
+   {
+    "generation": 30,
+    "phase": "B",
+    "gen_in_phase": 5,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.1750255222600936,
+    "median_score": -3.2605625592961633,
+    "elim_median": -3.2447947535223407,
+    "cull": false
+   },
+   {
+    "generation": 31,
+    "phase": "B",
+    "gen_in_phase": 6,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.2085097978587327,
+    "median_score": -3.286376555688981,
+    "elim_median": -3.2579715752418137,
+    "cull": false
+   },
+   {
+    "generation": 32,
+    "phase": "B",
+    "gen_in_phase": 7,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.182665218021988,
+    "median_score": -3.2544634243563078,
+    "elim_median": -3.2297725692917263,
+    "cull": false
+   },
+   {
+    "generation": 33,
+    "phase": "B",
+    "gen_in_phase": 8,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.197802235341401,
+    "median_score": -3.2974785287628143,
+    "elim_median": -3.2462525238699866,
+    "cull": false
+   },
+   {
+    "generation": 34,
+    "phase": "B",
+    "gen_in_phase": 9,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.1644996011479947,
+    "median_score": -3.2676038830625322,
+    "elim_median": -3.2377265821322445,
+    "cull": false
+   },
+   {
+    "generation": 35,
+    "phase": "B",
+    "gen_in_phase": 10,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.2127775657812934,
+    "median_score": -3.3014890631869904,
+    "elim_median": -3.2418182047976902,
+    "cull": false
+   },
+   {
+    "generation": 36,
+    "phase": "B",
+    "gen_in_phase": 11,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.2071734377303325,
+    "median_score": -3.26507766931742,
+    "elim_median": -3.2919674771258363,
+    "cull": false
+   },
+   {
+    "generation": 37,
+    "phase": "B",
+    "gen_in_phase": 12,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.0982108590660786,
+    "median_score": -3.227348768512038,
+    "elim_median": -3.2267086216084655,
+    "cull": false
+   },
+   {
+    "generation": 38,
+    "phase": "B",
+    "gen_in_phase": 13,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.1814548270680825,
+    "median_score": -3.315179103233754,
+    "elim_median": -3.254868463341339,
+    "cull": false
+   },
+   {
+    "generation": 39,
+    "phase": "B",
+    "gen_in_phase": 14,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.1679705919009593,
+    "median_score": -3.2771556197982026,
+    "elim_median": -3.2450088660897096,
+    "cull": false
+   },
+   {
+    "generation": 40,
+    "phase": "B",
+    "gen_in_phase": 15,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.1743830187640696,
+    "median_score": -3.2662165585684253,
+    "elim_median": -3.2762751917824207,
+    "cull": false
+   },
+   {
+    "generation": 41,
+    "phase": "B",
+    "gen_in_phase": 16,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.171411470359681,
+    "median_score": -3.2997141712588904,
+    "elim_median": -3.2676449444078917,
+    "cull": false
+   },
+   {
+    "generation": 42,
+    "phase": "B",
+    "gen_in_phase": 17,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.179615186995296,
+    "median_score": -3.3049577945332924,
+    "elim_median": -3.2623045578038328,
+    "cull": false
+   },
+   {
+    "generation": 43,
+    "phase": "B",
+    "gen_in_phase": 18,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.20546690301698,
+    "median_score": -3.3114616939453816,
+    "elim_median": -3.257563253768071,
+    "cull": false
+   },
+   {
+    "generation": 44,
+    "phase": "B",
+    "gen_in_phase": 19,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.1961325535620793,
+    "median_score": -3.3142735981007716,
+    "elim_median": -3.2657616041763045,
+    "cull": false
+   },
+   {
+    "generation": 45,
+    "phase": "B",
+    "gen_in_phase": 20,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.1283562702792382,
+    "median_score": -3.22151715553053,
+    "elim_median": -3.252317601346753,
+    "cull": false
+   },
+   {
+    "generation": 46,
+    "phase": "B",
+    "gen_in_phase": 21,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.169235234635021,
+    "median_score": -3.280998328180147,
+    "elim_median": -3.2559238709158014,
+    "cull": false
+   },
+   {
+    "generation": 47,
+    "phase": "B",
+    "gen_in_phase": 22,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.2286058549045014,
+    "median_score": -3.3262157229934317,
+    "elim_median": -3.259615797393259,
+    "cull": false
+   },
+   {
+    "generation": 48,
+    "phase": "B",
+    "gen_in_phase": 23,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.179986504999978,
+    "median_score": -3.2927385533253446,
+    "elim_median": -3.243872912685473,
+    "cull": false
+   },
+   {
+    "generation": 49,
+    "phase": "B",
+    "gen_in_phase": 24,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.1076151021650382,
+    "median_score": -3.2334380133010288,
+    "elim_median": -3.25180311996954,
+    "cull": false
+   }
+  ],
+  "density_cloud_counts": {
+   "contributing": 7,
+   "neutral": 11,
+   "harmful": 0
+  },
+  "density_cloud_limit_pct": 18.951929555275086
+ },
+ "margin_treatment_over_control": {
+  "points": -0.007276848295587057,
+  "relative_percent_of_control_gap": -6.142535157324741
+ },
+ "wall_seconds": 55.30241012573242
+}

@@ -7,6 +7,15 @@ exactness, all four growth transplants' preservation, a
 tiny stage that beats its random baseline, the growth
 sequencer's keep/revert logic, a forced cataclysm with
 founder_count = 3, the stock adapter on a synthetic basket,
+the champion silencing table (batched == one by one,
+chunk invariance, sanity legs), mutation marking from the
+table (measured phase-B rates, checkpoint round trip,
+replacement on a new champion), split-widening as widen
+variant B (exactness, noise leg, growth attempt, variant
+bookkeeping) and its stock-domain preservation, the
+detailed episode simulation the live monitor needs (exact
+CAGR reproduction, value-path consistency, trade-counter
+reconciliation, unaffordable buys are not trades),
 the parametric stock preprocessor (width, known values,
 legacy-exact fourier / wavelet, causality, end-to-end
 feature_spec wiring, error handling), the stock data bundle
@@ -159,6 +168,196 @@ def main():
         leg(f"transplant preservation exact: {rule}",
             pres["pass"], f"({pres})")
 
+    # ------------------------------------------ silencing / marking /
+    # split-widening (plan 2026-11-22 steps 1-3)
+    tab = be.silence_table(
+        layout0, champ,
+        lambda G: dom.validation_scores(layout0, G),
+        zero_tol=dom.silence_zero_tol)
+    n_units_expect = sum(
+        nb * arch0.ffn_hidden + nb * heads
+        for nb, heads in arch0.couples)
+    leg("silencing table: one batched pass, units in plan order "
+        "(FFN first, then heads)",
+        len(tab["units"]) == n_units_expect
+        and tab["units"][0]["kind"] == "ffn"
+        and tab["units"][-1]["kind"] == "head",
+        f"({len(tab['units'])} units, champion score "
+        f"{tab['champion_score']:.4f})")
+    # batched vs one by one, exactly
+    drops_loop = []
+    for u in be.silence_units(layout0):
+        g1 = champ.copy()
+        g1[be._silence_indices(layout0, u)] = 0.0
+        s1 = dom.validation_scores(layout0, g1[None, :])[0]
+        drops_loop.append(float(tab["champion_score"] - s1))
+    drops_batch = [u["drop"] for u in tab["units"]]
+    d_bb = float(np.max(np.abs(np.array(drops_batch)
+                               - np.array(drops_loop))))
+    leg("silencing batched == silencing one by one, exactly "
+        "(0.0)", d_bb == 0.0, f"(max diff {d_bb:.3e})")
+    # chunk size does not change the table
+    cfg_c3 = tiny_cfg("tsp", chunk=3)
+    dom_c3 = tsp.TSPDomain(cfg_c3, backend)
+    tab_c3 = be.silence_table(
+        layout0, champ,
+        lambda G: dom_c3.validation_scores(layout0, G),
+        zero_tol=dom.silence_zero_tol)
+    leg("silencing table does not change with chunk size",
+        [u["drop"] for u in tab["units"]]
+        == [u["drop"] for u in tab_c3["units"]])
+    # sanity: a unit whose outgoing weights are already zero
+    # reads a drop of exactly 0
+    g_dead = champ.copy()
+    g_dead[be._silence_indices(layout0, tab["units"][0])] = 0.0
+    tab_dead = be.silence_table(
+        layout0, g_dead,
+        lambda G: dom.validation_scores(layout0, G),
+        zero_tol=dom.silence_zero_tol)
+    leg("silencing sanity: a unit whose outgoing weights are "
+        "already zero reads a drop of exactly 0",
+        tab_dead["units"][0]["drop"] == 0.0,
+        f"(drop {tab_dead['units'][0]['drop']})")
+    # split transplant exactness (TSP): pre-noise split
+    # champion reproduces the validation score exactly
+    split_units = be.split_units_from_table(tab, cfg.widen_step)
+    a_sp, l_sp, tmpl_sp, cl_sp = be.make_transplant(
+        "widen", arch0, layout0, champ, tsp.head_spec, cfg,
+        tsp.widen_head, variant="B", split_units=split_units)
+    pres_sp = dom.preservation(layout0, champ, l_sp, tmpl_sp)
+    s_sp = dom.validation_score(l_sp, tmpl_sp)
+    leg("split transplant exactness (TSP): pre-noise split "
+        "champion reproduces the validation score exactly "
+        "(difference 0.0), tours identical",
+        pres_sp["pass"]
+        and s_sp - tab["champion_score"] == 0.0,
+        f"(preservation {pres_sp}, score diff "
+        f"{s_sp - tab['champion_score']:.3e})")
+    # split noise leg: the score moves, and the move is small
+    rng_n = np.random.default_rng(99)
+    noisy_sp = be.apply_split_noise(
+        tmpl_sp, l_sp, split_units, rng_n,
+        cfg.split_noise_lo, cfg.split_noise_hi)
+    s_noisy = dom.validation_score(l_sp, noisy_sp)
+    move_sp = s_noisy - s_sp
+    leg("split noise leg: the validation score moves, and the "
+        "move is small",
+        move_sp != 0.0 and abs(move_sp) < 0.05,
+        f"(move {move_sp:.6f})")
+    # marking: measured mutation rates in phase B, on a
+    # post-transplant layout (pre-existing genes are OLD
+    # there, so the bands bite); phase A still freezes the
+    # base; draw genes never mutate, marks or not
+    marks = be.marks_from_table(layout0, tab, cfg,
+                                zero_tol=dom.silence_zero_tol)
+    rm = be.remap_marks(marks, layout0, l_sp)
+    pv_b = be.prob_vector(cl_sp, "B", cfg, marks=rm)
+    pv_a = be.prob_vector(cl_sp, "A", cfg, marks=rm)
+    rng_m = np.random.default_rng(5)
+    trials = 400
+    base0 = np.zeros(l_sp.n_params)
+    changed = np.zeros(l_sp.n_params, dtype=int)
+    for _ in range(trials):
+        out_m = be.mutate(base0, pv_b, rng_m, cfg.mut_sigma)
+        changed += (out_m != base0)
+    rate_u = float(changed[rm == cfg.useless_mut_p].mean()) \
+        / trials
+    rate_p = float(changed[np.isclose(
+        rm, cfg.mut_p * cfg.old_rate_factor)].mean()) / trials
+    classes0 = runner.initial_classes(layout0)
+    pv_b0 = be.prob_vector(classes0, "B", cfg, marks=marks,
+                           flat_nominal=True)
+    leg("marking: measured phase-B mutation rate on "
+        "useless-band genes matches useless_mut_p, and "
+        "protected-band genes match the old-gene rate",
+        abs(rate_u - cfg.useless_mut_p) < 0.03
+        and abs(rate_p - cfg.mut_p * cfg.old_rate_factor) < 0.005
+        and bool((pv_a[rm == cfg.useless_mut_p] == 0).all())
+        and not bool((classes0 == be.CLS_DRAW).any())
+        and bool((pv_b0 == cfg.mut_p).all()),
+        f"(useless rate {rate_u:.4f} vs {cfg.useless_mut_p}, "
+        f"protected rate {rate_p:.4f} vs "
+        f"{cfg.mut_p * cfg.old_rate_factor}, phase A useless "
+        f"rate 0, founding classes carry no draw genes and "
+        f"the founding rate is nominal on every gene)")
+    # marks survive a checkpoint save/load bit-identically;
+    # a new champion's table replaces the old marks
+    with tempfile.TemporaryDirectory() as td:
+        out = Path(td) / "run_sil"
+        cfg_sil = tiny_cfg("tsp")
+        eng = runner.Engine(cfg_sil, out)
+        eng.setup_fresh()
+        eng.save_checkpoint()
+        g_a = rng.normal(0, 0.25, eng.layout.n_params)
+        fn_a = eng.vault(g_a, -0.5, "stage_champion", 0, 1, "L1")
+        tab_a = eng._silence_champion(g_a, 0, fn_a)
+        marks_a = eng.marks.copy()
+        eng.save_checkpoint()
+        eng2 = runner.Engine(cfg_sil, out)
+        eng2.setup_resume()
+        ok_ckpt = eng2.marks is not None \
+            and np.array_equal(eng2.marks, marks_a) \
+            and eng2.silencing_table == tab_a
+        leg("marks survive a checkpoint save and load "
+            "bit-identically", ok_ckpt)
+        g_b = rng.normal(0, 0.25, eng.layout.n_params)
+        fn_b = eng.vault(g_b, -0.4, "stage_champion", 0, 2, "L2")
+        tab_b = eng._silence_champion(g_b, 0, fn_b)
+        marks_b = be.marks_from_table(
+            eng.layout, tab_b, cfg_sil,
+            zero_tol=dom.silence_zero_tol)
+        ok_repl = eng.silencing_table == tab_b \
+            and np.array_equal(eng.marks, marks_b) \
+            and len(list((out / "vault").glob(
+                "*_silence.json"))) == 2
+        leg("a new champion's table replaces the old marks",
+            ok_repl)
+    # split-widening as a growth attempt (variant B): the
+    # gate passes, the noise is applied after it, the arch
+    # grows by widen_step per block, the marks remap
+    with tempfile.TemporaryDirectory() as td:
+        out = Path(td) / "run_b"
+        cfg_b = tiny_cfg("tsp")
+        eng = runner.Engine(cfg_b, out)
+        eng.setup_fresh()
+        eng.save_checkpoint()
+        g_c = rng.normal(0, 0.25, eng.layout.n_params)
+        fn_c = eng.vault(g_c, -0.5, "stage_champion", 0, 1, "L1")
+        eng._silence_champion(g_c, 0, fn_c)
+        founders = [{"genome": g_c, "lineage": "L1",
+                     "source_species_id": 1, "val_score": -0.5}]
+        ffn_before = eng.layout.arch.ffn_hidden
+        ok_b = eng.growth_attempt("widen", founders,
+                                  variant="B")
+        ev_b = [e for e in eng.meta["events"]
+                if e["event"] == "growth_transplant"
+                and e.get("variant") == "B"]
+        leg("split-widening growth attempt (variant B): gate "
+            "passes, noise applied after it, arch grows, marks "
+            "remap to the new layout",
+            ok_b and len(ev_b) == 1
+            and eng.layout.arch.ffn_hidden
+            == ffn_before + cfg_b.widen_step
+            and ev_b[0]["noise_val_delta"] is not None
+            and ev_b[0]["split_units"] is not None
+            and eng.marks is not None
+            and len(eng.marks) == eng.layout.n_params,
+            f"(ffn {ffn_before} -> "
+            f"{eng.layout.arch.ffn_hidden}, noise delta "
+            f"{ev_b[0]['noise_val_delta'] if ev_b else None})")
+    # widen variant bookkeeping (the sequencer hook, without
+    # the unfrozen queue change): A+revert arms B, B+revert
+    # returns to A, either keep restarts at A
+    leg("widen variant bookkeeping: A+revert arms B, B+revert "
+        "returns to A, either keep restarts at A",
+        runner.Engine._next_widen_variant("A", kept=False) == "B"
+        and runner.Engine._next_widen_variant("B", kept=False)
+        == "A"
+        and runner.Engine._next_widen_variant("A", kept=True)
+        == "A"
+        and runner.Engine._next_widen_variant("B", kept=True)
+        == "A")
+
     # ------------------------------------------ permutation invariance
     # the stage program's gate: ENCODER EQUIVARIANCE under
     # relisting (the implementation property; greedy-argmax
@@ -215,6 +414,49 @@ def main():
             len(timings) >= 2
             and all(t["seconds"] >= 0 for t in timings),
             f"({len(timings)} phase records)")
+        # silencing on (the default): every stage champion is
+        # vaulted with a silencing table beside it
+        sil_files = sorted((out / "vault").glob(
+            "*_silence.json"))
+        ev_kinds_sil = [e["event"] for e in eng.meta["events"]]
+        leg("smoke run with silencing on: a silencing table "
+            "is written beside every stage-champion vault",
+            len(sil_files) >= 1
+            and "champion_silenced" in ev_kinds_sil,
+            f"({len(sil_files)} silence files)")
+        # silencing sanity on the run's own champion:
+        # silencing every feed-forward unit in a block badly
+        # damages the champion's score
+        champ_g = np.array(eng.meta["champion"]["genome"])
+        s_ch = dom.validation_scores(eng.layout,
+                                      champ_g[None, :])[0]
+        g_all = champ_g.copy()
+        for u in be.silence_units(eng.layout):
+            if u["kind"] == "ffn" and u["block"] == 0:
+                g_all[be._silence_indices(eng.layout, u)] = 0.0
+        s_all = dom.validation_scores(eng.layout,
+                                      g_all[None, :])[0]
+        drop_all = float(s_ch - s_all)
+        leg("silencing sanity: silencing every feed-forward "
+            "unit in a block badly damages the champion's "
+            "score", drop_all > 0.02, f"(drop {drop_all:.4f})")
+
+    # ------------------------------------------ silencing off regression
+    with tempfile.TemporaryDirectory() as td:
+        out = Path(td) / "run_sil_off"
+        cfg_off = tiny_cfg("tsp", silence_enabled=False)
+        eng = runner.Engine(cfg_off, out)
+        eng.setup_fresh()
+        eng.save_checkpoint()
+        res_off = eng.run()
+        sil_off = list((out / "vault").glob("*_silence.json"))
+        leg("regression: silence_enabled off runs the full "
+            "suite path with no silencing artifacts",
+            (out / "COMPLETE.txt").exists()
+            and len(sil_off) == 0
+            and eng.marks is None
+            and eng.silencing_table is None,
+            f"({len(sil_off)} silence files)")
 
     # ------------------------------------------ checkpoint refusal
     with tempfile.TemporaryDirectory() as td:
@@ -344,12 +586,107 @@ def main():
     # frozen episode file structure (no real panel needed)
     frozen_path = (HERE.parent.parent / "trading-agent"
                    / "genetic_lab" / "validation_episodes_v1.json")
+    if not frozen_path.exists():
+        # the export tree sits one level higher than the dev
+        # tree, so the same file is one parent up from there
+        frozen_path = (HERE.parent / "trading-agent"
+                       / "genetic_lab"
+                       / "validation_episodes_v1.json")
     if frozen_path.exists():
         eps = stock.load_frozen_episodes(frozen_path)
         leg("frozen common episode set parses (64 episodes, "
             "basket 10)", len(eps) == 64
             and all(len(e["basket"]) == 10 for e in eps),
             f"({len(eps)} episodes)")
+
+    # ------------------------------------------ detailed episode sim
+    # (Addendum 3: the recording the live monitor needs)
+    ep_d = dom_s.val_episodes()[0]
+    c_plain_d, bh_d = dom_s.episode_cagrs(layout_s, g0[None, :],
+                                          ep_d)
+    c_det_d, bh_d2, det_d = dom_s.episode_cagrs(
+        layout_s, g0[None, :], ep_d, detailed=True)
+    leg("detailed episode sim reproduces today's final CAGRs "
+        "exactly",
+        float(np.max(np.abs(c_plain_d - c_det_d))) == 0.0
+        and bh_d == bh_d2,
+        f"(max diff "
+        f"{np.max(np.abs(c_plain_d - c_det_d)):.3e})")
+    cagr_path = float((det_d["value_path"][-1] / stock.V0)
+                      ** (252.0 / (dom_s.episode_days + 1)) - 1.0)
+    leg("detailed episode sim: value path starts at V0, ends "
+        "at the final value, CAGR from the path matches",
+        len(det_d["value_path"]) == dom_s.episode_days + 2
+        and det_d["value_path"][0] == stock.V0
+        and det_d["value_path"][-1] == det_d["v_final"]
+        and abs(cagr_path - float(c_det_d[0])) < 1e-12,
+        f"(path {len(det_d['value_path'])} points, CAGR from "
+        f"path {cagr_path:.6f} vs {float(c_det_d[0]):.6f})")
+    # independent Sharpe / drawdown from the recorded path
+    r_d = np.diff(det_d["value_path"]) \
+        / det_d["value_path"][:-1]
+    sharpe_d = float(r_d.mean() / r_d.std(ddof=1)
+                     * np.sqrt(252)) if r_d.std(ddof=1) > 0 \
+        else None
+    peak_d = np.maximum.accumulate(det_d["value_path"])
+    dd_d = float(np.min(det_d["value_path"] / peak_d - 1.0))
+    leg("detailed episode sim: Sharpe and max drawdown are "
+        "computable from the recorded daily path (hand-check "
+        "values reported)",
+        sharpe_d is not None and np.isfinite(sharpe_d)
+        and np.isfinite(dd_d),
+        f"(Sharpe {sharpe_d:.4f} from {len(r_d)} daily returns, "
+        f"max drawdown {dd_d:.4f})")
+    # trade counter hand-check: fills reconcile with the
+    # holdings (final shares = sum of fill deltas) and the
+    # turnover is the sum of fill values
+    fills_d = [f for day_f in det_d["fills"] for f in day_f]
+    sh_rec = np.zeros(len(ep_d["basket"]))
+    for (ti, _side, dsh, _val) in fills_d:
+        sh_rec[ti] += dsh
+    leg("detailed episode sim: trade counter reconciles -- "
+        "final shares equal the sum of fill deltas, turnover "
+        "is the sum of fill values",
+        bool(np.allclose(sh_rec, det_d["shares_end"][-1],
+                         rtol=1e-9, atol=1e-6))
+        and abs(det_d["turnover"]
+                - sum(f[3] for f in fills_d)) < 1e-6
+        and det_d["n_buys"] + det_d["n_sells"] == len(fills_d),
+        f"({det_d['n_buys']} buys, {det_d['n_sells']} sells, "
+        f"turnover {det_d['turnover']:.1f})")
+    # an unaffordable buy is ignored and charged the penalty,
+    # but is NOT a trade: a genome that always demands level 5
+    # at the max unit cannot fill every buy it signals
+    g_hungry = np.zeros(layout_s.n_params)
+    couple_s = len(layout_s.arch.couples) - 1
+    g_hungry[layout_s.sl(f"c{couple_s}.head.b_score")] = 10.0
+    g_hungry[layout_s.sl(f"c{couple_s}.head.b_unit")] = 10.0
+    c_h, _, det_h = dom_s.episode_cagrs(
+        layout_s, g_hungry[None, :], ep_d, detailed=True)
+    leg("detailed episode sim: unaffordable buys are not "
+        "trades (a level-5-at-max-unit genome fills far fewer "
+        "buys than ticker-days)",
+        bool((det_h["levels"] == 5).all())
+        and det_h["n_buys"] < len(ep_d["basket"])
+        * dom_s.episode_days
+        and np.isfinite(c_h[0]),
+        f"({det_h['n_buys']} buys, {det_h['n_sells']} sells "
+        f"of {len(ep_d['basket']) * dom_s.episode_days} "
+        f"ticker-days)")
+    # stock split-widening: preservation gate passes pre-noise
+    tab_s = be.silence_table(
+        layout_s, g0,
+        lambda G: dom_s.validation_scores(layout_s, G),
+        zero_tol=dom_s.silence_zero_tol)
+    units_s = be.split_units_from_table(tab_s, cfg_s.widen_step)
+    a_sps, l_sps, tmpl_sps, cl_sps = be.make_transplant(
+        "widen", arch_s, layout_s, g0, stock.head_spec, cfg_s,
+        stock.widen_head, variant="B", split_units=units_s)
+    pres_sps = dom_s.preservation(layout_s, g0, l_sps, tmpl_sps)
+    leg("split transplant exactness (stock): pre-noise split "
+        "passes the stock preservation gate (decisions "
+        "identical, CAGR diff < 1e-9)",
+        pres_sps["pass"], f"({pres_sps})")
 
     # ------------------------------------------ stock preprocessor
     FULL_SPEC = [

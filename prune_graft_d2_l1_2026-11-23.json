@@ -1,0 +1,1892 @@
+{
+ "experiment": "prune-and-graft round on the fresh single-layer lineage (standalone, not an engine integration)",
+ "date": "2026-11-23",
+ "continues": [
+  "prune_graft_test_2026-11-23.py",
+  "prune_widen_chain_2026-11-23.py"
+ ],
+ "subject": {
+  "run_dir": "/home/hatch/workspace/bert-engine/engine_runs/fresh_d2_l1",
+  "arch_signature": "{\"attn_scale\": 0.7071067811865475, \"couples\": [[1, 1]], \"d\": 2, \"ffn_hidden\": 8, \"input_dim\": 2, \"ln_eps\": 1e-05}",
+  "n_genes": 88,
+  "stored_val_score": -0.22026697212210763,
+  "champion_species_id": 0,
+  "reproduced_val_score": -0.22026697212210763,
+  "mean_gap_percent": 22.026697212210763
+ },
+ "settings": {
+  "config_file": "/home/hatch/workspace/bert-engine/bert_engine_config_d2_l1.json",
+  "config_canonical": {
+   "archive_cap_bytes_per_stage": 17179869184,
+   "archive_enabled": true,
+   "audit_seed": 20262003,
+   "backend": "numpy",
+   "cataclysm_enabled": false,
+   "cataclysm_every_n_generations": null,
+   "check_seed": 20262002,
+   "chunk": 128,
+   "cull_fraction": 0.2,
+   "cull_interval": 3,
+   "d": 2,
+   "device": "cpu",
+   "domain": "tsp",
+   "domain_config": {
+    "n_cities": 10
+   },
+   "draw_seed": 20262001,
+   "draw_sigma": 0.5,
+   "elim_seed": 20261272,
+   "elite": 2,
+   "ffn_hidden": 8,
+   "founder_count": 1,
+   "growth_order": [
+    "widen",
+    "add_head",
+    "add_block",
+    "stack"
+   ],
+   "initial_blocks": 1,
+   "initial_heads": 1,
+   "input_dim": 0,
+   "max_growth_rounds": 0,
+   "monitor_enabled": true,
+   "monitor_every_gens": 10,
+   "mut_p": 0.1,
+   "mut_sigma": 0.15,
+   "n_elim": 64,
+   "n_species": 12,
+   "n_train": 64,
+   "n_val": 200,
+   "old_rate_factor": 0.1,
+   "per_species": 10,
+   "phase_a_gens": 20,
+   "phase_a_seed": 20261310,
+   "phase_b_gens": 20,
+   "plateau_threshold": 0.005,
+   "plateau_window": 30,
+   "precision": "x64",
+   "run_name": "fresh_d2_l1",
+   "run_seed": 20262000,
+   "silence_enabled": true,
+   "species_floor": 4,
+   "split_noise_hi": 0.01,
+   "split_noise_lo": 0.001,
+   "tournament": 3,
+   "usefulness_step": 0.02,
+   "useless_mut_p": 0.5,
+   "val_seed": 20261116,
+   "widen_step": 4
+  },
+  "phase_budgets": {
+   "A": 25,
+   "B": 25
+  },
+  "seeds": {
+   "run_seed": 20262100,
+   "draw_seed": 20262101,
+   "graft_seed": 20262104,
+   "val_seed": 20261116
+  },
+  "seed_rule": "the fresh run's family is run 20262000 / draw 20262001; this round advances one +100 step (run 20262100, draw 20262101, graft 20262104); within the step each arm freshly initialises its run/draw RNGs from the step seeds",
+  "classes_rule": "be._base_classes(layout, 0): all genes CLS_OLD except couple 0 head CLS_DECODER; no CLS_DRAW genes (engine founder-continuation rebase)",
+  "freeze_rule": "units whose silencing drop clears the paired-noise band upward (contributing) on the subject's table are marked useful; their genes mutate at rate 0 in both arms and they are exempt from re-silencing while inherited verbatim",
+  "operators": {
+   "tournament": 3,
+   "elite": 2,
+   "mut_p": 0.1,
+   "mut_sigma": 0.15,
+   "old_rate_factor": 0.1,
+   "cull_interval": 3,
+   "cull_fraction": 0.2,
+   "species_floor": 4,
+   "chunk": 128,
+   "backend": "numpy",
+   "precision": "x64"
+  }
+ },
+ "before": {
+  "champion_score": -0.22026697212210763,
+  "n_units": 9,
+  "exact_zero_positive": 5,
+  "band_counts": {
+   "contributing": 2,
+   "neutral": 6,
+   "harmful": 1
+  },
+  "units": [
+   {
+    "name": "c0.b0.ffn.u0",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 0,
+    "drop": -0.025906557431711913,
+    "se": 0.007326117282454525,
+    "band": 0.01465223456490905,
+    "cat": "harmful"
+   },
+   {
+    "name": "c0.b0.ffn.u1",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 1,
+    "drop": -0.004840597186492768,
+    "se": 0.007033275699985423,
+    "band": 0.014066551399970846,
+    "cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u2",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 2,
+    "drop": 0.005319407820277455,
+    "se": 0.007338394954518007,
+    "band": 0.014676789909036014,
+    "cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u3",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 3,
+    "drop": 0.015334269854570204,
+    "se": 0.00850310217415795,
+    "band": 0.0170062043483159,
+    "cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u4",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 4,
+    "drop": -0.004630427092964018,
+    "se": 0.006655751311696429,
+    "band": 0.013311502623392858,
+    "cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u5",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 5,
+    "drop": 0.058581713839950506,
+    "se": 0.01289805641119894,
+    "band": 0.02579611282239788,
+    "cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u6",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 6,
+    "drop": 0.0015768840186298483,
+    "se": 0.006807767183198285,
+    "band": 0.01361553436639657,
+    "cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u7",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 7,
+    "drop": -0.0038379665664218243,
+    "se": 0.0073175188763102824,
+    "band": 0.014635037752620565,
+    "cat": "neutral"
+   },
+   {
+    "name": "c0.b0.head.h0",
+    "kind": "head",
+    "couple": 0,
+    "block": 0,
+    "index": 0,
+    "drop": 0.2441841823466054,
+    "se": 0.016306347291420747,
+    "band": 0.032612694582841495,
+    "cat": "contributing"
+   }
+  ]
+ },
+ "freeze_prep": {
+  "useful_units": [
+   "c0.b0.ffn.u5",
+   "c0.b0.head.h0"
+  ],
+  "n_useful_units": 2,
+  "n_frozen_genes": 29,
+  "n_genes_total": 88
+ },
+ "donor_pool": {
+  "checkpoint_species": [
+   {
+    "species_id": 2,
+    "identical_to_subject": false,
+    "excluded_champion_species": false
+   },
+   {
+    "species_id": 11,
+    "identical_to_subject": false,
+    "excluded_champion_species": false
+   },
+   {
+    "species_id": 0,
+    "identical_to_subject": true,
+    "excluded_champion_species": true
+   },
+   {
+    "species_id": 8,
+    "identical_to_subject": false,
+    "excluded_champion_species": false
+   }
+  ],
+  "donor_species_ids": [
+   2,
+   11,
+   8
+  ],
+  "note": "4 species survived Schedule A in the fresh run (2, 11, 0, 8); the champion is species 0's best genome and is excluded as a donor both by species (per the task) and by genome identity (the protocol's own filter)."
+ },
+ "graft_inventory": {
+  "n_pruned_slots": 4,
+  "pruned_units": [
+   "c0.b0.ffn.u0",
+   "c0.b0.ffn.u1",
+   "c0.b0.ffn.u4",
+   "c0.b0.ffn.u7"
+  ],
+  "pruned_base_score": -0.21434171169601796,
+  "donor_species_ids": [
+   2,
+   11,
+   8
+  ],
+  "donor_tables": {
+   "2": {
+    "donor_val_score": -0.395894217054323,
+    "positive_drop_units": [
+     "c0.b0.ffn.u0",
+     "c0.b0.ffn.u1",
+     "c0.b0.ffn.u2",
+     "c0.b0.ffn.u3",
+     "c0.b0.ffn.u6",
+     "c0.b0.head.h0"
+    ]
+   },
+   "11": {
+    "donor_val_score": -0.45827730138636896,
+    "positive_drop_units": [
+     "c0.b0.ffn.u3",
+     "c0.b0.ffn.u5"
+    ]
+   },
+   "8": {
+    "donor_val_score": -0.4473042755644457,
+    "positive_drop_units": [
+     "c0.b0.ffn.u0",
+     "c0.b0.ffn.u1",
+     "c0.b0.ffn.u3",
+     "c0.b0.ffn.u4",
+     "c0.b0.ffn.u5",
+     "c0.b0.ffn.u7",
+     "c0.b0.head.h0"
+    ]
+   }
+  },
+  "n_eligible_slots": 4,
+  "eligible_slots": [
+   {
+    "unit": "c0.b0.ffn.u0",
+    "donor_species_ids": [
+     2,
+     8
+    ]
+   },
+   {
+    "unit": "c0.b0.ffn.u1",
+    "donor_species_ids": [
+     2,
+     8
+    ]
+   },
+   {
+    "unit": "c0.b0.ffn.u4",
+    "donor_species_ids": [
+     8
+    ]
+   },
+   {
+    "unit": "c0.b0.ffn.u7",
+    "donor_species_ids": [
+     8
+    ]
+   }
+  ],
+  "slots_without_eligible_donor": [],
+  "pruned_base_delta_vs_champion": 0.005925260426089679
+ },
+ "species_variants": [
+  {
+   "species_index": 0,
+   "fraction": 0.25,
+   "n_grafts": 1,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u1",
+     "donor_species_id": 8
+    }
+   ],
+   "variant_base_val_score": -0.23527260694616725
+  },
+  {
+   "species_index": 1,
+   "fraction": 0.3181818181818182,
+   "n_grafts": 1,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u0",
+     "donor_species_id": 2
+    }
+   ],
+   "variant_base_val_score": -0.3251402115624183
+  },
+  {
+   "species_index": 2,
+   "fraction": 0.38636363636363635,
+   "n_grafts": 2,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u4",
+     "donor_species_id": 8
+    },
+    {
+     "unit": "c0.b0.ffn.u1",
+     "donor_species_id": 2
+    }
+   ],
+   "variant_base_val_score": -0.37211781775473496
+  },
+  {
+   "species_index": 3,
+   "fraction": 0.45454545454545453,
+   "n_grafts": 2,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u4",
+     "donor_species_id": 8
+    },
+    {
+     "unit": "c0.b0.ffn.u7",
+     "donor_species_id": 8
+    }
+   ],
+   "variant_base_val_score": -0.37002760061438833
+  },
+  {
+   "species_index": 4,
+   "fraction": 0.5227272727272727,
+   "n_grafts": 2,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u7",
+     "donor_species_id": 8
+    },
+    {
+     "unit": "c0.b0.ffn.u1",
+     "donor_species_id": 8
+    }
+   ],
+   "variant_base_val_score": -0.21250209590727961
+  },
+  {
+   "species_index": 5,
+   "fraction": 0.5909090909090908,
+   "n_grafts": 2,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u1",
+     "donor_species_id": 2
+    },
+    {
+     "unit": "c0.b0.ffn.u7",
+     "donor_species_id": 8
+    }
+   ],
+   "variant_base_val_score": -0.2897040995601115
+  },
+  {
+   "species_index": 6,
+   "fraction": 0.6590909090909091,
+   "n_grafts": 3,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u7",
+     "donor_species_id": 8
+    },
+    {
+     "unit": "c0.b0.ffn.u1",
+     "donor_species_id": 2
+    },
+    {
+     "unit": "c0.b0.ffn.u4",
+     "donor_species_id": 8
+    }
+   ],
+   "variant_base_val_score": -0.38219189253394076
+  },
+  {
+   "species_index": 7,
+   "fraction": 0.7272727272727273,
+   "n_grafts": 3,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u1",
+     "donor_species_id": 8
+    },
+    {
+     "unit": "c0.b0.ffn.u7",
+     "donor_species_id": 8
+    },
+    {
+     "unit": "c0.b0.ffn.u4",
+     "donor_species_id": 8
+    }
+   ],
+   "variant_base_val_score": -0.3363527274246944
+  },
+  {
+   "species_index": 8,
+   "fraction": 0.7954545454545454,
+   "n_grafts": 3,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u1",
+     "donor_species_id": 2
+    },
+    {
+     "unit": "c0.b0.ffn.u7",
+     "donor_species_id": 8
+    },
+    {
+     "unit": "c0.b0.ffn.u0",
+     "donor_species_id": 8
+    }
+   ],
+   "variant_base_val_score": -0.2474497939676851
+  },
+  {
+   "species_index": 9,
+   "fraction": 0.8636363636363635,
+   "n_grafts": 3,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u1",
+     "donor_species_id": 2
+    },
+    {
+     "unit": "c0.b0.ffn.u7",
+     "donor_species_id": 8
+    },
+    {
+     "unit": "c0.b0.ffn.u4",
+     "donor_species_id": 8
+    }
+   ],
+   "variant_base_val_score": -0.38219189253394076
+  },
+  {
+   "species_index": 10,
+   "fraction": 0.9318181818181818,
+   "n_grafts": 4,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u4",
+     "donor_species_id": 8
+    },
+    {
+     "unit": "c0.b0.ffn.u1",
+     "donor_species_id": 8
+    },
+    {
+     "unit": "c0.b0.ffn.u0",
+     "donor_species_id": 8
+    },
+    {
+     "unit": "c0.b0.ffn.u7",
+     "donor_species_id": 8
+    }
+   ],
+   "variant_base_val_score": -0.2903449020654441
+  },
+  {
+   "species_index": 11,
+   "fraction": 1.0,
+   "n_grafts": 4,
+   "grafts": [
+    {
+     "unit": "c0.b0.ffn.u0",
+     "donor_species_id": 8
+    },
+    {
+     "unit": "c0.b0.ffn.u4",
+     "donor_species_id": 8
+    },
+    {
+     "unit": "c0.b0.ffn.u7",
+     "donor_species_id": 8
+    },
+    {
+     "unit": "c0.b0.ffn.u1",
+     "donor_species_id": 8
+    }
+   ],
+   "variant_base_val_score": -0.2903449020654441
+  }
+ ],
+ "treatment": {
+  "final_champion_val_score": -0.18797565272540126,
+  "mean_gap_percent": 18.797565272540126,
+  "delta_vs_start": 0.032291319396706375,
+  "champion_species_id": 11,
+  "n_species_final": 4,
+  "wall_seconds": 5.805905818939209,
+  "density_exact_zero_positive": 6,
+  "density_band_counts": {
+   "contributing": 6,
+   "neutral": 3,
+   "harmful": 0
+  },
+  "density_units": [
+   {
+    "name": "c0.b0.ffn.u0",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 0,
+    "drop": -0.010485211101164044,
+    "se": 0.009389418643052335,
+    "band": 0.01877883728610467,
+    "cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u1",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 1,
+    "drop": -0.013981911150239279,
+    "se": 0.009117778090461574,
+    "band": 0.018235556180923148,
+    "cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u2",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 2,
+    "drop": -0.008047567313314491,
+    "se": 0.005010838827684141,
+    "band": 0.010021677655368282,
+    "cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u3",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 3,
+    "drop": 0.03934997638944529,
+    "se": 0.010903635400117033,
+    "band": 0.021807270800234067,
+    "cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u4",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 4,
+    "drop": 0.17393228654128903,
+    "se": 0.013959374287222003,
+    "band": 0.027918748574444006,
+    "cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u5",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 5,
+    "drop": 0.08980248168243057,
+    "se": 0.011160209948549056,
+    "band": 0.022320419897098112,
+    "cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u6",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 6,
+    "drop": 0.042302677563551855,
+    "se": 0.0071953927854366264,
+    "band": 0.014390785570873253,
+    "cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u7",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 7,
+    "drop": 0.06358855905647923,
+    "se": 0.009838864966149581,
+    "band": 0.019677729932299163,
+    "cat": "contributing"
+   },
+   {
+    "name": "c0.b0.head.h0",
+    "kind": "head",
+    "couple": 0,
+    "block": 0,
+    "index": 0,
+    "drop": 0.27557454854832175,
+    "se": 0.01583926405967505,
+    "band": 0.0316785281193501,
+    "cat": "contributing"
+   }
+  ],
+  "history": [
+   {
+    "generation": 0,
+    "phase": "A",
+    "gen_in_phase": 0,
+    "n_species": 12,
+    "pop_total": 120,
+    "best_score": -3.5011135654943035,
+    "median_score": -3.567177009128999,
+    "elim_median": -4.0006073080768,
+    "cull": false
+   },
+   {
+    "generation": 1,
+    "phase": "A",
+    "gen_in_phase": 1,
+    "n_species": 12,
+    "pop_total": 120,
+    "best_score": -3.4850761981220124,
+    "median_score": -3.555074977497201,
+    "elim_median": -3.975104005959313,
+    "cull": false
+   },
+   {
+    "generation": 2,
+    "phase": "A",
+    "gen_in_phase": 2,
+    "n_species": 10,
+    "pop_total": 100,
+    "best_score": -3.4850761981220124,
+    "median_score": -3.541211998109632,
+    "elim_median": -3.975104005959313,
+    "cull": true
+   },
+   {
+    "generation": 3,
+    "phase": "A",
+    "gen_in_phase": 3,
+    "n_species": 10,
+    "pop_total": 120,
+    "best_score": -3.4824419581662984,
+    "median_score": -3.5308221136042457,
+    "elim_median": -3.9402611331067825,
+    "cull": false
+   },
+   {
+    "generation": 4,
+    "phase": "A",
+    "gen_in_phase": 4,
+    "n_species": 10,
+    "pop_total": 120,
+    "best_score": -3.480677982162435,
+    "median_score": -3.527493080697476,
+    "elim_median": -3.9239898951999157,
+    "cull": false
+   },
+   {
+    "generation": 5,
+    "phase": "A",
+    "gen_in_phase": 5,
+    "n_species": 8,
+    "pop_total": 96,
+    "best_score": -3.4701617249070167,
+    "median_score": -3.524254140839992,
+    "elim_median": -3.913981133778154,
+    "cull": true
+   },
+   {
+    "generation": 6,
+    "phase": "A",
+    "gen_in_phase": 6,
+    "n_species": 8,
+    "pop_total": 120,
+    "best_score": -3.4617329943202875,
+    "median_score": -3.513442511036329,
+    "elim_median": -3.859575873381518,
+    "cull": false
+   },
+   {
+    "generation": 7,
+    "phase": "A",
+    "gen_in_phase": 7,
+    "n_species": 8,
+    "pop_total": 120,
+    "best_score": -3.4617329943202875,
+    "median_score": -3.504663293681489,
+    "elim_median": -3.8741511193380958,
+    "cull": false
+   },
+   {
+    "generation": 8,
+    "phase": "A",
+    "gen_in_phase": 8,
+    "n_species": 6,
+    "pop_total": 90,
+    "best_score": -3.4617329943202875,
+    "median_score": -3.498856695319809,
+    "elim_median": -3.9031680576014542,
+    "cull": true
+   },
+   {
+    "generation": 9,
+    "phase": "A",
+    "gen_in_phase": 9,
+    "n_species": 6,
+    "pop_total": 120,
+    "best_score": -3.45866913889955,
+    "median_score": -3.5546387158053965,
+    "elim_median": -3.7300440255216394,
+    "cull": false
+   },
+   {
+    "generation": 10,
+    "phase": "A",
+    "gen_in_phase": 10,
+    "n_species": 6,
+    "pop_total": 120,
+    "best_score": -3.45866913889955,
+    "median_score": -3.5353834070059653,
+    "elim_median": -3.7309077444049334,
+    "cull": false
+   },
+   {
+    "generation": 11,
+    "phase": "A",
+    "gen_in_phase": 11,
+    "n_species": 5,
+    "pop_total": 100,
+    "best_score": -3.45866913889955,
+    "median_score": -3.5300796136875023,
+    "elim_median": -3.7383686424227283,
+    "cull": true
+   },
+   {
+    "generation": 12,
+    "phase": "A",
+    "gen_in_phase": 12,
+    "n_species": 5,
+    "pop_total": 120,
+    "best_score": -3.467133735387775,
+    "median_score": -3.525096310184673,
+    "elim_median": -3.8172949945875976,
+    "cull": false
+   },
+   {
+    "generation": 13,
+    "phase": "A",
+    "gen_in_phase": 13,
+    "n_species": 5,
+    "pop_total": 120,
+    "best_score": -3.467133735387775,
+    "median_score": -3.495056725852905,
+    "elim_median": -3.8172949945875976,
+    "cull": false
+   },
+   {
+    "generation": 14,
+    "phase": "A",
+    "gen_in_phase": 14,
+    "n_species": 4,
+    "pop_total": 96,
+    "best_score": -3.460103845889895,
+    "median_score": -3.496555397624001,
+    "elim_median": -3.8172949945875976,
+    "cull": true
+   },
+   {
+    "generation": 15,
+    "phase": "A",
+    "gen_in_phase": 15,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.5975584454261487,
+    "median_score": -3.826241310339938,
+    "elim_median": -3.6338232336383767,
+    "cull": false
+   },
+   {
+    "generation": 16,
+    "phase": "A",
+    "gen_in_phase": 16,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.4810440514972245,
+    "median_score": -3.738586227207582,
+    "elim_median": -3.758755303784667,
+    "cull": false
+   },
+   {
+    "generation": 17,
+    "phase": "A",
+    "gen_in_phase": 17,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.439229883675732,
+    "median_score": -3.6382958059827932,
+    "elim_median": -3.7259249721971237,
+    "cull": false
+   },
+   {
+    "generation": 18,
+    "phase": "A",
+    "gen_in_phase": 18,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.439229883675732,
+    "median_score": -3.56536359785167,
+    "elim_median": -3.6824027509381363,
+    "cull": false
+   },
+   {
+    "generation": 19,
+    "phase": "A",
+    "gen_in_phase": 19,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.439229883675732,
+    "median_score": -3.5158098177686057,
+    "elim_median": -3.7455769698600214,
+    "cull": false
+   },
+   {
+    "generation": 20,
+    "phase": "A",
+    "gen_in_phase": 20,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.439229883675732,
+    "median_score": -3.5032591720793196,
+    "elim_median": -3.7136811754213026,
+    "cull": false
+   },
+   {
+    "generation": 21,
+    "phase": "A",
+    "gen_in_phase": 21,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.439229883675732,
+    "median_score": -3.490345261174922,
+    "elim_median": -3.734141333133874,
+    "cull": false
+   },
+   {
+    "generation": 22,
+    "phase": "A",
+    "gen_in_phase": 22,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.4368912389784163,
+    "median_score": -3.4893845935729826,
+    "elim_median": -3.734141333133874,
+    "cull": false
+   },
+   {
+    "generation": 23,
+    "phase": "A",
+    "gen_in_phase": 23,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.4368912389784163,
+    "median_score": -3.4843199416527133,
+    "elim_median": -3.734141333133874,
+    "cull": false
+   },
+   {
+    "generation": 24,
+    "phase": "A",
+    "gen_in_phase": 24,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.4368912389784163,
+    "median_score": -3.474645729514885,
+    "elim_median": -3.7218996644133155,
+    "cull": false
+   },
+   {
+    "generation": 25,
+    "phase": "B",
+    "gen_in_phase": 0,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.434602778112282,
+    "median_score": -3.4945069557323016,
+    "elim_median": -3.7352522521962204,
+    "cull": false
+   },
+   {
+    "generation": 26,
+    "phase": "B",
+    "gen_in_phase": 1,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.3954279415249062,
+    "median_score": -3.7221156615996076,
+    "elim_median": -3.5175847320562816,
+    "cull": false
+   },
+   {
+    "generation": 27,
+    "phase": "B",
+    "gen_in_phase": 2,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.4017106395565158,
+    "median_score": -3.5856484459008895,
+    "elim_median": -3.47396476015326,
+    "cull": false
+   },
+   {
+    "generation": 28,
+    "phase": "B",
+    "gen_in_phase": 3,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.3736767601496003,
+    "median_score": -3.4823120817959015,
+    "elim_median": -3.520823030748708,
+    "cull": false
+   },
+   {
+    "generation": 29,
+    "phase": "B",
+    "gen_in_phase": 4,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.4359464622717444,
+    "median_score": -3.5595898443569984,
+    "elim_median": -3.5114874575497,
+    "cull": false
+   },
+   {
+    "generation": 30,
+    "phase": "B",
+    "gen_in_phase": 5,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.348767332143084,
+    "median_score": -3.478238768172456,
+    "elim_median": -3.500052398665758,
+    "cull": false
+   },
+   {
+    "generation": 31,
+    "phase": "B",
+    "gen_in_phase": 6,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.4393261958825336,
+    "median_score": -3.5139660981864984,
+    "elim_median": -3.5012295000711013,
+    "cull": false
+   },
+   {
+    "generation": 32,
+    "phase": "B",
+    "gen_in_phase": 7,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.4155045002960174,
+    "median_score": -3.522825406052078,
+    "elim_median": -3.541441295492473,
+    "cull": false
+   },
+   {
+    "generation": 33,
+    "phase": "B",
+    "gen_in_phase": 8,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.42366539924981,
+    "median_score": -3.557518588894979,
+    "elim_median": -3.4872796786328655,
+    "cull": false
+   },
+   {
+    "generation": 34,
+    "phase": "B",
+    "gen_in_phase": 9,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.394168963057172,
+    "median_score": -3.535035148065738,
+    "elim_median": -3.518174690881303,
+    "cull": false
+   },
+   {
+    "generation": 35,
+    "phase": "B",
+    "gen_in_phase": 10,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.417487503421246,
+    "median_score": -3.531091937342877,
+    "elim_median": -3.516808887113479,
+    "cull": false
+   },
+   {
+    "generation": 36,
+    "phase": "B",
+    "gen_in_phase": 11,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.395370888662929,
+    "median_score": -3.4931907265833075,
+    "elim_median": -3.498966775848947,
+    "cull": false
+   },
+   {
+    "generation": 37,
+    "phase": "B",
+    "gen_in_phase": 12,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.2930184719629194,
+    "median_score": -3.443403159017564,
+    "elim_median": -3.4764674325486333,
+    "cull": false
+   },
+   {
+    "generation": 38,
+    "phase": "B",
+    "gen_in_phase": 13,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.408697210427327,
+    "median_score": -3.493129754290388,
+    "elim_median": -3.4869432394390025,
+    "cull": false
+   },
+   {
+    "generation": 39,
+    "phase": "B",
+    "gen_in_phase": 14,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.327531232438845,
+    "median_score": -3.4818309005937804,
+    "elim_median": -3.474464528746552,
+    "cull": false
+   },
+   {
+    "generation": 40,
+    "phase": "B",
+    "gen_in_phase": 15,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.2953214484937483,
+    "median_score": -3.447427656191723,
+    "elim_median": -3.479479773321537,
+    "cull": false
+   },
+   {
+    "generation": 41,
+    "phase": "B",
+    "gen_in_phase": 16,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.399433536934333,
+    "median_score": -3.495422985061475,
+    "elim_median": -3.4999809908022,
+    "cull": false
+   },
+   {
+    "generation": 42,
+    "phase": "B",
+    "gen_in_phase": 17,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.319312019689666,
+    "median_score": -3.431539340034986,
+    "elim_median": -3.489009460498864,
+    "cull": false
+   },
+   {
+    "generation": 43,
+    "phase": "B",
+    "gen_in_phase": 18,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.392937621442474,
+    "median_score": -3.5110794241924967,
+    "elim_median": -3.482799787653305,
+    "cull": false
+   },
+   {
+    "generation": 44,
+    "phase": "B",
+    "gen_in_phase": 19,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.3274526261644324,
+    "median_score": -3.4895630517472878,
+    "elim_median": -3.4703278214605624,
+    "cull": false
+   },
+   {
+    "generation": 45,
+    "phase": "B",
+    "gen_in_phase": 20,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.3183278605092235,
+    "median_score": -3.4048877277892107,
+    "elim_median": -3.4727278536204516,
+    "cull": false
+   },
+   {
+    "generation": 46,
+    "phase": "B",
+    "gen_in_phase": 21,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.344752487059486,
+    "median_score": -3.4987856477636887,
+    "elim_median": -3.4573496413177236,
+    "cull": false
+   },
+   {
+    "generation": 47,
+    "phase": "B",
+    "gen_in_phase": 22,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.40330416973441,
+    "median_score": -3.5110989821169536,
+    "elim_median": -3.4964004075217345,
+    "cull": false
+   },
+   {
+    "generation": 48,
+    "phase": "B",
+    "gen_in_phase": 23,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.353982676152942,
+    "median_score": -3.4882196111863735,
+    "elim_median": -3.4712433683769914,
+    "cull": false
+   },
+   {
+    "generation": 49,
+    "phase": "B",
+    "gen_in_phase": 24,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.3815619924489777,
+    "median_score": -3.5180076403435616,
+    "elim_median": -3.455708872379607,
+    "cull": false
+   }
+  ]
+ },
+ "control": {
+  "final_champion_val_score": -0.1891407105846541,
+  "mean_gap_percent": 18.91407105846541,
+  "delta_vs_start": 0.031126261537453542,
+  "champion_species_id": 0,
+  "n_species_final": 4,
+  "wall_seconds": 5.865638256072998,
+  "density_exact_zero_positive": 8,
+  "density_band_counts": {
+   "contributing": 6,
+   "neutral": 3,
+   "harmful": 0
+  },
+  "density_units": [
+   {
+    "name": "c0.b0.ffn.u0",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 0,
+    "drop": 0.047477913448168624,
+    "se": 0.009678922038136702,
+    "band": 0.019357844076273403,
+    "cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u1",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 1,
+    "drop": 0.023938005935128515,
+    "se": 0.009145941362577258,
+    "band": 0.018291882725154515,
+    "cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u2",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 2,
+    "drop": -8.691380893838252e-05,
+    "se": 0.007086714428806011,
+    "band": 0.014173428857612021,
+    "cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u3",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 3,
+    "drop": 0.013476827102541833,
+    "se": 0.009632733841759339,
+    "band": 0.019265467683518677,
+    "cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u4",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 4,
+    "drop": 0.01212953817898324,
+    "se": 0.007122847794428515,
+    "band": 0.01424569558885703,
+    "cat": "neutral"
+   },
+   {
+    "name": "c0.b0.ffn.u5",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 5,
+    "drop": 0.1571695899462639,
+    "se": 0.01580437233204618,
+    "band": 0.03160874466409236,
+    "cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u6",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 6,
+    "drop": 0.0480555034785099,
+    "se": 0.008981151838239205,
+    "band": 0.01796230367647841,
+    "cat": "contributing"
+   },
+   {
+    "name": "c0.b0.ffn.u7",
+    "kind": "ffn",
+    "couple": 0,
+    "block": 0,
+    "index": 7,
+    "drop": 0.034042365728934265,
+    "se": 0.009542863521899673,
+    "band": 0.019085727043799346,
+    "cat": "contributing"
+   },
+   {
+    "name": "c0.b0.head.h0",
+    "kind": "head",
+    "couple": 0,
+    "block": 0,
+    "index": 0,
+    "drop": 0.288735569907077,
+    "se": 0.017247530260176745,
+    "band": 0.03449506052035349,
+    "cat": "contributing"
+   }
+  ],
+  "history": [
+   {
+    "generation": 0,
+    "phase": "A",
+    "gen_in_phase": 0,
+    "n_species": 12,
+    "pop_total": 120,
+    "best_score": -3.4901209859620783,
+    "median_score": -3.5022763471493144,
+    "elim_median": -3.512215850233609,
+    "cull": false
+   },
+   {
+    "generation": 1,
+    "phase": "A",
+    "gen_in_phase": 1,
+    "n_species": 12,
+    "pop_total": 120,
+    "best_score": -3.488698749590832,
+    "median_score": -3.5022763471493144,
+    "elim_median": -3.5036590929613904,
+    "cull": false
+   },
+   {
+    "generation": 2,
+    "phase": "A",
+    "gen_in_phase": 2,
+    "n_species": 10,
+    "pop_total": 100,
+    "best_score": -3.4841628949414396,
+    "median_score": -3.5022763471493144,
+    "elim_median": -3.497934800569658,
+    "cull": true
+   },
+   {
+    "generation": 3,
+    "phase": "A",
+    "gen_in_phase": 3,
+    "n_species": 10,
+    "pop_total": 120,
+    "best_score": -3.4841628949414396,
+    "median_score": -3.5022763471493144,
+    "elim_median": -3.500719630278179,
+    "cull": false
+   },
+   {
+    "generation": 4,
+    "phase": "A",
+    "gen_in_phase": 4,
+    "n_species": 10,
+    "pop_total": 120,
+    "best_score": -3.465810342917268,
+    "median_score": -3.4992342288946325,
+    "elim_median": -3.491148328089384,
+    "cull": false
+   },
+   {
+    "generation": 5,
+    "phase": "A",
+    "gen_in_phase": 5,
+    "n_species": 8,
+    "pop_total": 96,
+    "best_score": -3.465810342917268,
+    "median_score": -3.4992342288946325,
+    "elim_median": -3.4853468495643263,
+    "cull": true
+   },
+   {
+    "generation": 6,
+    "phase": "A",
+    "gen_in_phase": 6,
+    "n_species": 8,
+    "pop_total": 120,
+    "best_score": -3.465810342917268,
+    "median_score": -3.498437620494627,
+    "elim_median": -3.4802084639219553,
+    "cull": false
+   },
+   {
+    "generation": 7,
+    "phase": "A",
+    "gen_in_phase": 7,
+    "n_species": 8,
+    "pop_total": 120,
+    "best_score": -3.464887717354552,
+    "median_score": -3.4985932057131084,
+    "elim_median": -3.479161034064891,
+    "cull": false
+   },
+   {
+    "generation": 8,
+    "phase": "A",
+    "gen_in_phase": 8,
+    "n_species": 6,
+    "pop_total": 90,
+    "best_score": -3.464887717354552,
+    "median_score": -3.496247845132986,
+    "elim_median": -3.4853468495643263,
+    "cull": true
+   },
+   {
+    "generation": 9,
+    "phase": "A",
+    "gen_in_phase": 9,
+    "n_species": 6,
+    "pop_total": 120,
+    "best_score": -3.4780093820401428,
+    "median_score": -3.4947296532659946,
+    "elim_median": -3.4883441794052708,
+    "cull": false
+   },
+   {
+    "generation": 10,
+    "phase": "A",
+    "gen_in_phase": 10,
+    "n_species": 6,
+    "pop_total": 120,
+    "best_score": -3.4675204833908695,
+    "median_score": -3.4947296532659946,
+    "elim_median": -3.477477424283801,
+    "cull": false
+   },
+   {
+    "generation": 11,
+    "phase": "A",
+    "gen_in_phase": 11,
+    "n_species": 5,
+    "pop_total": 100,
+    "best_score": -3.457842541833055,
+    "median_score": -3.4893199250617637,
+    "elim_median": -3.477477424283801,
+    "cull": true
+   },
+   {
+    "generation": 12,
+    "phase": "A",
+    "gen_in_phase": 12,
+    "n_species": 5,
+    "pop_total": 120,
+    "best_score": -3.457842541833055,
+    "median_score": -3.488698749590832,
+    "elim_median": -3.465886224171933,
+    "cull": false
+   },
+   {
+    "generation": 13,
+    "phase": "A",
+    "gen_in_phase": 13,
+    "n_species": 5,
+    "pop_total": 120,
+    "best_score": -3.457842541833055,
+    "median_score": -3.4893199250617637,
+    "elim_median": -3.465886224171933,
+    "cull": false
+   },
+   {
+    "generation": 14,
+    "phase": "A",
+    "gen_in_phase": 14,
+    "n_species": 4,
+    "pop_total": 96,
+    "best_score": -3.457842541833055,
+    "median_score": -3.4919421670458766,
+    "elim_median": -3.465886224171933,
+    "cull": true
+   },
+   {
+    "generation": 15,
+    "phase": "A",
+    "gen_in_phase": 15,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.457842541833055,
+    "median_score": -3.4871885780949103,
+    "elim_median": -3.4649268352320357,
+    "cull": false
+   },
+   {
+    "generation": 16,
+    "phase": "A",
+    "gen_in_phase": 16,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.457842541833055,
+    "median_score": -3.487779350440925,
+    "elim_median": -3.4649268352320357,
+    "cull": false
+   },
+   {
+    "generation": 17,
+    "phase": "A",
+    "gen_in_phase": 17,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.457842541833055,
+    "median_score": -3.4939448456780777,
+    "elim_median": -3.4649268352320357,
+    "cull": false
+   },
+   {
+    "generation": 18,
+    "phase": "A",
+    "gen_in_phase": 18,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.45708031298501,
+    "median_score": -3.486781858381272,
+    "elim_median": -3.4773756922855785,
+    "cull": false
+   },
+   {
+    "generation": 19,
+    "phase": "A",
+    "gen_in_phase": 19,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.45708031298501,
+    "median_score": -3.4843528719114554,
+    "elim_median": -3.4773756922855785,
+    "cull": false
+   },
+   {
+    "generation": 20,
+    "phase": "A",
+    "gen_in_phase": 20,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.45708031298501,
+    "median_score": -3.494580830344794,
+    "elim_median": -3.473719630033269,
+    "cull": false
+   },
+   {
+    "generation": 21,
+    "phase": "A",
+    "gen_in_phase": 21,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.4569251811331316,
+    "median_score": -3.493404683796804,
+    "elim_median": -3.467172986160472,
+    "cull": false
+   },
+   {
+    "generation": 22,
+    "phase": "A",
+    "gen_in_phase": 22,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.4569251811331316,
+    "median_score": -3.483805887848148,
+    "elim_median": -3.467172986160472,
+    "cull": false
+   },
+   {
+    "generation": 23,
+    "phase": "A",
+    "gen_in_phase": 23,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.456485189649773,
+    "median_score": -3.479845291204554,
+    "elim_median": -3.466339237266685,
+    "cull": false
+   },
+   {
+    "generation": 24,
+    "phase": "A",
+    "gen_in_phase": 24,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.4519153591029417,
+    "median_score": -3.479461152879554,
+    "elim_median": -3.457961422680496,
+    "cull": false
+   },
+   {
+    "generation": 25,
+    "phase": "B",
+    "gen_in_phase": 0,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.465933895403919,
+    "median_score": -3.5230453315357613,
+    "elim_median": -3.4698686112227812,
+    "cull": false
+   },
+   {
+    "generation": 26,
+    "phase": "B",
+    "gen_in_phase": 1,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.4326838393177512,
+    "median_score": -3.5463571874812856,
+    "elim_median": -3.4816546507243284,
+    "cull": false
+   },
+   {
+    "generation": 27,
+    "phase": "B",
+    "gen_in_phase": 2,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.427820724263914,
+    "median_score": -3.521214030874009,
+    "elim_median": -3.5172850692512356,
+    "cull": false
+   },
+   {
+    "generation": 28,
+    "phase": "B",
+    "gen_in_phase": 3,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.409045233374055,
+    "median_score": -3.483605925320247,
+    "elim_median": -3.470873785188978,
+    "cull": false
+   },
+   {
+    "generation": 29,
+    "phase": "B",
+    "gen_in_phase": 4,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.428195749233205,
+    "median_score": -3.581769647560778,
+    "elim_median": -3.4781845030684604,
+    "cull": false
+   },
+   {
+    "generation": 30,
+    "phase": "B",
+    "gen_in_phase": 5,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.3859270579982947,
+    "median_score": -3.5125383279752285,
+    "elim_median": -3.493125794125641,
+    "cull": false
+   },
+   {
+    "generation": 31,
+    "phase": "B",
+    "gen_in_phase": 6,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.446959650535514,
+    "median_score": -3.5447204895062354,
+    "elim_median": -3.5059195843276756,
+    "cull": false
+   },
+   {
+    "generation": 32,
+    "phase": "B",
+    "gen_in_phase": 7,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.4341355599319736,
+    "median_score": -3.545201041790863,
+    "elim_median": -3.480477217643033,
+    "cull": false
+   },
+   {
+    "generation": 33,
+    "phase": "B",
+    "gen_in_phase": 8,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.453500452290467,
+    "median_score": -3.572784044807057,
+    "elim_median": -3.501808911041368,
+    "cull": false
+   },
+   {
+    "generation": 34,
+    "phase": "B",
+    "gen_in_phase": 9,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.446621527468616,
+    "median_score": -3.5433573576921864,
+    "elim_median": -3.468789662314853,
+    "cull": false
+   },
+   {
+    "generation": 35,
+    "phase": "B",
+    "gen_in_phase": 10,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.409371990551657,
+    "median_score": -3.542408932527746,
+    "elim_median": -3.4847248698883013,
+    "cull": false
+   },
+   {
+    "generation": 36,
+    "phase": "B",
+    "gen_in_phase": 11,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.3683222067149643,
+    "median_score": -3.5079100427502743,
+    "elim_median": -3.5183740105979697,
+    "cull": false
+   },
+   {
+    "generation": 37,
+    "phase": "B",
+    "gen_in_phase": 12,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.3338202607296092,
+    "median_score": -3.450563004395396,
+    "elim_median": -3.463480735231327,
+    "cull": false
+   },
+   {
+    "generation": 38,
+    "phase": "B",
+    "gen_in_phase": 13,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.3959265532802645,
+    "median_score": -3.5148226587568794,
+    "elim_median": -3.490199190282869,
+    "cull": false
+   },
+   {
+    "generation": 39,
+    "phase": "B",
+    "gen_in_phase": 14,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.3471650348285253,
+    "median_score": -3.4781601458939337,
+    "elim_median": -3.4913485163379603,
+    "cull": false
+   },
+   {
+    "generation": 40,
+    "phase": "B",
+    "gen_in_phase": 15,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.2721491177621056,
+    "median_score": -3.4403638897839404,
+    "elim_median": -3.4622058671029885,
+    "cull": false
+   },
+   {
+    "generation": 41,
+    "phase": "B",
+    "gen_in_phase": 16,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.414174967813093,
+    "median_score": -3.4950323182237857,
+    "elim_median": -3.48044516068141,
+    "cull": false
+   },
+   {
+    "generation": 42,
+    "phase": "B",
+    "gen_in_phase": 17,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.3363998701532624,
+    "median_score": -3.4522308657820746,
+    "elim_median": -3.497084864100082,
+    "cull": false
+   },
+   {
+    "generation": 43,
+    "phase": "B",
+    "gen_in_phase": 18,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.366916546412548,
+    "median_score": -3.4547239546761017,
+    "elim_median": -3.4793181716686292,
+    "cull": false
+   },
+   {
+    "generation": 44,
+    "phase": "B",
+    "gen_in_phase": 19,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.3579025686796173,
+    "median_score": -3.488668592958538,
+    "elim_median": -3.439910490773081,
+    "cull": false
+   },
+   {
+    "generation": 45,
+    "phase": "B",
+    "gen_in_phase": 20,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.311583341148783,
+    "median_score": -3.4028531706606353,
+    "elim_median": -3.5000665644934683,
+    "cull": false
+   },
+   {
+    "generation": 46,
+    "phase": "B",
+    "gen_in_phase": 21,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.3575299291794742,
+    "median_score": -3.4692623034785095,
+    "elim_median": -3.4499341237805385,
+    "cull": false
+   },
+   {
+    "generation": 47,
+    "phase": "B",
+    "gen_in_phase": 22,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.407163373118848,
+    "median_score": -3.5120727703025145,
+    "elim_median": -3.4552088387942756,
+    "cull": false
+   },
+   {
+    "generation": 48,
+    "phase": "B",
+    "gen_in_phase": 23,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.3389883543100263,
+    "median_score": -3.4620828449054866,
+    "elim_median": -3.463606393934167,
+    "cull": false
+   },
+   {
+    "generation": 49,
+    "phase": "B",
+    "gen_in_phase": 24,
+    "n_species": 4,
+    "pop_total": 120,
+    "best_score": -3.4368518734480036,
+    "median_score": -3.5286697744347473,
+    "elim_median": -3.478693236008532,
+    "cull": false
+   }
+  ]
+ },
+ "margin_treatment_over_control": {
+  "points": 0.0011650578592528327,
+  "relative_percent_of_control_gap": 0.6159741367427005
+ },
+ "wall_seconds": 13.34462285041809
+}

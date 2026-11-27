@@ -1,0 +1,56 @@
+{
+ "gap_pct": 15.13,
+ "cloud_limit_pct": 22.96,
+ "counts": {
+  "contributing": 4,
+  "neutral": 5,
+  "harmful": 0
+ },
+ "units": [
+  {
+   "name": "c0.b0.ffn.u0",
+   "rel_drop_pct": 30.58,
+   "cloud_cat": "contributing"
+  },
+  {
+   "name": "c0.b0.ffn.u1",
+   "rel_drop_pct": 7.96,
+   "cloud_cat": "neutral"
+  },
+  {
+   "name": "c0.b0.ffn.u2",
+   "rel_drop_pct": 8.1,
+   "cloud_cat": "neutral"
+  },
+  {
+   "name": "c0.b0.ffn.u3",
+   "rel_drop_pct": 4.19,
+   "cloud_cat": "neutral"
+  },
+  {
+   "name": "c0.b0.ffn.u4",
+   "rel_drop_pct": 118.95,
+   "cloud_cat": "contributing"
+  },
+  {
+   "name": "c0.b0.ffn.u5",
+   "rel_drop_pct": 6.06,
+   "cloud_cat": "neutral"
+  },
+  {
+   "name": "c0.b0.ffn.u6",
+   "rel_drop_pct": 0.36,
+   "cloud_cat": "neutral"
+  },
+  {
+   "name": "c0.b0.ffn.u7",
+   "rel_drop_pct": 31.24,
+   "cloud_cat": "contributing"
+  },
+  {
+   "name": "c0.b0.head.h0",
+   "rel_drop_pct": 56.74,
+   "cloud_cat": "contributing"
+  }
+ ]
+}

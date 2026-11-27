@@ -1,0 +1,909 @@
+{
+ "experiment": "iterated prune-and-graft rounds (standalone, not an engine integration)",
+ "date": "2026-11-23",
+ "continues": "/home/hatch/workspace/bert-engine/prune_graft_test_2026-11-23.json",
+ "settings": {
+  "config_file": "/home/hatch/workspace/bert-engine/bert_engine_config_test.json",
+  "phase_budgets": {
+   "A": 25,
+   "B": 25
+  },
+  "margin_floor": 0.01,
+  "max_round": 5,
+  "seed_rule": "round r>=2: run 20261300+(r-1)*100, draw 20261301+(r-1)*100, graft 20261304+(r-1)*100; round 1 seeds are the original test's",
+  "classes_rule": "be._base_classes(layout, 0) (round 1 convention)",
+  "marks": null
+ },
+ "round_1_reference": {
+  "subject_score": -0.41201394818066317,
+  "control_final_score": -0.20350921193596969,
+  "treatment_final_score": -0.12810164364860518,
+  "margin": 0.0754075682873645
+ },
+ "rounds": [
+  {
+   "round": 2,
+   "seeds": {
+    "run_seed": 20261400,
+    "draw_seed": 20261401,
+    "graft_seed": 20261404
+   },
+   "start_champion_score": -0.12810164364860518,
+   "start_density_exact_zero_positive": 28,
+   "start_density_band_counts": {
+    "contributing": 23,
+    "neutral": 13,
+    "harmful": 0
+   },
+   "graft_inventory": {
+    "n_pruned_slots": 8,
+    "pruned_units": [
+     "c0.b0.ffn.u0",
+     "c0.b0.ffn.u3",
+     "c0.b0.ffn.u5",
+     "c0.b0.ffn.u8",
+     "c0.b0.ffn.u11",
+     "c0.b0.ffn.u14",
+     "c0.b1.ffn.u4",
+     "c0.b1.ffn.u8"
+    ],
+    "pruned_base_score": -0.14482279945198154,
+    "donor_species_ids": [
+     3,
+     1,
+     5
+    ],
+    "donor_tables": {
+     "3": {
+      "donor_val_score": -0.15255944888451764,
+      "positive_drop_units": [
+       "c0.b0.ffn.u0",
+       "c0.b0.ffn.u1",
+       "c0.b0.ffn.u2",
+       "c0.b0.ffn.u4",
+       "c0.b0.ffn.u5",
+       "c0.b0.ffn.u8",
+       "c0.b0.ffn.u9",
+       "c0.b0.ffn.u10",
+       "c0.b0.ffn.u12",
+       "c0.b1.ffn.u0",
+       "c0.b1.ffn.u1",
+       "c0.b1.ffn.u5",
+       "c0.b1.ffn.u6",
+       "c0.b1.ffn.u9",
+       "c0.b1.ffn.u12",
+       "c0.b1.ffn.u13",
+       "c0.b1.ffn.u14",
+       "c0.b1.ffn.u15",
+       "c0.b0.head.h0",
+       "c0.b0.head.h1"
+      ]
+     },
+     "1": {
+      "donor_val_score": -0.1618652990506377,
+      "positive_drop_units": [
+       "c0.b0.ffn.u0",
+       "c0.b0.ffn.u1",
+       "c0.b0.ffn.u4",
+       "c0.b0.ffn.u5",
+       "c0.b0.ffn.u9",
+       "c0.b0.ffn.u12",
+       "c0.b0.ffn.u13",
+       "c0.b1.ffn.u0",
+       "c0.b1.ffn.u1",
+       "c0.b1.ffn.u5",
+       "c0.b1.ffn.u6",
+       "c0.b1.ffn.u7",
+       "c0.b1.ffn.u9",
+       "c0.b1.ffn.u11",
+       "c0.b1.ffn.u12",
+       "c0.b1.ffn.u13",
+       "c0.b1.ffn.u14",
+       "c0.b1.ffn.u15",
+       "c0.b0.head.h0",
+       "c0.b0.head.h1",
+       "c0.b1.head.h0",
+       "c0.b1.head.h1"
+      ]
+     },
+     "5": {
+      "donor_val_score": -0.15037224641128913,
+      "positive_drop_units": [
+       "c0.b0.ffn.u0",
+       "c0.b0.ffn.u1",
+       "c0.b0.ffn.u2",
+       "c0.b0.ffn.u3",
+       "c0.b0.ffn.u5",
+       "c0.b0.ffn.u6",
+       "c0.b0.ffn.u7",
+       "c0.b0.ffn.u9",
+       "c0.b0.ffn.u11",
+       "c0.b0.ffn.u12",
+       "c0.b0.ffn.u13",
+       "c0.b0.ffn.u14",
+       "c0.b1.ffn.u0",
+       "c0.b1.ffn.u1",
+       "c0.b1.ffn.u2",
+       "c0.b1.ffn.u3",
+       "c0.b1.ffn.u5",
+       "c0.b1.ffn.u6",
+       "c0.b1.ffn.u7",
+       "c0.b1.ffn.u9",
+       "c0.b1.ffn.u11",
+       "c0.b1.ffn.u12",
+       "c0.b1.ffn.u13",
+       "c0.b1.ffn.u14",
+       "c0.b1.ffn.u15",
+       "c0.b0.head.h1",
+       "c0.b1.head.h1"
+      ]
+     }
+    },
+    "n_eligible_slots": 6,
+    "eligible_slots": [
+     {
+      "unit": "c0.b0.ffn.u0",
+      "donor_species_ids": [
+       3,
+       1,
+       5
+      ]
+     },
+     {
+      "unit": "c0.b0.ffn.u11",
+      "donor_species_ids": [
+       5
+      ]
+     },
+     {
+      "unit": "c0.b0.ffn.u14",
+      "donor_species_ids": [
+       5
+      ]
+     },
+     {
+      "unit": "c0.b0.ffn.u3",
+      "donor_species_ids": [
+       5
+      ]
+     },
+     {
+      "unit": "c0.b0.ffn.u5",
+      "donor_species_ids": [
+       3,
+       1,
+       5
+      ]
+     },
+     {
+      "unit": "c0.b0.ffn.u8",
+      "donor_species_ids": [
+       3
+      ]
+     }
+    ],
+    "slots_without_eligible_donor": [
+     "c0.b1.ffn.u4",
+     "c0.b1.ffn.u8"
+    ]
+   },
+   "species_variants": [
+    {
+     "species_index": 0,
+     "fraction": 0.25,
+     "n_grafts": 2,
+     "grafts": [
+      {
+       "unit": "c0.b0.ffn.u3",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u11",
+       "donor_species_id": 5
+      }
+     ],
+     "variant_base_val_score": -0.27461880945081796
+    },
+    {
+     "species_index": 1,
+     "fraction": 0.3181818181818182,
+     "n_grafts": 2,
+     "grafts": [
+      {
+       "unit": "c0.b0.ffn.u0",
+       "donor_species_id": 3
+      },
+      {
+       "unit": "c0.b0.ffn.u11",
+       "donor_species_id": 5
+      }
+     ],
+     "variant_base_val_score": -0.27554222066678086
+    },
+    {
+     "species_index": 2,
+     "fraction": 0.38636363636363635,
+     "n_grafts": 2,
+     "grafts": [
+      {
+       "unit": "c0.b0.ffn.u5",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u0",
+       "donor_species_id": 5
+      }
+     ],
+     "variant_base_val_score": -0.16749840881705583
+    },
+    {
+     "species_index": 3,
+     "fraction": 0.45454545454545453,
+     "n_grafts": 3,
+     "grafts": [
+      {
+       "unit": "c0.b0.ffn.u5",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u14",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u8",
+       "donor_species_id": 3
+      }
+     ],
+     "variant_base_val_score": -0.19294742156450367
+    },
+    {
+     "species_index": 4,
+     "fraction": 0.5227272727272727,
+     "n_grafts": 3,
+     "grafts": [
+      {
+       "unit": "c0.b0.ffn.u3",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u11",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u8",
+       "donor_species_id": 3
+      }
+     ],
+     "variant_base_val_score": -0.32588998256908724
+    },
+    {
+     "species_index": 5,
+     "fraction": 0.5909090909090908,
+     "n_grafts": 4,
+     "grafts": [
+      {
+       "unit": "c0.b0.ffn.u0",
+       "donor_species_id": 3
+      },
+      {
+       "unit": "c0.b0.ffn.u5",
+       "donor_species_id": 3
+      },
+      {
+       "unit": "c0.b0.ffn.u14",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u3",
+       "donor_species_id": 5
+      }
+     ],
+     "variant_base_val_score": -0.16029379376744957
+    },
+    {
+     "species_index": 6,
+     "fraction": 0.6590909090909091,
+     "n_grafts": 4,
+     "grafts": [
+      {
+       "unit": "c0.b0.ffn.u11",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u0",
+       "donor_species_id": 3
+      },
+      {
+       "unit": "c0.b0.ffn.u5",
+       "donor_species_id": 1
+      },
+      {
+       "unit": "c0.b0.ffn.u8",
+       "donor_species_id": 3
+      }
+     ],
+     "variant_base_val_score": -0.3399824792882252
+    },
+    {
+     "species_index": 7,
+     "fraction": 0.7272727272727273,
+     "n_grafts": 4,
+     "grafts": [
+      {
+       "unit": "c0.b0.ffn.u14",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u5",
+       "donor_species_id": 1
+      },
+      {
+       "unit": "c0.b0.ffn.u3",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u0",
+       "donor_species_id": 3
+      }
+     ],
+     "variant_base_val_score": -0.18525431453714597
+    },
+    {
+     "species_index": 8,
+     "fraction": 0.7954545454545454,
+     "n_grafts": 5,
+     "grafts": [
+      {
+       "unit": "c0.b0.ffn.u11",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u0",
+       "donor_species_id": 3
+      },
+      {
+       "unit": "c0.b0.ffn.u3",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u14",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u5",
+       "donor_species_id": 1
+      }
+     ],
+     "variant_base_val_score": -0.2951553213201733
+    },
+    {
+     "species_index": 9,
+     "fraction": 0.8636363636363635,
+     "n_grafts": 5,
+     "grafts": [
+      {
+       "unit": "c0.b0.ffn.u3",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u11",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u0",
+       "donor_species_id": 1
+      },
+      {
+       "unit": "c0.b0.ffn.u5",
+       "donor_species_id": 1
+      },
+      {
+       "unit": "c0.b0.ffn.u8",
+       "donor_species_id": 3
+      }
+     ],
+     "variant_base_val_score": -0.32801921160516057
+    },
+    {
+     "species_index": 10,
+     "fraction": 0.9318181818181818,
+     "n_grafts": 6,
+     "grafts": [
+      {
+       "unit": "c0.b0.ffn.u3",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u8",
+       "donor_species_id": 3
+      },
+      {
+       "unit": "c0.b0.ffn.u11",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u14",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u5",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u0",
+       "donor_species_id": 5
+      }
+     ],
+     "variant_base_val_score": -0.3373018013802864
+    },
+    {
+     "species_index": 11,
+     "fraction": 1.0,
+     "n_grafts": 6,
+     "grafts": [
+      {
+       "unit": "c0.b0.ffn.u3",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u0",
+       "donor_species_id": 1
+      },
+      {
+       "unit": "c0.b0.ffn.u8",
+       "donor_species_id": 3
+      },
+      {
+       "unit": "c0.b0.ffn.u14",
+       "donor_species_id": 5
+      },
+      {
+       "unit": "c0.b0.ffn.u5",
+       "donor_species_id": 1
+      },
+      {
+       "unit": "c0.b0.ffn.u11",
+       "donor_species_id": 5
+      }
+     ],
+     "variant_base_val_score": -0.32590455953290504
+    }
+   ],
+   "treatment_wall_seconds": 21.400075435638428,
+   "control_wall_seconds": 20.81830096244812,
+   "status": "completed",
+   "control_final_score": -0.10783267537761247,
+   "control_champion_species_id": 9,
+   "treatment_final_score": -0.14054782408637084,
+   "treatment_champion_species_id": 2,
+   "treatment_margin_over_control": -0.03271514870875837,
+   "treatment_delta_vs_start": -0.012446180437765658,
+   "control_delta_vs_start": 0.020268968270992713,
+   "treatment_density_exact_zero_positive": 29,
+   "treatment_density_band_counts": {
+    "contributing": 24,
+    "neutral": 12,
+    "harmful": 0
+   },
+   "treatment_density_units": [
+    {
+     "name": "c0.b0.ffn.u0",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 0,
+     "index": 0,
+     "drop": 0.0018461118046212976,
+     "se": 0.009689165454174599,
+     "band": 0.019378330908349197,
+     "cat": "neutral"
+    },
+    {
+     "name": "c0.b0.ffn.u1",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 0,
+     "index": 1,
+     "drop": 0.06323423765339758,
+     "se": 0.008873331874101257,
+     "band": 0.017746663748202513,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b0.ffn.u2",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 0,
+     "index": 2,
+     "drop": 0.08209680229438182,
+     "se": 0.008830754831872597,
+     "band": 0.017661509663745193,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b0.ffn.u3",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 0,
+     "index": 3,
+     "drop": -0.0012007045359919144,
+     "se": 0.0009101177086725457,
+     "band": 0.0018202354173450913,
+     "cat": "neutral"
+    },
+    {
+     "name": "c0.b0.ffn.u4",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 0,
+     "index": 4,
+     "drop": 0.042579761997525584,
+     "se": 0.011855387837449143,
+     "band": 0.023710775674898286,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b0.ffn.u5",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 0,
+     "index": 5,
+     "drop": 0.020283287447907555,
+     "se": 0.0077571885070887164,
+     "band": 0.015514377014177433,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b0.ffn.u6",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 0,
+     "index": 6,
+     "drop": 0.08004905171109625,
+     "se": 0.009666546002689751,
+     "band": 0.019333092005379502,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b0.ffn.u7",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 0,
+     "index": 7,
+     "drop": 0.10921104366847587,
+     "se": 0.009946968097851767,
+     "band": 0.019893936195703534,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b0.ffn.u8",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 0,
+     "index": 8,
+     "drop": 0.0,
+     "se": 0.0,
+     "band": 0.0,
+     "cat": "neutral"
+    },
+    {
+     "name": "c0.b0.ffn.u9",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 0,
+     "index": 9,
+     "drop": 0.11546883241659928,
+     "se": 0.009991577297967607,
+     "band": 0.019983154595935214,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b0.ffn.u10",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 0,
+     "index": 10,
+     "drop": 0.11386348268268914,
+     "se": 0.011878119374505319,
+     "band": 0.023756238749010637,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b0.ffn.u11",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 0,
+     "index": 11,
+     "drop": 0.0,
+     "se": 0.0,
+     "band": 0.0,
+     "cat": "neutral"
+    },
+    {
+     "name": "c0.b0.ffn.u12",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 0,
+     "index": 12,
+     "drop": 0.06650608048536166,
+     "se": 0.010446119266150728,
+     "band": 0.020892238532301457,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b0.ffn.u13",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 0,
+     "index": 13,
+     "drop": 0.021369752610676,
+     "se": 0.010656253972650976,
+     "band": 0.021312507945301953,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b0.ffn.u14",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 0,
+     "index": 14,
+     "drop": 0.0,
+     "se": 0.0,
+     "band": 0.0,
+     "cat": "neutral"
+    },
+    {
+     "name": "c0.b0.ffn.u15",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 0,
+     "index": 15,
+     "drop": 0.00016714031799680562,
+     "se": 0.0021131526441254263,
+     "band": 0.0042263052882508525,
+     "cat": "neutral"
+    },
+    {
+     "name": "c0.b1.ffn.u0",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 1,
+     "index": 0,
+     "drop": 0.03978056534149335,
+     "se": 0.008258325008940505,
+     "band": 0.01651665001788101,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b1.ffn.u1",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 1,
+     "index": 1,
+     "drop": 0.09667623317510615,
+     "se": 0.009835194078147081,
+     "band": 0.019670388156294162,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b1.ffn.u2",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 1,
+     "index": 2,
+     "drop": 0.10246869907588543,
+     "se": 0.012059073672987392,
+     "band": 0.024118147345974783,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b1.ffn.u3",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 1,
+     "index": 3,
+     "drop": 0.14893651754537746,
+     "se": 0.010418613875553269,
+     "band": 0.020837227751106538,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b1.ffn.u4",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 1,
+     "index": 4,
+     "drop": 0.015421438636382373,
+     "se": 0.004783516819356449,
+     "band": 0.009567033638712898,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b1.ffn.u5",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 1,
+     "index": 5,
+     "drop": 0.16557606000101482,
+     "se": 0.010868766144768727,
+     "band": 0.021737532289537453,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b1.ffn.u6",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 1,
+     "index": 6,
+     "drop": 0.01099676916192388,
+     "se": 0.007688829796008318,
+     "band": 0.015377659592016635,
+     "cat": "neutral"
+    },
+    {
+     "name": "c0.b1.ffn.u7",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 1,
+     "index": 7,
+     "drop": -0.0011391626050839265,
+     "se": 0.003924338753361529,
+     "band": 0.007848677506723058,
+     "cat": "neutral"
+    },
+    {
+     "name": "c0.b1.ffn.u8",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 1,
+     "index": 8,
+     "drop": 0.0,
+     "se": 0.0,
+     "band": 0.0,
+     "cat": "neutral"
+    },
+    {
+     "name": "c0.b1.ffn.u9",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 1,
+     "index": 9,
+     "drop": 0.18818199258610957,
+     "se": 0.011617769291166988,
+     "band": 0.023235538582333976,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b1.ffn.u10",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 1,
+     "index": 10,
+     "drop": 0.018325153190469873,
+     "se": 0.007961561321584024,
+     "band": 0.015923122643168048,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b1.ffn.u11",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 1,
+     "index": 11,
+     "drop": 0.015717860909653686,
+     "se": 0.009778692885556101,
+     "band": 0.019557385771112202,
+     "cat": "neutral"
+    },
+    {
+     "name": "c0.b1.ffn.u12",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 1,
+     "index": 12,
+     "drop": 0.026078877155452013,
+     "se": 0.009500401027440972,
+     "band": 0.019000802054881943,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b1.ffn.u13",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 1,
+     "index": 13,
+     "drop": 0.0073976863540254345,
+     "se": 0.005741532211478107,
+     "band": 0.011483064422956215,
+     "cat": "neutral"
+    },
+    {
+     "name": "c0.b1.ffn.u14",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 1,
+     "index": 14,
+     "drop": 0.04807625825406675,
+     "se": 0.008823205281906651,
+     "band": 0.017646410563813303,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b1.ffn.u15",
+     "kind": "ffn",
+     "couple": 0,
+     "block": 1,
+     "index": 15,
+     "drop": 0.15551520665020013,
+     "se": 0.010598840048872037,
+     "band": 0.021197680097744073,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b0.head.h0",
+     "kind": "head",
+     "couple": 0,
+     "block": 0,
+     "index": 0,
+     "drop": 0.0629756480541464,
+     "se": 0.008819553062918201,
+     "band": 0.017639106125836402,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b0.head.h1",
+     "kind": "head",
+     "couple": 0,
+     "block": 0,
+     "index": 1,
+     "drop": 0.2320828406657609,
+     "se": 0.013399409714068644,
+     "band": 0.026798819428137288,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b1.head.h0",
+     "kind": "head",
+     "couple": 0,
+     "block": 1,
+     "index": 0,
+     "drop": 0.19669580993294228,
+     "se": 0.012930138997118474,
+     "band": 0.025860277994236947,
+     "cat": "contributing"
+    },
+    {
+     "name": "c0.b1.head.h1",
+     "kind": "head",
+     "couple": 0,
+     "block": 1,
+     "index": 1,
+     "drop": -0.004677011409467247,
+     "se": 0.0072234140909100365,
+     "band": 0.014446828181820073,
+     "cat": "neutral"
+    }
+   ]
+  }
+ ],
+ "step0_reproduction": {
+  "status": "exact",
+  "reproduced_champion_score": -0.12810164364860518,
+  "recorded_champion_score": -0.12810164364860518,
+  "champion_species_id": 6,
+  "wall_seconds": 21.368606090545654,
+  "n_species_bests_captured": 4
+ },
+ "stopped_reason": "round 2: margin -0.0327 below the +0.01 floor",
+ "final_champion": {
+  "score": -0.14054782408637084,
+  "mean_gap_percent": 14.054782408637085,
+  "density_exact_zero_positive": 29,
+  "density_band_counts": {
+   "contributing": 24,
+   "neutral": 12,
+   "harmful": 0
+  },
+  "n_units": 36
+ },
+ "wall_seconds": 75.82378268241882
+}

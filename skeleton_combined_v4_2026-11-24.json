@@ -1,0 +1,156 @@
+{
+ "neutral_line_relative": 0.05,
+ "reads": {
+  "a": {
+   "species": 8,
+   "gap": 16.28464266252351,
+   "pieces": {
+    "c0.b0.ffn.u0": {
+     "won": true,
+     "damage_points": 9.828475400753831,
+     "damage_relative": 0.6035425894467116,
+     "class": "skeleton"
+    },
+    "c0.b0.ffn.u1": {
+     "won": true,
+     "damage_points": 7.037080940692515,
+     "damage_relative": 0.43212989603310287,
+     "class": "skeleton"
+    },
+    "c0.b0.ffn.u2": {
+     "won": true,
+     "damage_points": 7.544300042796539,
+     "damage_relative": 0.46327697814079366,
+     "class": "skeleton"
+    },
+    "c0.b0.ffn.u3": {
+     "won": false,
+     "damage_points": 4.679436648126984,
+     "damage_relative": 0.2873527374902709,
+     "class": "load-bearing, never won"
+    },
+    "c0.b0.ffn.u4": {
+     "won": true,
+     "damage_points": 21.006899288710855,
+     "damage_relative": 1.2899822074115792,
+     "class": "skeleton"
+    },
+    "c0.b0.ffn.u5": {
+     "won": true,
+     "damage_points": 12.434534213077491,
+     "damage_relative": 0.7635742749021798,
+     "class": "skeleton"
+    },
+    "c0.b0.ffn.u6": {
+     "won": true,
+     "damage_points": 10.16116335982995,
+     "damage_relative": 0.6239721417537908,
+     "class": "skeleton"
+    },
+    "c0.b0.ffn.u7": {
+     "won": true,
+     "damage_points": 3.9919398538882476,
+     "damage_relative": 0.24513524408337534,
+     "class": "skeleton"
+    },
+    "c0.b0.head.h0": {
+     "won": false,
+     "damage_points": 21.30584270748271,
+     "damage_relative": 1.3083395901903754,
+     "class": "load-bearing, never won"
+    },
+    "output_path": {
+     "won": true,
+     "damage_points": 30.740834882094305,
+     "damage_relative": 1.8877193389597304,
+     "class": "skeleton"
+    },
+    "trunk": {
+     "won": true,
+     "damage_points": 27.56207900189567,
+     "damage_relative": 1.6925197299738954,
+     "class": "skeleton"
+    }
+   }
+  },
+  "b": {
+   "species": 9,
+   "gap": 16.912972600565055,
+   "pieces": {
+    "c0.b0.ffn.u0": {
+     "won": true,
+     "damage_points": 15.541903408437186,
+     "damage_relative": 0.9189338725658396,
+     "class": "skeleton"
+    },
+    "c0.b0.ffn.u1": {
+     "won": false,
+     "damage_points": 8.155380313740771,
+     "damage_relative": 0.4821967436681298,
+     "class": "load-bearing, never won"
+    },
+    "c0.b0.ffn.u2": {
+     "won": true,
+     "damage_points": 7.811180250206121,
+     "damage_relative": 0.46184549781303097,
+     "class": "skeleton"
+    },
+    "c0.b0.ffn.u3": {
+     "won": true,
+     "damage_points": 11.975262957053495,
+     "damage_relative": 0.7080519338542183,
+     "class": "skeleton"
+    },
+    "c0.b0.ffn.u4": {
+     "won": true,
+     "damage_points": 3.189982776264138,
+     "damage_relative": 0.18861159723971657,
+     "class": "skeleton"
+    },
+    "c0.b0.ffn.u5": {
+     "won": true,
+     "damage_points": 15.185909471705784,
+     "damage_relative": 0.897885299666271,
+     "class": "skeleton"
+    },
+    "c0.b0.ffn.u6": {
+     "won": true,
+     "damage_points": 34.9617487206815,
+     "damage_relative": 2.067155759450201,
+     "class": "skeleton"
+    },
+    "c0.b0.ffn.u7": {
+     "won": true,
+     "damage_points": 20.938733092661693,
+     "damage_relative": 1.2380279674764056,
+     "class": "skeleton"
+    },
+    "c0.b0.head.h0": {
+     "won": true,
+     "damage_points": 11.254042769937112,
+     "damage_relative": 0.6654089163226764,
+     "class": "skeleton"
+    },
+    "output_path": {
+     "won": true,
+     "damage_points": 24.12846536546688,
+     "damage_relative": 1.4266247533955538,
+     "class": "skeleton"
+    },
+    "trunk": {
+     "won": false,
+     "damage_points": 29.66465753351676,
+     "damage_relative": 1.7539588240405282,
+     "class": "load-bearing, never won"
+    }
+   }
+  }
+ },
+ "host_neutral_slots": [],
+ "merged_pieces": [],
+ "gap_a_pct": 16.28464266252351,
+ "gap_b_pct": 16.912972600565055,
+ "gap_merged_pct": 16.28464266252351,
+ "placebo_pieces": [],
+ "gap_placebo_pct": 16.28464266252351
+}
